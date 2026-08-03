@@ -1,0 +1,247 @@
+/* ----- FOOTER ----- */
+footer, footer.force-dark {
+    /* Force light theme (creamy brown) on footer to match homepage */
+    --text-light: #2A241C !important;
+    --text-muted: #5c5246 !important;
+    --text-dim: #8b8073 !important;
+    
+    --bg-dark: #F4F2EE !important;
+    --bg-deep: #EDE8E0 !important;
+    --bg-card: rgba(42, 36, 28, 0.04) !important;
+
+    --glass-bg: rgba(244, 242, 238, 0.85) !important;
+    --glass-border: rgba(42, 36, 28, 0.12) !important;
+
+    background: var(--bg-dark);
+    border-top: 1px solid var(--glass-border);
+    padding: 60px 20px 30px;
+}
+
+.footer-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.footer-brand { padding-right: 0; }
+
+.footer-logo {
+    height: 60px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.footer-brand p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 auto 20px;
+    max-width: 300px;
+}
+
+.footer-tagline {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+/* Sosyal ikonlar hero'dan buraya taşındı: hero'nun alt 100px'inde
+   CTA'lar, ses düğmesi ve scroll göstergesiyle üst üste biniyorlardı. */
+.footer-socials {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 22px;
+}
+
+.footer-socials a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(42, 36, 28, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: var(--transition);
+    border: 1px solid rgba(42, 36, 28, 0.1);
+}
+
+.footer-socials a:hover {
+    background: var(--accent-color);
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+/* ----- Sütunlar -----
+   index.html .footer-links / .footer-info kullanıyor ama bu dosyada
+   yalnızca .footer-col kuralları vardı; sütunlar stilsiz kalıyordu. */
+.footer-links h4,
+.footer-info h4 {
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.footer-links ul li { margin-bottom: 11px; }
+
+.footer-links ul a,
+.footer-info a {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    border-bottom: 1px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.footer-links ul a:hover,
+.footer-info a:hover {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
+.footer-info p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.75;
+    margin-bottom: 12px;
+}
+
+.footer-impressum-container { margin-top: 18px; }
+
+.footer-impressum-link {
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.footer-col h3 {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li { margin-bottom: 12px; }
+
+.footer-col ul a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.footer-col ul a:hover { color: var(--accent-color); }
+
+.footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 16px;
+}
+
+.footer-bottom-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover { color: var(--accent-color); }
+
+/* WIDGETS */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25D366; /* WhatsApp green */
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    text-decoration: none;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-btn svg {
+    /* Removed neon animation */
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 100px;
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.scroll-top.visible { opacity: 1; visibility: visible; }
+.scroll-top:hover { background: var(--accent-color); color: var(--bg-dark); }
+
+@media (max-width: 900px) {
+    .footer-content { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .footer-brand { grid-column: span 2; padding-right: 0; }
+}
+
+@media (max-width: 600px) {
+    .footer-content { grid-template-columns: 1fr; }
+    .footer-brand { grid-column: span 1; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    .scroll-top { right: 20px; bottom: 100px; }
+    .whatsapp-btn { right: 20px; bottom: 20px; }
+}

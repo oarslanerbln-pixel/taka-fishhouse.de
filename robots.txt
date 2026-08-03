@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://taka-fishhouse.de/sitemap.xml

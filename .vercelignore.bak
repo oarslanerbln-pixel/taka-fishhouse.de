@@ -1,0 +1,6 @@
+/assets/
+/_unused_imgs_archive/
+**/*.RAW
+**/*.RAW*
+**/*.pdf
+**/*.JPG

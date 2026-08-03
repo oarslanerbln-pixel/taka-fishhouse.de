@@ -1,0 +1,131 @@
+/* ============================
+   TESLİMAT PLATFORMLARI
+   Renkli platform logoları yerine tipografik wordmark:
+   üç farklı marka rengi krem/bordo şemasıyla çakışmasın diye.
+   Gerçek SVG logo koymak isterseniz .delivery-mark içeriğini
+   <svg> ile değiştirmek yeterli — kart geometrisi bozulmaz.
+   ============================ */
+.delivery-section {
+    padding: var(--section-padding);
+    background: var(--bg-dark);
+}
+
+.delivery-container {
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.delivery-eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin-bottom: 18px;
+}
+
+.delivery-intro h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 14px;
+}
+
+.delivery-intro p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 440px;
+    margin: 0 auto 48px;
+    line-height: 1.75;
+}
+
+.delivery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.delivery-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    min-height: 156px;
+    padding: 32px 20px;
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    text-decoration: none;
+    transition: border-color 0.45s ease, background-color 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.delivery-card:hover {
+    border-color: var(--accent-color);
+    background-color: rgba(139, 28, 36, 0.04);
+    transform: translateY(-3px);
+}
+
+.delivery-mark {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-light);
+    line-height: 1;
+    transition: color 0.45s ease;
+}
+
+.delivery-mark-light {
+    font-weight: 300;
+    opacity: 0.72;
+}
+
+.delivery-card:hover .delivery-mark { color: var(--accent-color); }
+
+.delivery-go {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    transition: color 0.45s ease;
+}
+
+.delivery-go svg {
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.delivery-card:hover .delivery-go { color: var(--accent-color); }
+.delivery-card:hover .delivery-go svg { transform: translateX(4px); }
+
+.delivery-note {
+    margin-top: 36px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.delivery-note a {
+    color: var(--accent-color);
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.delivery-note a:hover { border-bottom-color: var(--accent-color); }
+
+@media (max-width: 780px) {
+    .delivery-grid { grid-template-columns: 1fr; gap: 14px; }
+    .delivery-card {
+        flex-direction: row;
+        justify-content: space-between;
+        min-height: 0;
+        padding: 22px 24px;
+    }
+    .delivery-mark { font-size: 1.25rem; }
+}

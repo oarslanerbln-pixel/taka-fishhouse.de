@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <!-- Security -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: blob: https:; font-src 'self' data: https:; connect-src 'self' https:; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO & Identity -->
+    <title>TAKA Fish House | Fischrestaurant in Berlin Kreuzberg</title>
+    <meta name="description" content="TAKA Fish House Kreuzberg. 100% frischer Fisch, ohne Zusatzstoffe. Bosphorus-Brise im Herzen von Berlin. Karadeniz'in taze lezzetleri.">
+    <meta name="keywords" content="Fischrestaurant Berlin, Kreuzberg Fisch, Taka Fish House, frischer Fisch, Karadeniz yemekleri, seafood Berlin">
+    <meta name="author" content="TAKA Fish House">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="TAKA Fish House | Fischrestaurant in Kreuzberg">
+    <meta property="og:description" content="100% Fisch. Purer Geschmack. Authentische Schwarzmeer-Spezialitäten in Berlin Kreuzberg.">
+    <meta property="og:image" content="https://taka-fishhouse.de/assets/img/products/hamsi_web.jpg">
+    <meta property="og:url" content="https://taka-fishhouse.de/">
+    <meta property="og:type" content="restaurant">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TAKA Fish House | Fischrestaurant">
+    <meta name="twitter:description" content="100% Fisch. Purer Geschmack. Authentische Schwarzmeer-Spezialitäten in Berlin Kreuzberg.">
+    <meta name="twitter:image" content="https://taka-fishhouse.de/assets/img/products/hamsi_web.jpg">
+    
+    <!-- Canonical & Hreflang -->
+    <link rel="canonical" href="https://taka-fishhouse.de/">
+    <link rel="alternate" hreflang="de" href="https://taka-fishhouse.de/" />
+    <link rel="alternate" hreflang="tr" href="https://taka-fishhouse.de/" />
+    <link rel="alternate" hreflang="en" href="https://taka-fishhouse.de/" />
+    <link rel="alternate" hreflang="x-default" href="https://taka-fishhouse.de/" />
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐟</text></svg>">
+
+    <!-- Schema.org / Restaurant JSON-LD — önceden sadece qr-menu/index.html'de
+         vardı, ana sayfada hiç yoktu; Google zengin sonuç (rich result)
+         gösteremiyordu. aggregateRating BİLİNÇLİ OLARAK EKLENMEDİ — projede
+         gerçek Google yorumu/puan verisi yok (tek bulunan şablon
+         ratingValue:0, reviewCount:0 idi). Sahte puan işaretlemek hem
+         Google'ın structured-data kurallarını hem TR/DE haksız rekabet
+         mevzuatını ihlal eder. Gerçek Google Place puanınızı öğrenince
+         buraya "aggregateRating" alanı olarak eklenebilir. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "TAKA Fish House",
+      "image": "https://taka-fishhouse.de/assets/img/products/hamsi_web.jpg",
+      "url": "https://taka-fishhouse.de/",
+      "telephone": "+493026349486",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Kottbusser Damm 35",
+        "addressLocality": "Berlin",
+        "postalCode": "10967",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 52.4925,
+        "longitude": 13.4243
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "11:00",
+          "closes": "22:00"
+        }
+      ],
+      "menu": "https://taka-fishhouse.de/qr-menu/",
+      "servesCuisine": ["Seafood", "Turkish", "Black Sea"],
+      "priceRange": "€€"
+    }
+    </script>
+
+    <!-- Fontlar artık Google CDN'inden değil yerelden geliyor (DSGVO) —
+         bu yüzden Google'a preconnect yok. Tüm CSS mimarisi tek giriş
+         noktasından gelir (main.css hepsini @import eder). -->
+    <link rel="stylesheet" href="assets/css/v2/main.css?v=3">
+</head>
+
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ============================
+     HEADER
+     ============================ -->
+<header id="header">
+    <div class="header-container">
+        <a href="#" class="brand-logo">
+            <img src="assets/taka_logo.png" alt="TAKA Fish House Logo" class="brand-logo-img">
+        </a>
+
+        <nav class="nav-links sm-hidden">
+            <a href="#home" data-i18n="nav-home">Anasayfa</a>
+            <a href="#about" data-i18n="nav-story">Hikayemiz</a>
+            <a href="qr-menu/" data-i18n="nav-menu">Menü</a>
+            <a href="#contact" data-i18n="nav-contact">İletişim</a>
+        </nav>
+
+        <div class="header-right">
+            <div class="lang-switcher square-lang-switcher" id="langSwitcher">
+                <button class="lang-btn" data-lang="tr" onclick="window.i18n.setLanguage('tr')">TR</button>
+                <button class="lang-btn active" data-lang="de" onclick="window.i18n.setLanguage('de')">DE</button>
+                <button class="lang-btn" data-lang="en" onclick="window.i18n.setLanguage('en')">EN</button>
+            </div>
+            <a href="tel:+493026349486" class="btn btn-outline-square sm-hidden" style="padding: 10px 24px; min-width: auto; font-size: 0.8rem; border-color: rgba(255,255,255,0.6);" data-i18n="nav-reservation">REZERVASYON</a>
+        </div>
+    </div>
+</header>
+
+<!-- ============================
+     HERO SECTION
+     ============================ -->
+<section id="hero" class="hero-cinematic force-dark">
+    <div class="hero-video-container">
+        <video id="heroVideo" src="assets/videos/hero-anasayfa-compressed.mp4" poster="assets/videos/hero-poster.jpg" autoplay muted loop playsinline preload="auto"></video>
+    </div>
+    
+    <!-- Dynamic Lighting Overlay (Vignette Flashlight) -->
+    <div class="hero-light-overlay" id="heroLightOverlay"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h1 class="hero-title hero-title-classic" data-i18n="hero-title">DENİZDEN MASAYA</h1>
+        <p class="hero-subtitle" data-i18n="hero-subtitle" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; font-weight: 400; color: rgba(255,255,255,0.6);">TAKA FISH HOUSE &nbsp;|&nbsp; BERLİN</p>
+        <div class="hero-actions" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 40px;">
+            <a href="qr-menu/" class="btn btn-outline-square">
+                <span data-i18n="hero-cta-menu">MENÜYÜ GÖR</span>
+            </a>
+            <a href="#reservation" class="btn btn-outline-square">
+                <span data-i18n="nav-reservation">REZERVASYON</span>
+            </a>
+        </div>
+        
+    </div>
+
+    <!-- Cinematic Audio Toggle -->
+    <button class="audio-toggle" id="audioToggle" aria-label="Toggle Sound">
+        <span class="audio-wave"></span>
+        <span class="audio-wave"></span>
+        <span class="audio-wave"></span>
+        <span class="audio-wave"></span>
+    </button>
+
+    <div class="scroll-indicator">
+        <div class="scroll-mouse"></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+<!-- ============================
+     STORY / ABOUT SECTION
+     ============================ -->
+<section id="about" class="story-editorial">
+    <!-- Decorative background text — changes with language -->
+    <div class="story-bg-text" id="storyBgText" aria-hidden="true">TAKA</div>
+    <div class="story-editorial-container">
+        <!-- LEFT — Premium AI Visual + Real Photo Layered -->
+        <div class="story-editorial-image">
+            <div class="image-reveal-mask"></div>
+            <!-- Cinematic Video -->
+            <div class="story-visual-layer">
+                <video id="ourStoryVideo"
+                       class="story-visual-primary"
+                       autoplay muted playsinline loop
+                       style="object-fit: cover; width: 100%; height: 110%;">
+                    <source src="assets/videos/ourstory.mp4.MP4" type="video/mp4">
+                </video>
+            </div>
+            <!-- Stat cards floating over image -->
+            <div class="story-floating-stats">
+                <div class="story-stat-card">
+                    <span class="story-stat-number">100%</span>
+                    <span class="story-stat-label" data-i18n="stat-natural">Doğal</span>
+                </div>
+                <div class="story-stat-card story-stat-card--accent">
+                    <span class="story-stat-number" data-i18n="stat-daily-num">Günlük</span>
+                    <span class="story-stat-label" data-i18n="stat-fresh">Taze Balık</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT — Content with full i18n -->
+        <div class="story-editorial-content">
+            <div class="story-section-badge">
+                <span class="story-badge-dot"></span>
+                <span data-i18n="story-badge">Bizim Hikayemiz</span>
+            </div>
+            <!-- Main title -->
+            <h2 class="story-title-classic" data-i18n="story-title">
+                Karadeniz'den <span style="color: var(--accent-color);">Kreuzberg'e</span> Uzanan Tutku
+            </h2>
+            <div class="story-rule">
+                <span class="story-rule-line"></span>
+                <span class="story-rule-diamond" style="color: var(--accent-color); font-size: 1.2rem;">♦</span>
+                <span class="story-rule-line"></span>
+            </div>
+            <div class="story-text-wrapper">
+                <p class="story-lead" data-i18n="story-p1">
+                    TAKA Fish House, adını Karadeniz'in hırçın sularında balıkçıların vazgeçilmezi olan "Taka"lardan alır. Geleneksel balıkçılık kültürünü, Berlin Kreuzberg'in modern ve dinamik yapısıyla harmanlıyoruz.
+                </p>
+                <p data-i18n="story-p2">
+                    Amacımız sadece yemek sunmak değil; en taze deniz ürünlerini, sıfır katkı maddesi prensibiyle ve Türk misafirperverliği eşliğinde tabaklarınıza taşımak.
+                </p>
+                <!-- Key values row -->
+                <div class="story-values-row">
+                    <div class="story-value-item">
+                        <span class="story-value-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="1.5"><path d="M2 12h4l3-9 5 18 3-9h5"/></svg>
+                        </span>
+                        <span class="story-value-text" data-i18n="value-ocean">Karadeniz Lezzetleri</span>
+                    </div>
+                    <div class="story-value-item">
+                        <span class="story-value-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12l3 3 5-5"/></svg>
+                        </span>
+                        <span class="story-value-text" data-i18n="value-natural">Katkısız & Doğal</span>
+                    </div>
+                    <div class="story-value-item">
+                        <span class="story-value-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="1.5"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/></svg>
+                        </span>
+                        <span class="story-value-text" data-i18n="value-hospitality">Türk Misafirperverliği</span>
+                    </div>
+                </div>
+            </div>
+            <!-- CTA -->
+            <a href="qr-menu/" class="story-cta-btn">
+                <span data-i18n="view-full-menu">Tüm Menüyü İncele</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================
+     SIGNATURE DISHES SECTION
+     ============================ -->
+<section class="signature-section">
+    <div class="signature-header">
+        <div class="story-section-badge">
+            <span class="story-badge-dot"></span>
+            <span data-i18n="sig-badge">İmza Lezzetlerimiz</span>
+        </div>
+        <h2 class="signature-title" data-i18n="sig-title">Tabakta Bir <span class="outline-text">Başyapıt</span></h2>
+        <p class="signature-subtitle" data-i18n="sig-subtitle">Karadeniz'in en taze mahsulleriyle, sıfır katkı maddesiyle hazırlanan özel tariflerimiz.</p>
+    </div>
+
+    <div class="signature-marquee-wrapper">
+        <div class="signature-marquee-track">
+            <!-- SET 1 -->
+            <a href="qr-menu/" class="sig-card">
+                <div class="sig-card-frame">
+                    <img src="assets/wolt_imgs/img_0.jpg" alt="Karışık Izgara Tabağı" class="sig-card-img" loading="lazy" width="600" height="800">
+                    <span class="sig-card-badge" data-i18n="sig-chef">Şef Seçimi</span>
+                </div>
+                <div class="sig-card-caption">
+                    <h3 class="sig-card-title" data-i18n="sig-dish1">Karışık Izgara Tabağı</h3>
+                    <p class="sig-card-desc" data-i18n="sig-dish1-desc">Günlük taze balıklardan hazırlanan seçkin ızgara tabağı.</p>
+                </div>
+            </a>
+            <a href="qr-menu/" class="sig-card">
+                <div class="sig-card-frame">
+                    <img src="assets/ubereats_imgs/hamsisalat.jpg" alt="Hamsi Salatası" class="sig-card-img" loading="lazy" width="600" height="800">
+                    <span class="sig-card-badge" data-i18n="sig-popular">En Popüler</span>
+                </div>
+                <div class="sig-card-caption">
+                    <h3 class="sig-card-title" data-i18n="sig-dish2">Hamsi Salatası</h3>
+                    <p class="sig-card-desc" data-i18n="sig-dish2-desc">Karadeniz'in klasiği, taze hamsi ile hazırlanan özel salata.</p>
+                </div>
+            </a>
+            <a href="qr-menu/" class="sig-card">
+                <div class="sig-card-frame">
+                    <img src="assets/lieferando_imgs/lachs_sandwich.jpg" alt="Somon Sandviç" class="sig-card-img" loading="lazy" width="600" height="800">
+                    <span class="sig-card-badge" data-i18n="sig-new">Yeni</span>
+                </div>
+                <div class="sig-card-caption">
+                    <h3 class="sig-card-title" data-i18n="sig-dish3">Somon Sandviç</h3>
+                    <p class="sig-card-desc" data-i18n="sig-dish3-desc">Taze somon, çıtır ekmek ve özel sos ile nefis bir sandviç.</p>
+                </div>
+            </a>
+            <a href="qr-menu/" class="sig-card">
+                <div class="sig-card-frame">
+                    <img src="assets/ubereats_imgs/garnelenpfanne_taka_spezial.jpg" alt="Karides Tava Spezial" class="sig-card-img" loading="lazy" width="600" height="800">
+                    <span class="sig-card-badge" data-i18n="sig-spicy">Spesiyel</span>
+                </div>
+                <div class="sig-card-caption">
+                    <h3 class="sig-card-title" data-i18n="sig-dish4">Karides Tava Spezial</h3>
+                    <p class="sig-card-desc" data-i18n="sig-dish4-desc">Tereyağında sote karides, TAKA'nın efsane baharatıyla.</p>
+                </div>
+            </a>
+            <!-- SET 2 — sonsuz döngü için birebir kopya, ekran okuyucudan gizli -->
+            <a href="qr-menu/" class="sig-card" aria-hidden="true" tabindex="-1">
+                <div class="sig-card-frame">
+                    <img src="assets/wolt_imgs/img_0.jpg" alt="" class="sig-card-img" loading="lazy" width="600" height="800">
+                    <span class="sig-card-badge" data-i18n="sig-chef">Şef Seçimi</span>
+                </div>
+                <div class="sig-card-caption">
+                    <h3 class="sig-card-title" data-i18n="sig-dish1">Karışık Izgara Tabağı</h3>
+                    <p class="sig-card-desc" data-i18n="sig-dish1-desc">Günlük taze balıklardan hazırlanan seçkin ızgara tabağı.</p>
+                </div>
+            </a>
+            <a href="qr-menu/" class="sig-card" aria-hidden="true" tabindex="-1">
+                <div class="sig-card-frame">
+                    <img src="assets/ubereats_imgs/hamsisalat.jpg" alt="" class="sig-card-img" loading="lazy" width="600" height="800">
+                    <span class="sig-card-badge" data-i18n="sig-popular">En Popüler</span>
+                </div>
+                <div class="sig-card-caption">
+                    <h3 class="sig-card-title" data-i18n="sig-dish2">Hamsi Salatası</h3>
+                    <p class="sig-card-desc" data-i18n="sig-dish2-desc">Karadeniz'in klasiği, taze hamsi ile hazırlanan özel salata.</p>
+                </div>
+            </a>
+            <a href="qr-menu/" class="sig-card" aria-hidden="true" tabindex="-1">
+                <div class="sig-card-frame">
+                    <img src="assets/lieferando_imgs/lachs_sandwich.jpg" alt="" class="sig-card-img" loading="lazy" width="600" height="800">
+                    <span class="sig-card-badge" data-i18n="sig-new">Yeni</span>
+                </div>
+                <div class="sig-card-caption">
+                    <h3 class="sig-card-title" data-i18n="sig-dish3">Somon Sandviç</h3>
+                    <p class="sig-card-desc" data-i18n="sig-dish3-desc">Taze somon, çıtır ekmek ve özel sos ile nefis bir sandviç.</p>
+                </div>
+            </a>
+            <a href="qr-menu/" class="sig-card" aria-hidden="true" tabindex="-1">
+                <div class="sig-card-frame">
+                    <img src="assets/ubereats_imgs/garnelenpfanne_taka_spezial.jpg" alt="" class="sig-card-img" loading="lazy" width="600" height="800">
+                    <span class="sig-card-badge" data-i18n="sig-spicy">Spesiyel</span>
+                </div>
+                <div class="sig-card-caption">
+                    <h3 class="sig-card-title" data-i18n="sig-dish4">Karides Tava Spezial</h3>
+                    <p class="sig-card-desc" data-i18n="sig-dish4-desc">Tereyağında sote karides, TAKA'nın efsane baharatıyla.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="sig-cta-wrap">
+        <a href="qr-menu/" class="btn btn-outline-bordeaux">
+            <span data-i18n="view-full-menu">TÜM MENÜYÜ İNCELE</span>
+        </a>
+    </div>
+</section>
+
+<!-- ============================
+     ATMOSPHERE
+     ============================ -->
+<section class="atmosphere-section force-dark">
+    <div class="atmos-bg"></div>
+    <div class="atmosphere-overlay"></div>
+    <div class="atmosphere-content">
+        <span class="atmos-eyebrow" data-i18n="atmos-eyebrow">Kottbusser Damm 35 · Kreuzberg</span>
+        <h2 data-i18n="atmos-title">Denizin Sesi,<br>Şehrin Kalbi</h2>
+        <p data-i18n="atmos-desc">Sizi şık, sıcak ve lezzet dolu bir atmosfere davet ediyoruz.</p>
+        <div class="atmos-actions">
+            <a href="#reservation" class="btn btn-outline-square" data-i18n="nav-reservation">REZERVASYON</a>
+            <a href="https://www.instagram.com/takafishhouse" target="_blank" rel="noopener" class="atmos-ig-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                <span>@takafishhouse</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================
+     GALLERY SECTION
+     ============================ -->
+<section id="gallery" class="instagram-gallery">
+    <div class="gallery-header">
+        <h2 class="gallery-title">@takafishhouse</h2>
+        <p class="gallery-subtitle" data-i18n="gallery-follow">Bizi Instagram'da takip edin</p>
+    </div>
+
+    <div class="gallery-grid">
+        <a href="https://www.instagram.com/reel/DULIotsAnc9/" target="_blank" rel="noopener" class="gallery-item">
+            <img src="assets/img/products/hamsi_web.jpg" alt="Taka Fish House" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-icon">📸</span></div>
+        </a>
+        <a href="https://www.instagram.com/reel/DULIotsAnc9/" target="_blank" rel="noopener" class="gallery-item">
+            <img src="assets/img/products/barbun.jpg" alt="Taka Fish House" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-icon">📸</span></div>
+        </a>
+        <a href="https://www.instagram.com/reel/DULIotsAnc9/" target="_blank" rel="noopener" class="gallery-item">
+            <img src="assets/img/products/taka_spesiyal_deniz_mahsulleri.jpg" alt="Taka Fish House" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-icon">📸</span></div>
+        </a>
+        <a href="https://www.instagram.com/reel/DULIotsAnc9/" target="_blank" rel="noopener" class="gallery-item">
+            <img src="assets/img/products/uskumru.jpg.jpg" alt="Taka Fish House" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-icon">📸</span></div>
+        </a>
+        <a href="https://www.instagram.com/reel/DULIotsAnc9/" target="_blank" rel="noopener" class="gallery-item">
+            <img src="assets/img/products/_DSC4134_web.jpg" alt="Taka Fish House" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-icon">📸</span></div>
+        </a>
+    </div>
+</section>
+
+<!-- ============================
+     TESLİMAT PLATFORMLARI
+     NOT: Aşağıdaki üç URL projedeki eski scrape verisinden çıkarıldı.
+     Yayına almadan önce üçünü de tarayıcıda doğrulayın.
+     ============================ -->
+<section class="delivery-section" aria-labelledby="deliveryTitle">
+    <div class="delivery-container">
+        <div class="delivery-intro">
+            <span class="delivery-eyebrow" data-i18n="delivery-eyebrow">Eve Teslimat</span>
+            <h2 id="deliveryTitle" data-i18n="delivery-title">Evinizde de TAKA</h2>
+            <p data-i18n="delivery-desc">Aynı taze balık, aynı sıfır katkı prensibi — kapınızda.</p>
+        </div>
+
+        <div class="delivery-grid">
+            <a class="delivery-card" href="https://www.lieferando.de/speisekarte/taka-fish-house-kreuzberg" target="_blank" rel="noopener">
+                <span class="delivery-mark">Lieferando</span>
+                <span class="delivery-go">
+                    <span data-i18n="delivery-order">Sipariş ver</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+            </a>
+            <a class="delivery-card" href="https://wolt.com/de/deu/berlin/restaurant/taka-fish-house-kottbusserdamm" target="_blank" rel="noopener">
+                <span class="delivery-mark">Wolt</span>
+                <span class="delivery-go">
+                    <span data-i18n="delivery-order">Sipariş ver</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+            </a>
+            <a class="delivery-card" href="https://www.ubereats.com/de/store/taka-restaurant/LFSSR2wyU9ylHG_P4cVDaQ" target="_blank" rel="noopener">
+                <span class="delivery-mark">Uber<span class="delivery-mark-light">Eats</span></span>
+                <span class="delivery-go">
+                    <span data-i18n="delivery-order">Sipariş ver</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+            </a>
+        </div>
+
+        <p class="delivery-note">
+            <span data-i18n="delivery-note">Doğrudan bizden sipariş için:</span>
+            <a href="tel:+493026349486">+49 30 26349486</a>
+        </p>
+    </div>
+</section>
+
+<!-- ============================
+     GOOGLE YORUMLARI
+     NOT: Projede gerçek Google yıldız puanı / yorum verisi yok (tek
+     bulunan şablon ratingValue:0, reviewCount:0'dı, yanlış adresle).
+     Bu yüzden burada UYDURMA yorum kartı YOK — sahte müşteri ismi/
+     puanı göstermek DE/TR haksız rekabet mevzuatına aykırı olur.
+     Bunun yerine dürüst, gerçek bir "Google'da görüntüle/değerlendir"
+     bağlantı kartı var. Gerçek Google Place ID'nizi paylaşırsanız
+     buraya gerçek ortalama puan + son yorumlar eklenebilir.
+     ============================ -->
+<section class="reviews-cta-section">
+    <div class="reviews-cta-container">
+        <div class="story-section-badge" style="justify-content: center; margin: 0 auto 20px;">
+            <span class="story-badge-dot"></span>
+            <span data-i18n="reviews-badge">Misafirlerimiz</span>
+        </div>
+        <h2 data-i18n="reviews-title">Google'daki Değerlendirmelerimiz</h2>
+        <p data-i18n="reviews-desc">Deneyiminizi paylaşmanızı çok isteriz — Google üzerinden yorumlarımızı görebilir, dilerseniz kendi değerlendirmenizi bırakabilirsiniz.</p>
+        <a href="https://maps.google.com/?q=TAKA+Fish+House+Kottbusser+Damm+35+Berlin" target="_blank" rel="noopener" class="reviews-cta-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span data-i18n="reviews-cta">Google'da Görüntüle & Değerlendir</span>
+        </a>
+    </div>
+</section>
+
+<!-- ============================
+     RESERVATION CTA
+     ============================ -->
+<section id="reservation" class="reservation-section">
+    <div class="reservation-container">
+        <div class="reservation-box">
+            <div class="story-section-badge" style="justify-content: center; margin-bottom: 20px;">
+                <span class="story-badge-dot"></span>
+                <span data-i18n="res-badge">Rezervasyon</span>
+            </div>
+            <h2 data-i18n="res-title">Masanız Hazır</h2>
+            <p data-i18n="res-desc">Kreuzberg'in en özel balık deneyimi için yerinizi ayırtın. Yoğun saatlerde beklememek için rezervasyon yapmanızı öneririz.</p>
+
+            <form class="res-form" id="resForm" action="https://formsubmit.co/handeaydemr@gmail.com" method="POST">
+                <!-- FormSubmit yapılandırması -->
+                <input type="hidden" name="_subject" value="Yeni Masa Rezervasyonu - Taka Fish House">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://taka-fishhouse.de/danke.html">
+                <!-- Spam tuzağı: gerçek kullanıcı bunu görmez ve doldurmaz -->
+                <input type="text" name="_honey" class="res-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                <div class="res-field">
+                    <label for="resName" data-i18n="res-label-name">İsim Soyisim</label>
+                    <input type="text" id="resName" name="İsim" autocomplete="name" placeholder="Örn. Ayşe Yılmaz" required>
+                </div>
+
+                <div class="res-field">
+                    <label for="resPhone" data-i18n="res-label-phone">Telefon</label>
+                    <input type="tel" id="resPhone" name="Telefon" autocomplete="tel" inputmode="tel" placeholder="+49 …" required>
+                </div>
+
+                <div class="res-field">
+                    <label for="resDate" data-i18n="res-label-date">Tarih</label>
+                    <input type="date" id="resDate" name="Tarih" required>
+                </div>
+
+                <div class="res-field">
+                    <label for="resTime" data-i18n="res-label-time">Saat</label>
+                    <select id="resTime" name="Saat" required>
+                        <option value="" disabled selected data-i18n="res-time-placeholder">Saat seçin</option>
+                        <option>11:30</option><option>12:00</option><option>12:30</option>
+                        <option>13:00</option><option>13:30</option><option>14:00</option>
+                        <option>14:30</option><option>15:00</option><option>15:30</option>
+                        <option>16:00</option><option>16:30</option><option>17:00</option>
+                        <option>17:30</option><option>18:00</option><option>18:30</option>
+                        <option>19:00</option><option>19:30</option><option>20:00</option>
+                        <option>20:30</option><option>21:00</option>
+                    </select>
+                </div>
+
+                <div class="res-field">
+                    <label for="resGuests" data-i18n="res-label-guests">Kişi Sayısı</label>
+                    <select id="resGuests" name="Kisi_Sayisi" required>
+                        <option value="" disabled selected data-i18n="res-guests-placeholder">Kişi sayısı seçin</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7+" data-i18n="res-guests-large">7 ve üzeri</option>
+                    </select>
+                </div>
+
+                <div class="res-field res-field--wide">
+                    <label for="resNote" data-i18n="res-label-note">Not <span class="res-optional" data-i18n="res-optional">(opsiyonel)</span></label>
+                    <input type="text" id="resNote" name="Not" placeholder="Doğum günü, alerji, yüksek sandalye…">
+                </div>
+
+                <button type="submit" class="res-submit" data-i18n="res-submit">Rezervasyon Gönder</button>
+
+                <p class="res-fineprint">
+                    <span data-i18n="res-fineprint">7 kişiden büyük gruplar ve aynı gün rezervasyonlar için lütfen bizi arayın:</span>
+                    <a href="tel:+493026349486">+49 30 26349486</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ============================
+     CONTACT & MAP SECTION
+     ============================ -->
+<section id="contact" class="contact-section">
+    <div class="contact-container">
+        <div class="contact-grid">
+            <div class="contact-details">
+                <div class="section-badge" data-i18n="contact-badge">İletişim</div>
+                <h2 data-i18n="contact-title">Bize Ulaşın</h2>
+                <p class="contact-desc" data-i18n="contact-desc">Lezzet dolu bir deneyim için Kreuzberg'deki restoranımıza bekliyoruz.</p>
+                
+                <div class="contact-info-list">
+                    <div class="contact-info-item">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <h4 data-i18n="contact-address-title">Adres</h4>
+                            <p>Kottbusser Damm 35, 10967 Berlin</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <span class="contact-icon">📞</span>
+                        <div>
+                            <h4 data-i18n="contact-phone-title">Telefon</h4>
+                            <p><a href="tel:+493026349486">+49 30 26349486</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <span class="contact-icon">🕒</span>
+                        <div>
+                            <h4 data-i18n="contact-hours-title">Çalışma Saatleri</h4>
+                            <p data-i18n="footer-hours">Her Gün: 11:00 - 22:00</p>
+                            <!-- assets/js/main.js içindeki updateOpenStatus() tarafından
+                                 gerçek saate göre doldurulur (11:00-22:00 her gün). JS
+                                 çalışmazsa boş kalır — sabit/yanlış bir durum göstermez. -->
+                            <p class="open-status" id="openStatus" aria-live="polite"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-map">
+                <!-- Google Maps eskiden kullanıcı onayı olmadan yükleniyordu —
+                     iframe sayfa açılır açılmaz ziyaretçinin IP'sini onaysız
+                     Google'a gönderiyordu (DSGVO). Artık "tıkla ve yükle"
+                     kapısı var; gerçek harita yalnızca kullanıcı tıklayınca
+                     (veya daha önce çerez onayı verdiyse otomatik) yükleniyor. -->
+                <div class="map-consent-gate" id="mapConsentGate" data-map-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.468202356502!2d13.41724217696238!3d52.50153833715421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84e311a2f960f%3A0xb3551532fcd0c732!2sKottbusser%20Damm%2035%2C%2010967%20Berlin!5e0!3m2!1str!2sde!4v1709210000000!5m2!1str!2sde">
+                    <div class="map-consent-content">
+                        <span class="map-consent-icon">📍</span>
+                        <p class="map-consent-text" data-i18n="map-consent-text">Harita, Google Maps üzerinden yüklenir ve bu adımda Google'a veri iletilir.</p>
+                        <button type="button" class="map-consent-btn" id="mapConsentBtn" data-i18n="map-consent-btn">Haritayı Yükle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================
+     FOOTER
+     ============================ -->
+<footer class="site-footer force-dark">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <h3>TAKA Fish House</h3>
+            <p data-i18n="footer-brand-p">Karadeniz geleneği ve Berlin özgürlüğünün buluştuğu yer. Her gün taze, sıfır katkı maddesiyle hazırlanan balık yemekleri.</p>
+            <span class="footer-tagline">Kreuzberg · Berlin</span>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/takafishhouse" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="https://maps.google.com/?q=TAKA+Fish+House+Kottbusser+Damm+35+Berlin" target="_blank" rel="noopener" aria-label="Google Maps">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </a>
+                <a href="https://wa.me/493026349486" target="_blank" rel="noopener" aria-label="WhatsApp">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h4 data-i18n="footer-menu-title">Sayfalar</h4>
+            <ul>
+                <li><a href="index.html" data-i18n="nav-home">Anasayfa</a></li>
+                <li><a href="#about" data-i18n="nav-story">Hakkımızda</a></li>
+                <li><a href="qr-menu/" data-i18n="nav-menu">Menü</a></li>
+                <li><a href="#reservation" data-i18n="nav-reservation">Rezervasyon</a></li>
+                <li><a href="impressum.html">Impressum</a></li>
+                <li><a href="datenschutz.html">Datenschutz</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-info">
+            <h4 data-i18n="footer-contact-title">İletişim & Impressum</h4>
+            <p><strong>Taka Fish House GmbH</strong><br>📍 Kottbusser Damm 35, 10967 Berlin</p>
+            <p>📞 <a href="tel:+493026349486">+49 30 26349486</a><br>📠 Fax: 0800 202 07 702</p>
+            <p>🕒 <span data-i18n="footer-hours">Her Gün: 11:00 – 22:00</span></p>
+            <div class="footer-impressum-container">
+                <a href="impressum.html" class="footer-impressum-link">Impressum & Datenschutz Detayları &rarr;</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 TAKA Fish House. Alle Rechte vorbehalten.</p>
+        <p>Made in Berlin by <a href="https://1618-digital.de" target="_blank" rel="noopener">1618-digital.de</a></p>
+    </div>
+</footer>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/493026349486?text=Hallo%20Taka%20Fish%20House!%20Ich%20habe%20eine%20Frage." target="_blank" rel="noopener noreferrer" class="whatsapp-btn" aria-label="Chat on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+    </svg>
+</a>
+
+<!-- Scripts -->
+<script src="assets/js/translations.js"></script>
+<script src="assets/js/i18n.js"></script>
+
+<!-- GSAP Core + Plugins -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="assets/js/menu-data.js?v=1783351555"></script>
+<script src="assets/js/main.js"></script>
+<!-- Eskiden sadece menu.html'de vardı; Maps rıza kapısı burada olduğu için
+     çerez bannerı da ana sayfada olmalı. -->
+<script src="assets/js/cookie-banner.js"></script>
+
+</body>
+</html>

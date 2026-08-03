@@ -1,0 +1,143 @@
+@import "core/_variables.css";
+@import "core/_reset.css";
+@import "core/_typography.css";
+@import "core/_layout.css";
+
+@import "components/_header.css";
+@import "components/_hero.css";
+@import "components/_story.css";
+@import "components/_signature.css";
+@import "components/_atmosphere.css";
+@import "components/_gallery.css";
+@import "components/_delivery.css";
+@import "components/_reviews.css";
+@import "components/_reservation.css";
+@import "components/_contact.css";
+@import "components/_footer.css";
+
+/* Çıkarıldı — index.html'de karşılığı olan markup yok:
+   _stats.css   (.stats-strip)
+   _features.css(.hero-features-glass / .editorial-block — hero'dan silindi)
+   _reviews.css geri eklendi: Google yorumları CTA bölümü artık var. */
+
+/* Global Button Style — No Glow */
+.btn-outline-square, .res-submit, .story-cta-btn {
+    animation: none;
+}
+
+/* Square Button & UI Styles (User Selected)
+   .res-submit buradan çıkarıldı: bu kural _reservation.css'teki
+   bordo dolgulu butonu geçersiz kılıp şeffaf yapıyordu. */
+.btn, .btn-outline-square {
+    border-radius: 0 !important;
+    background: transparent;
+    color: var(--text-light);
+}
+
+.res-submit { border-radius: 0 !important; }
+.btn-outline-square {
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+    transition: all 0.4s ease;
+}
+.btn-outline-square:hover {
+    border-color: rgba(255, 255, 255, 0.7) !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: #ffffff !important;
+}
+.btn-outline-bordeaux {
+    border: 1px solid var(--accent-color) !important;
+    color: var(--accent-color) !important; /* Bordeaux text */
+    font-weight: 600;
+    transition: all 0.4s ease;
+    animation: none; /* Removed neon glow */
+}
+.btn-outline-bordeaux:hover {
+    background: var(--accent-color) !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(139, 28, 36, 0.3); /* Premium soft shadow */
+}
+.square-lang-switcher {
+    border-radius: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+.square-lang-switcher .lang-btn {
+    border-radius: 0 !important;
+    font-weight: 600;
+}
+
+/* ============================
+   SPLASH SCREEN (PRE-LOADER)
+   ============================ */
+.taka-splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-dark); /* Solid cream background */
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1.5s cubic-bezier(0.65, 0, 0.35, 1), visibility 1.5s ease;
+}
+
+.taka-splash-screen.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.taka-splash-logo {
+    width: 150px;
+    height: auto;
+    animation: splash-pulse 2s infinite ease-in-out;
+}
+
+@keyframes splash-pulse {
+    0%, 100% { opacity: 0.7; transform: scale(0.98); }
+    50% { opacity: 1; transform: scale(1.02); }
+}
+
+/* ============================
+   TOAST NOTIFICATIONS
+   ============================ */
+#taka-toast-container {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.taka-toast {
+    background: #04080c;
+    color: #fff;
+    padding: 16px 24px;
+    border-radius: 4px;
+    border-left: 4px solid var(--accent-brand);
+    font-size: 0.95rem;
+    font-weight: 500;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: auto;
+}
+
+.taka-toast.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.taka-toast--success {
+    border-left-color: #25D366; /* Green for success */
+}

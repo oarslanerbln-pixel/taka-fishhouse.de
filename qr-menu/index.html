@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <!-- Security / Koruma Kalkanı -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: blob: https:; font-src 'self' data: https:; connect-src 'self' https:; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO & Identity -->
+    <title>Speisekarte | TAKA Fish House Berlin Kreuzberg</title>
+    <meta name="description" content="Digitale Speisekarte von TAKA Fish House in Berlin Kreuzberg. Frischer Fisch, authentische Meeresfrüchte und Schwarzmeer-Spezialitäten.">
+    <meta name="keywords" content="Speisekarte TAKA Fish House, QR Menu Fischrestaurant, Kreuzberg Fisch, Taka Fish House Menü, frischer Fisch, Karadeniz yemekleri">
+    <meta name="author" content="TAKA Fish House">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Speisekarte | TAKA Fish House Kreuzberg">
+    <meta property="og:description" content="Digitale Speisekarte. 100% Fisch. Purer Geschmack. Authentische Schwarzmeer-Spezialitäten in Berlin Kreuzberg.">
+    <meta property="og:image" content="https://taka-fishhouse.de/assets/img/products/hamsi_web.jpg">
+    <meta property="og:url" content="https://taka-fishhouse.de/qr-menu/">
+    <meta property="og:type" content="restaurant">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Speisekarte | TAKA Fish House">
+    <meta name="twitter:description" content="Digitale Speisekarte. 100% Fisch. Purer Geschmack. Authentische Schwarzmeer-Spezialitäten in Berlin Kreuzberg.">
+    <meta name="twitter:image" content="https://taka-fishhouse.de/assets/img/products/hamsi_web.jpg">
+    
+    <!-- Canonical & Hreflang -->
+    <link rel="canonical" href="https://taka-fishhouse.de/qr-menu/">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐟</text></svg>">
+    
+    <!-- Schema.org / LocalBusiness JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "TAKA Fish House",
+      "image": "https://taka-fishhouse.de/assets/img/products/hamsi_web.jpg",
+      "url": "https://taka-fishhouse.de/",
+      "telephone": "+493026349486",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Kottbusser Damm 35",
+        "addressLocality": "Berlin",
+        "postalCode": "10967",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 52.4925,
+        "longitude": 13.4243
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Friday", "Saturday", "Sunday"],
+          "opens": "11:00",
+          "closes": "23:00"
+        }
+      ],
+      "menu": "https://taka-fishhouse.de/qr-menu/",
+      "servesCuisine": "Seafood, Turkish, Karadeniz",
+      "priceRange": "$$"
+    }
+    </script>
+
+    <!-- Fontlar artık Google CDN'inden değil ../assets/css/style.css'in
+         @import ettiği yerel dosyadan geliyor (DSGVO). -->
+
+    <!-- Font Awesome (icons for search bar, badges) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+
+    <!-- CSS Dependencies -->
+    <link rel="preload" href="../assets/css/style.css" as="style">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/menu-page.css?v=6.6">
+    <link rel="stylesheet" href="assets/css/theme.css?v=5.6">
+    <link rel="preload" as="image" href="assets/taka_logo.png">
+
+</head>
+<body class="dl-bg-white dl-card-transparent dl-style-vertical dl-nav-sharp">
+
+        <!-- Header Navigation -->
+    <header id="header" class="scrolled">
+        <div class="header-container">
+            <a href="../index.html" class="brand-logo text-logo-container">
+                <span class="taka-text-logo">TAKA FISH HOUSE</span>
+                <span class="taka-text-sub">PURE & NATURAL SEAFOOD</span>
+            </a>
+            <div class="nav-links">
+                <a href="../index.html" class="active-link" data-i18n="nav-home">Ana Sayfa</a>
+            </div>
+            
+            <div class="header-right">
+                <div class="lang-switcher" id="langSwitcher">
+                    <button class="lang-btn active" data-lang="de">DE</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="tr">TR</button>
+                    <button class="lang-btn" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="es">ES</button>
+                    <button class="lang-btn" data-lang="ar">AR</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Premium Menu Hero -->
+    <section class="menu-hero premium-hero">
+        <div class="hero-video-container">
+            <video id="menuHeroVideo" src="../assets/videos/taka-video-intro.mp4" poster="../assets/videos/hero-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata"></video>
+            <div class="hero-gradient-bottom"></div>
+        </div>
+
+        <div class="premium-hero-content">
+            <div class="hero-top-bar">
+                <a href="../index.html" class="back-to-home-btn">
+                    <span class="back-arrow">←</span> <span data-i18n="nav-home">Ana Sayfa</span>
+                </a>
+            </div>
+
+            <div class="hero-text-block menu-hero-content">
+                <h1 data-i18n="menu-page-hero-title">Menümüz</h1>
+                <p data-i18n="menu-page-hero-desc">Karadeniz'in en taze lezzetleri, sıfır katkı maddesiyle sofralarınızda.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="menuSearch" class="menu-search-input" data-i18n-placeholder="search-placeholder" placeholder="Yemek ara... (Örn: Kalamar)">
+            <button id="clearSearch" class="clear-search-btn" aria-label="Clear search" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
+    <!-- Category Navigation -->
+    <nav class="menu-categories">
+        <div class="categories-track">
+            <button class="cat-btn active" data-filter="all">
+                <span data-i18n="cat-all">Tümü</span>
+            </button>
+            <button class="cat-btn" data-filter="hauptgerichte">
+                <span data-i18n="cat-karadeniz">Ana Yemekler</span>
+            </button>
+            <button class="cat-btn" data-filter="corbalar">
+                <span data-i18n="cat-corba">Çorbalar</span>
+            </button>
+            <button class="cat-btn" data-filter="salatalar">
+                <span data-i18n="cat-salata">Salatalar</span>
+            </button>
+            <button class="cat-btn" data-filter="soguk-mezeler">
+                <span data-i18n="cat-meze">Soğuk Meze</span>
+            </button>
+            <button class="cat-btn" data-filter="ara-sicaklar">
+                <span data-i18n="cat-ara">Ara Sıcaklar</span>
+            </button>
+            <button class="cat-btn" data-filter="deniz-mahsulleri">
+                <span data-i18n="cat-deniz">Deniz Mahsülleri</span>
+            </button>
+            <button class="cat-btn" data-filter="balik-ekmek">
+                <span data-i18n="cat-sandwich">Sandviç & Dürüm</span>
+            </button>
+            <button class="cat-btn" data-filter="cocuk-menusu">
+                <span data-i18n="cat-kinder">Çocuk Menüsü</span>
+            </button>
+            <button class="cat-btn" data-filter="tatlilar">
+                <span data-i18n="cat-tatli">Tatlılar</span>
+            </button>
+            <button class="cat-btn" data-filter="soguk-icecekler">
+                <span data-i18n="cat-soguk-icecek">Soğuk İçecekler</span>
+            </button>
+            <button class="cat-btn" data-filter="sicak-icecekler">
+                <span data-i18n="cat-sicak-icecek">Sıcak İçecekler</span>
+            </button>
+            <button class="cat-btn" data-filter="all_legend">
+                <span data-i18n="cat-legend">Alerjenler / Legende</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Diet & Allergen Filters -->
+    <div class="diet-filters-container">
+        <button class="diet-filter-btn" data-type="vegetarian">
+            <span class="filter-icon">🍃</span>
+            <span data-i18n="filter-veg">Vejetaryen</span>
+        </button>
+        <button class="diet-filter-btn" data-type="gluten-free">
+            <span class="filter-icon">🌾</span>
+            <span data-i18n="filter-gf">Glutensiz</span>
+        </button>
+    </div>
+
+    <!-- Text-Based Menu Section (Rendered by JS) -->
+    <section class="menu-wrapper" id="menuWrapper">
+        <!-- JS injects menu categories here -->
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>TAKA Fish House</h3>
+                <p data-i18n="footer-brand-p">Berlin Kreuzberg</p>
+            </div>
+            <div class="footer-links">
+                <h4 data-i18n="footer-menu-title">Menü</h4>
+                <ul>
+                    <li><a href="#" data-i18n="nav-menu">Menü</a></li>
+                </ul>
+            </div>
+            <div class="footer-info">
+                <h4 data-i18n="footer-contact-title">İletişim</h4>
+                <p>📍 Kottbusser Damm 35, 10967 Berlin</p>
+                <p>📞 <a href="tel:+493026349486" class="footer-phone">+49 30 26349486</a></p>
+                <p>🕒 <span data-i18n="footer-hours">Her Gün: 11:00 - 22:00</span></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 TAKA Fish House</p>
+        </div>
+    </footer>
+    
+    <footer class="digital-footer">
+        <p>Made in Berlin by <a href="https://1618-digital.de" target="_blank" rel="noopener">1618-digital.de</a></p>
+    </footer>
+
+
+
+    <!-- Glassmorphism Lightbox -->
+    <div class="glass-lightbox" id="glassLightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose">&times;</button>
+            <img src="" alt="" id="lightboxImg">
+            <h3 class="lightbox-title" id="lightboxTitle"></h3>
+        </div>
+    </div>
+
+    <!-- Storytelling Modal -->
+    <div class="story-modal-overlay" id="storyModalOverlay">
+        <div class="story-modal-content">
+            <div class="modal-drag-handle"></div>
+            <button class="story-modal-close" id="storyModalClose">&times;</button>
+            <div class="story-modal-image-wrapper">
+                <img src="" alt="" id="storyModalImg">
+            </div>
+            <div class="story-modal-body">
+                <div class="story-modal-title-row">
+                    <h3 class="story-modal-title" id="storyModalTitle"></h3>
+                    <p class="story-modal-price" id="storyModalPrice"></p>
+                </div>
+                <div class="story-modal-desc-container">
+                    <p class="story-modal-desc" id="storyModalDesc"></p>
+                </div>
+                
+                <div class="story-modal-pairing hidden" id="storyModalPairing">
+                    <div class="pairing-badge">✨ <span data-i18n="chef-recommendation">Şefin Önerisi</span></div>
+                    <div class="pairing-content">
+                        <img src="" alt="" id="pairingImg">
+                        <div class="pairing-info">
+                            <h4 id="pairingTitle"></h4>
+                            <p id="pairingPrice"></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="story-modal-disclaimer" data-i18n="info-details">Detaylı bilgi için servis personeline danışın.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" class="back-to-top-btn" aria-label="Back to top">
+        ↑
+    </button>
+
+    <!-- Translation Scripts -->
+    <script src="assets/js/theme-toggle.js"></script>
+    <script src="assets/js/translations.js?v=3.2"></script>
+    <script src="assets/js/i18n.js?v=3.1"></script>
+    <script src="assets/js/main.js?v=3.2"></script>
+    <script src="../assets/js/menu-data.js?v=3.4"></script>
+    <script src="assets/js/menu-page.js?v=3.5"></script>
+    <script src="../assets/js/cookie-banner.js"></script>
+</body>
+</html>

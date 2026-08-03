@@ -1,0 +1,101 @@
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+/* Neon gradyanlar kaldırıldı: #FF3366→#FF9933 ve #00C9FF→#92FE9D
+   marka paletinin dışındaydı ve beyaz metinle kontrastı 2.1–3.6:1'de
+   kalıyordu.
+   DİKKAT: Bu sayfada --accent-color altın (#D4AF37); ana sayfada bordo
+   (#8B1C24). Altın üzerine beyaz yazı 2.1:1 ile okunmuyor, bu yüzden
+   metin koyu bırakıldı (8.98:1). İki sayfanın aksan rengi birleştirilirse
+   burası da tek satırda sadeleşir. */
+.badge-popular {
+    background: var(--accent-color, #8B1C24);
+    color: #14100C;
+}
+.badge-chef {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================
+   LIGHT BACKGROUND (dl-bg-white) COLOR FIXES
+   ========================================= */
+body.dl-bg-white .taka-text-logo,
+body.dl-bg-white .taka-text-sub,
+body.dl-bg-white footer,
+body.dl-bg-white .footer-content h4,
+body.dl-bg-white .footer-brand p,
+body.dl-bg-white .footer-info p,
+body.dl-bg-white .footer-links a,
+body.dl-bg-white .footer-info a,
+body.dl-bg-white .footer-bottom p,
+body.dl-bg-white .footer-col h3,
+body.dl-bg-white .menu-item-title h4,
+body.dl-bg-white .menu-item-price,
+body.dl-bg-white .menu-item-desc-inline,
+body.dl-bg-white .category-header h2,
+body.dl-bg-white .cat-btn span {
+    color: #2A241C;
+}
+
+body.dl-bg-white .lang-switcher .lang-btn {
+    color: #2A241C !important;
+    border-color: rgba(42, 36, 28, 0.3) !important;
+}
+
+body.dl-bg-white .lang-switcher .lang-btn.active {
+    background: #2A241C !important;
+    color: #fff !important;
+    border-color: #2A241C !important;
+}
+
+body.dl-bg-white .footer-bottom,
+body.dl-bg-white footer {
+    border-color: rgba(42, 36, 28, 0.15);
+}
+
+body.dl-bg-white #header,
+body.dl-bg-white #header.scrolled {
+    background: #ffffff !important;
+    border-bottom: 1px solid rgba(42, 36, 28, 0.05);
+}
+
+body.dl-bg-white .nav-links a {
+    color: #2A241C !important;
+}
+
+body.dl-bg-white .nav-links a.active-link {
+    color: var(--primary-color) !important;
+}
+
+/* Enhanced Image Styling & Specific Fixes */
+.menu-item-image img {
+    filter: saturate(1.15) contrast(1.1) brightness(1.03);
+}
+/* Custom framing for photos that are off-center */
+.menu-item[data-id='13'] .menu-item-image img /* Havuç Tarator */ {
+    object-position: center !important; 
+}
+.menu-item[data-id='27'] .menu-item-image img, /* Urla Meze */
+.menu-item[data-id='31'] .menu-item-image img  /* Kuru Cacık */ {
+    object-position: left center !important; 
+}
+.menu-item[data-id='45'] .menu-item-image img /* Kaşarlı Mantar */ {
+    object-position: 20% 70% !important; 
+}
+
+.menu-item[data-id='81'] .menu-item-image img {
+    object-fit: contain !important;
+    background-color: var(--card-bg, #fff);
+}
+

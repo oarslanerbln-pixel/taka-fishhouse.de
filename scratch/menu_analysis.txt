@@ -1,0 +1,129 @@
+
+[hauptgerichte] Ana Yemekler (12 items):
+  - 2 Kişilik Taka Özel Menü Tabağı
+  - ÇÇipura (Izgara veya Tava)
+  - Levrek (Izgara veya Tava)
+  - Hamsi Tava
+  - Barbun
+  - Uskumru
+  - Somon File
+  - Alabalık
+  - Mezgit
+  - İstavrit
+  - Karışık Taka Spesiyal Izgara
+  - Dil Balığı
+
+[corbalar] Çorbalar (1 items):
+  - Balık Çorbası
+
+[salatalar] Salatalar (6 items):
+  - Karışık Yeşil Salata
+  - Çoban Salatası
+  - Roka Salatası
+  - Somon Salatası
+  - Karides Salatası
+  - Hamsi Salatası
+
+[soguk-mezeler] Soğuk Mezeler (16 items):
+  - Karışık Meze Tabağı
+  - Havuç Tarator
+  - Acı Antep Ezmesi
+  - Humus
+  - Levrek Marin
+  - Deniz Mahsülleri
+  - Şakşuka
+  - Girit Ezmesi
+  - Köpoğlu
+  - Ahtapot Salatası
+  - Narlı Dibariye
+  - Urla Meze
+  - Yoğurtlu Patlıcan
+  - Kuru Cacık
+  - Pembe Sultan
+  - Deniz Börülcesi
+
+[ara-sicaklar] Ara Sıcaklar (8 items):
+  - Patlıcanlı Balık
+  - Balık Kokoreç
+  - Deniz Mahsülleri Taka Spesiyal
+  - Kaşarlı Mantar
+  - Kaşarlı Brokoli
+  - Pastırmalı Humus
+  - Tavada Kızarmış Patates, Taka Spesiyal
+  - Patates Kızartması
+
+[spezialitaten] Taka Spesiyal (0 items):
+
+[deniz-mahsulleri] Deniz Mahsülleri (10 items):
+  - Kendi yapımımız Kalamar Halka
+  - Tereyağlı Büyük Karides Tavası
+  - Domates Soslu Karides Tavası, acı
+  - Taka Spesiyal Karides Tavası
+  - Izgara Ahtapot
+  - Kaşarlı Karides Güveç
+  - Izgara Karides (3 Adet Jumbo)
+  - Pastırmalı Ahtapot
+  - Çıtır Karides
+  - Taka Deniz Mahsülleri Spesiyal
+
+[tava-guvecler] Tava ve Güveçler (0 items):
+
+[balik-ekmek] Balık Sandviç / Dürüm (10 items):
+  - Somon Sandviç
+  - ÇÇipura Sandviç
+  - Uskumru Sandviç
+  - Sardalya/Hamsi Sandviç
+  - Karides Sandviç
+  - Somon Dürüm
+  - ÇÇipura Dürüm
+  - Uskumru Dürüm
+  - Sardalya/Hamsi Dürüm
+  - Karides Dürüm
+
+[cocuk-menusu] Çocuk Menüsü (6 items):
+  - Balık Burger Menü
+  - Balık Köfte Menü
+  - Somonlu Makarna (Özel Sos)
+  - Karidesli Makarna (Özel Sos)
+  - Balık Burger, Kızarmış Patates, İçecek
+  - Balık Köfte, Kızarmış Patates veya Pilav, İçecek
+
+[tatlilar] Tatlılar (5 items):
+  - Dondurmalı İrmik Helvası
+  - Fırında Meyhane Helvası
+  - Hamsiköy Sütlacı (Fırında)
+  - Çilekli Magnolia
+  - Kızarmış Dondurma (Tek Kişilik)
+
+[soguk-icecekler] Soğuk İçecekler (23 items):
+  - Su (0,25l)
+  - Maden Suyu (0,25l)
+  - Coca Cola (0,2l)
+  - Coca-Cola Zero Sugar 0,2l
+  - Coca Cola Zero (0,2l)
+  - Fanta (0,2l)
+  - Sprite (0,2l)
+  - Mezzo Mix (0,2l)
+  - Uludag Gazoz 0,25l
+  - Çamlıca Gazoz (0,2l)
+  - 7gün Ayran (0,25l)
+  - Şalgam Suyu (0,25l)
+  - Fritz Cola (0,2l)
+  - Fritz Cola Zero (0,2l)
+  - Fritz Orange (0,2l)
+  - FuzeTea Pfirsich 0,4l
+  - Schweppes (0,2l)
+  - Christinen Elma Suyu (0,33l)
+  - Christinen Multivitamin (0,33l)
+  - Capri Sonne (0,2l)
+  - Tymbark (0,25l)
+  - Cappuccino
+  - Café Latte
+
+[sicak-icecekler] Sıcak İçecekler (6 items):
+  - Türk Çayı (Küçük)
+  - Türk Çayı (Büyük)
+  - Çay Çeşitleri
+  - Türk Kahvesi
+  - Espresso
+  - Café Cream

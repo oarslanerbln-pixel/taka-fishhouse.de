@@ -1,0 +1,12 @@
+36 - Zinnur (Çıtır deniz mahsülleri sarması) - assets/lieferando_imgs/taka_spezial_teller.jpg
+37 - Peynir Dolgulu Çıtır Enginar - assets/lieferando_imgs/taka_spezial_teller.jpg
+90 - Somon Sandviç - assets/img/products/somon-durum.jpg
+91 - Çipura Sandviç - assets/img/products/cipura-sandwich.jpg
+92 - Uskumru Sandviç - assets/img/products/uskumru-sandwich.jpg
+93 - Sardalya/Hamsi Sandviç - assets/ubereats_imgs/sardine_sandwich.jpg
+94 - Karides Sandviç - assets/img/products/karides-sandwich.jpg
+98 - Somon Dürüm - assets/lieferando_imgs/d_r_m_lachs.jpg
+99 - Çipura Dürüm - assets/lieferando_imgs/d_r_m_doraden.jpg
+100 - Uskumru Dürüm - assets/lieferando_imgs/d_r_m_makrelen.jpg
+101 - Sardalya/Hamsi Dürüm - assets/lieferando_imgs/d_r_m_sardinen.jpg
+102 - Karides Dürüm - assets/lieferando_imgs/d_r_m_garnelen.jpg

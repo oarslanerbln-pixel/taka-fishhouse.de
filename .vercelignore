@@ -1,0 +1,24 @@
+# Ignored directories and files
+*.py
+*.log
+_archive_tools/
+_archive_data/
+_unused_imgs_archive/
+scratch_*/
+*scratch*
+# wolt_imgs/
+# lieferando_imgs/
+# ubereats_imgs/
+# *_imgs/
+
+# Ham fotoğraf makinesi dosyaları (~10-15 MB/adet).
+# Web sürümleri assets/img/venue/ altında üretiliyor; ham dosyalar deploy'a girmemeli.
+/_DSC*.JPG
+assets/_DSC*.JPG
+.zencoder/
+.zenflow/
+.vscode/
+
+# Project specifics
+package-lock.json
+package.json

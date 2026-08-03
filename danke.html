@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Reservierung erhalten | TAKA Fish House</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐟</text></svg>">
+    <link rel="stylesheet" href="assets/css/v2/main.css?v=3">
+    <style>
+        .thanks-wrap {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background: var(--bg-dark);
+            text-align: center;
+        }
+        .thanks-box { max-width: 560px; }
+        .thanks-mark {
+            width: 68px;
+            height: 68px;
+            margin: 0 auto 32px;
+            border: 1px solid var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+        }
+        .thanks-box h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.9rem, 5vw, 2.8rem);
+            color: var(--text-light);
+            margin-bottom: 18px;
+        }
+        .thanks-box p {
+            color: var(--text-muted);
+            line-height: 1.85;
+            margin-bottom: 14px;
+        }
+        .thanks-phone {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        .thanks-actions {
+            margin-top: 38px;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .thanks-btn {
+            padding: 15px 30px;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            transition: background-color 0.35s ease, color 0.35s ease;
+        }
+        .thanks-btn:hover { background: var(--accent-color); color: #fff; }
+        .thanks-btn--solid { background: var(--accent-color); color: #fff; }
+        .thanks-btn--solid:hover { background: transparent; color: var(--accent-color); }
+    </style>
+</head>
+<body>
+    <main class="thanks-wrap">
+        <div class="thanks-box">
+            <div class="thanks-mark" aria-hidden="true">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+
+            <h1 data-i18n="thanks-title">Rezervasyonunuz bize ulaştı</h1>
+            <p data-i18n="thanks-desc">Talebinizi aldık. Ekibimiz kısa süre içinde telefonla teyit edecek. Teyit çağrısını almadıysanız rezervasyon henüz kesinleşmemiş demektir.</p>
+            <p>
+                <span data-i18n="thanks-call">Acil durumlarda:</span>
+                <a href="tel:+493026349486" class="thanks-phone">+49 30 26349486</a>
+            </p>
+
+            <div class="thanks-actions">
+                <a href="index.html" class="thanks-btn thanks-btn--solid" data-i18n="nav-home">Ana Sayfa</a>
+                <a href="qr-menu/" class="thanks-btn" data-i18n="nav-menu">Menü</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/i18n.js"></script>
+</body>
+</html>

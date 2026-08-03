@@ -1,0 +1,102 @@
+61: Çipura (Izgara veya Tava)
+62: Levrek (Izgara veya Tava)
+63: Hamsi Tava
+65: Barbun
+66: Uskumru
+67: Somon File
+68: Alabalık
+71: Mezgit
+72: İstavrit
+74: Karışık Taka Spesiyal Izgara
+80: Dil Balığı
+81: 2 Kişilik Taka Özel Menü Tabağı
+1: Balık Çorbası
+4: Karışık Yeşil Salata
+5: Çoban Salatası
+6: Roka Salatası
+7: Somon Salatası
+8: Karides Salatası
+9: Hamsi Salatası
+10: Karışık Meze Tabağı
+13: Havuç Tarator
+14: Acı Antep Ezmesi
+15: Humus
+16: Levrek Marin
+17: Deniz Mahsülleri
+18: Şakşuka
+19: Girit Ezmesi
+21: Köpoğlu
+22: Ahtapot Salatası
+23: Narlı Dibariye
+27: Urla Meze
+30: Yoğurtlu Patlıcan
+31: Kuru Cacık
+32: Pembe Sultan
+35: Deniz Börülcesi
+42: Patlıcanlı Balık
+43: Balık Kokoreç
+44: Deniz Mahsülleri Taka Spesiyal
+45: Kaşarlı Mantar
+46: Kaşarlı Brokoli
+47: Pastırmalı Humus
+49: Tavada Kızarmış Patates, Taka Spesiyal
+50: Patates Kızartması
+9701: Peynir Dolgulu Çıtır Enginar
+73: Kendi yapımımız Kalamar Halka
+75: Tereyağlı Büyük Karides Tavası
+76: Domates Soslu Karides Tavası, acı
+77: Taka Spesiyal Karides Tavası
+78: Izgara Ahtapot
+38: Kaşarlı Karides Güveç
+39: Izgara Karides (3 Adet Jumbo)
+41: Pastırmalı Ahtapot
+9991: Çıtır Karides
+9992: Taka Deniz Mahsülleri Spesiyal
+9993: Zinnur (stok bitene kadar, sadece Cuma-Pazar)
+90: Somon Sandviç
+91: ÇÇipura Sandviç
+92: Uskumru Sandviç
+93: Sardalya/Hamsi Sandviç
+94: Karides Sandviç
+98: Somon Dürüm
+99: ÇÇipura Dürüm
+100: Uskumru Dürüm
+101: Sardalya/Hamsi Dürüm
+102: Karides Dürüm
+108: Balık Burger Menü
+109: Balık Köfte Menü
+112: Somonlu Makarna (Özel Sos)
+113: Karidesli Makarna (Özel Sos)
+116: Dondurmalı İrmik Helvası
+118: Fırında Meyhane Helvası
+120: Hamsiköy Sütlacı (Fırında)
+122: Çilekli Magnolia
+121: Kızarmış Dondurma
+130: Su (0,25l)
+131: Maden Suyu (0,25l)
+132: Coca Cola (0,2l)
+133: Coca Cola Zero (0,2l)
+134: Fanta (0,2l)
+135: Sprite (0,2l)
+144: Mezzo Mix (0,2l)
+9584: Uludag Gazoz 0,25l
+142: Çamlıca Gazoz (0,2l)
+140: 7gün Ayran (0,25l)
+143: Şalgam Suyu (0,25l)
+136: Fritz Cola (0,2l)
+137: Fritz Cola Zero (0,2l)
+138: Fritz Orange (0,2l)
+7892: FuzeTea (çeşitli tatlar) 0,4l
+147: Schweppes (0,2l)
+139: Christinen Elma Suyu (0,33l)
+148: Christinen Multivitamin (0,33l)
+141: Capri Sonne (0,2l)
+145: Tymbark (0,25l)
+91: Türk Çayı (Küçük)
+911: Türk Çayı (Büyük)
+92: Çay Çeşitleri
+167: Türk Kahvesi
+97: Espresso
+163: Café Cream
+164: Cappuccino
+165: Café Latte

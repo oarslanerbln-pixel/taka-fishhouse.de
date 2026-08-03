@@ -1,0 +1,181 @@
+/* ============================
+   CONTACT SECTION
+   ============================ */
+.contact-section {
+    padding: var(--section-padding);
+    background: var(--bg-dark);
+    position: relative;
+    border-top: 1px solid var(--glass-border);
+}
+
+.contact-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.contact-details {
+    padding-right: 20px;
+}
+
+.contact-details h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+.contact-desc {
+    color: var(--text-dim);
+    margin-bottom: 30px; /* Reduced from 40px */
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.contact-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px; /* Reduced from 30px */
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.contact-icon {
+    font-size: 1.6rem;
+    background: transparent;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    color: var(--text-light);
+    border: 1px solid var(--glass-border);
+    flex-shrink: 0;
+}
+
+.contact-info-item h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.contact-info-item p, .contact-info-item a {
+    color: var(--text-light);
+    font-size: 1.05rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    margin: 0;
+}
+
+/* "Şu an açık/kapalı" — assets/js/main.js Berlin saatine göre dolduruyor. */
+.open-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 6px;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+}
+.open-status::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+}
+.open-status.is-open { color: #2e7d4f; }
+.open-status.is-closed { color: var(--accent-color); }
+
+.contact-info-item a:hover {
+    color: var(--accent-color);
+}
+
+.contact-map {
+    width: 100%;
+    height: 400px;
+    border-radius: 0;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 40px rgba(42,36,28,0.1);
+}
+
+.contact-map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(80%) sepia(20%) hue-rotate(350deg);
+    transition: filter 0.4s ease;
+}
+
+.contact-map:hover iframe {
+    filter: grayscale(30%) sepia(10%) hue-rotate(350deg);
+}
+
+/* Google Maps rıza kapısı — kullanıcı tıklayana (veya çerez onayı
+   verene) kadar Google'a hiç istek gitmez. */
+.map-consent-gate {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(139, 28, 36, 0.06), transparent 55%),
+        var(--bg-deep);
+}
+
+.map-consent-content {
+    text-align: center;
+    max-width: 320px;
+    padding: 20px;
+}
+
+.map-consent-icon {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.map-consent-text {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.map-consent-btn {
+    padding: 12px 28px;
+    background: var(--accent-color);
+    color: #fff;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.35s ease;
+}
+
+.map-consent-btn:hover {
+    background: var(--accent-hover);
+}
+
+@media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-details { padding-right: 0; }
+    .contact-map { height: 350px; }
+}

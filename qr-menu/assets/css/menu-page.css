@@ -1,0 +1,2379 @@
+/* ===== MENU PAGE TEXT DESIGN — SITE NATIVE THEME ===== */
+
+/* --- Premium WOW Splash Intro --- */
+.premium-splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, #0a1118 0%, #020304 100%);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.2s;
+    overflow: hidden;
+    perspective: 1000px; /* For 3D text */
+}
+
+/* Background Ripple Effect */
+.splash-ripple {
+    position: absolute;
+    width: 150vw;
+    height: 150vw;
+    background: conic-gradient(from 180deg at 50% 50%, transparent 0deg, rgba(0, 230, 184, 0.05) 180deg, transparent 360deg);
+    animation: ripple-spin 3s linear infinite;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+}
+
+@keyframes ripple-spin {
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.splash-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Mask to hide text initially for a sleek reveal */
+.splash-mask {
+    overflow: hidden;
+    padding: 10px 20px;
+    margin: -10px -20px; /* Keep centering perfect */
+}
+
+.splash-text {
+    display: block;
+    text-align: center;
+    font-family: var(--font-heading), serif;
+    font-size: 3.5rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: transparent;
+    background: linear-gradient(110deg, #555 10%, #fff 40%, #00e6b8 50%, #fff 60%, #555 90%);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    letter-spacing: 4px;
+    padding-left: 4px; /* Fix symmetry for letter spacing */
+    
+    transform-origin: bottom center;
+    opacity: 0;
+    transform: translateY(100%) rotateX(80deg) scale(0.8);
+    animation: wow-text-reveal 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Glow behind the text */
+.splash-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 60px;
+    background: rgba(0, 230, 184, 0.4);
+    filter: blur(40px);
+    border-radius: 50%;
+    opacity: 0;
+    animation: wow-glow-pulse 1.8s ease-in-out forwards;
+    z-index: -1;
+}
+
+@keyframes wow-text-reveal {
+    0% {
+        opacity: 0;
+        transform: translateY(100%) rotateX(80deg) scale(0.8);
+        background-position: 150% center;
+        filter: blur(5px);
+    }
+    30% {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg) scale(1);
+        background-position: 50% center; /* Light sweep hits middle */
+        filter: blur(0px);
+    }
+    85% {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg) scale(1.03); /* very subtle float */
+        background-position: -50% center;
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px) rotateX(-20deg) scale(1.1); /* Blast forward and out */
+        background-position: -100% center;
+        filter: blur(10px);
+    }
+}
+
+@keyframes wow-glow-pulse {
+    0% { opacity: 0; width: 0%; }
+    40% { opacity: 1; width: 120%; }
+    85% { opacity: 1; width: 130%; }
+    100% { opacity: 0; width: 150%; }
+}
+
+/* --- Menu Hero --- */
+.menu-hero {
+    position: relative;
+    background: transparent;
+    z-index: 1;
+    min-height: 45vh; /* .hero-video-container fixed olduğu için normal akışa
+        yükseklik katmıyor; bu olmadan hero kutusu metin kadar kısalıp
+        video ile sonraki bölüm arasında çirkin bir kesim/bant oluşuyordu. */
+}
+
+/* Cinematic Reveal Active State
+   Bu sınıfı ekleyen JS hiç yazılmamıştı — animasyon hiç tetiklenmiyordu.
+   Eskiden reveal-active videoyu height:100vh + z-index:100 yaparak TÜM
+   EKRANI kaplayacak şekilde büyütüyordu ve bunu geri küçültecek hiçbir
+   kod yoktu — yani tetiklenseydi video kalıcı olarak sayfayı kaplayıp
+   arama/kategori/menü hiçbir şeye tıklanamaz hale gelirdi. O kısım
+   kaldırıldı; video her zaman normal kompakt boyutunda (45vh) kalıyor,
+   sadece "perde açılma" efekti bu boyutun içinde oynuyor. */
+.menu-hero .hero-video-container {
+    /* Önceden position:fixed'ti — kaydırınca video viewport'a sabit kalıp
+       altındaki/üstündeki bölümlere (sticky header, kategori çubuğu vb.)
+       sızıyordu. Artık .menu-hero'ya (position:relative) göre absolute;
+       sayfayla birlikte akıp kayboluyor, sadece kendi bölümünde kalıyor. */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45vh;
+    min-height: 350px;
+    z-index: -1;
+    transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+    background: #000;
+}
+
+.standalone-text-block {
+    text-align: center;
+    padding: 40px 30px;
+    background: rgba(0, 0, 0, 0.45);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    position: relative;
+    z-index: 2;
+    margin: calc(45vh - 140px) 20px 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.standalone-text-block h1 {
+    text-align: center;
+    width: 100%;
+}
+
+.taka-brand-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 8vw, 4.5rem);
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.taka-brand-title .bordo {
+    color: #b51a44; /* Vivid Bordo */
+    text-shadow: 0 4px 15px rgba(181, 26, 68, 0.5);
+}
+.taka-brand-title .mavi {
+    color: #00A3E0; /* Vivid Mavi */
+    text-shadow: 0 4px 15px rgba(0, 163, 224, 0.5);
+}
+
+.standalone-text-block p {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.menu-wrapper {
+    background: transparent;
+    position: relative;
+    z-index: 2;
+    padding-bottom: 100px;
+    min-height: 100vh;
+}
+
+.hero-gradient-bottom {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background: linear-gradient(to top, var(--bg-dark) 0%, var(--bg-dark) 10%, color-mix(in srgb, var(--bg-dark) 80%, transparent) 40%, color-mix(in srgb, var(--bg-dark) 40%, transparent) 70%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.menu-hero::after {
+    /* .hero-video-container artık .menu-hero'ya göre absolute+45vh (min
+       350px). .menu-hero'nun kendi kutusu içerik yüzünden 45vh'den uzun
+       olabildiği için bottom:0 hizalamak videonun gerçek bittiği yerden
+       taşıp krem zemine gri bir leke bırakıyordu. Bunun yerine .menu-hero'nun
+       ÜSTÜNDEN 45vh aşağıya (videonun tam bittiği noktaya) hizalanıyor. */
+    content: '';
+    position: absolute;
+    top: calc(max(45vh, 350px) - 150px);
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to top, var(--bg-dark) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.menu-hero.reveal-active .hero-video-container {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.menu-hero .hero-video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 36%;
+    /* Video dosyasının kendisinde üstte %26, altta %37 siyah boşluk var
+       (gerçek içerik ortada sadece %37'lik bir bantta) — object-fit:cover
+       tek başına bunu temizlemiyor, özellikle dar/kare ekranlarda (mobil)
+       siyah bantların çoğu görünür kalıyor. Ek zoom ile temizleniyor. */
+    transform: scale(1.35);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    /* Perde kapalı başlangıç durumu — JS reveal-active'i eklediğinde
+       aşağıdaki animasyon bunu açar. Eskiden bu KAPALI durum sadece
+       .reveal-active altında tanımlıydı ve hiç tetiklenmediği için video
+       hep açık/normal göründüğü halde JS eklense bile önce görünüp sonra
+       aniden kapanıp yeniden açılacaktı — ters bir akıştı. */
+    clip-path: inset(50% 0 50% 0);
+    opacity: 0;
+}
+
+.menu-hero.reveal-active .hero-video-container video {
+    animation: openCurtain 2s cubic-bezier(0.4, 0.0, 0.2, 1) 0.3s forwards;
+}
+
+@keyframes openCurtain {
+    0% { clip-path: inset(50% 0 50% 0); opacity: 0; }
+    5% { opacity: 1; }
+    100% { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+
+/* Hareket azaltma tercihi olan kullanıcılar için perde efekti atlanır,
+   video doğrudan açık halde gösterilir. */
+@media (prefers-reduced-motion: reduce) {
+    .menu-hero .hero-video-container video {
+        clip-path: none;
+        opacity: 1;
+        animation: none;
+    }
+}
+
+/* Konteyner dar/kareye yakın olduğunda (özellikle mobil) object-fit:cover
+   video genişliğini kutuya zar zor sığdırıyor ve neredeyse hiç dikey
+   kırpma yapmıyor — bu da videodaki siyah üst/alt bantların büyük kısmının
+   olduğu gibi görünmesine yol açıyor. Ekran daralınca ek zoom artırılıyor. */
+@media (max-width: 900px) {
+    .menu-hero .hero-video-container video {
+        transform: scale(2.6);
+    }
+}
+@media (max-width: 480px) {
+    .menu-hero .hero-video-container video {
+        transform: scale(3.0);
+    }
+}
+
+.premium-hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px 20px 30px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Videonun kendi görüntüsünde de yazı var (tabela) — başlık/açıklama
+   videoyla iç içe geçip mobilde okunmuyordu. Sabit koyu bir zemin
+   ekleyerek metni videodan bağımsız her zaman net okunur yapıyoruz. */
+.hero-text-block {
+    background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0.15) 100%);
+    padding: 18px 18px 22px;
+    border-radius: 4px;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.hero-top-bar {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: env(safe-area-inset-top);
+    margin-top: 70px; /* Preimum fix: avoid overlap with main header */
+}
+
+.back-to-home-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background: transparent;
+    border-radius: 0;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+}
+
+.back-to-home-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.glass-badge {
+    position: relative;
+    background: transparent;
+    color: #fff;
+    margin-bottom: 12px;
+    display: inline-flex;
+    padding: 8px 20px;
+    border-radius: 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    overflow: hidden;
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: none;
+}
+
+/* The pulsing elegant glow */
+.glass-badge::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.4);
+    animation: pulse-glow 3s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+    z-index: -2;
+    border-radius: 0;
+}
+
+/* Inner mask to create the thin border effect */
+.glass-badge::after {
+    content: '';
+    position: absolute;
+    inset: 1px; /* Thickness of the border */
+    background: transparent;
+    border-radius: 0;
+    z-index: -1;
+}
+
+@keyframes pulse-glow {
+    0% { opacity: 0.6; box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.3); }
+    100% { opacity: 1; box-shadow: inset 0 0 25px rgba(212, 175, 55, 0.7), 0 0 10px rgba(212, 175, 55, 0.2); }
+}
+
+.menu-hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 0.8s ease-out;
+    padding-bottom: 40px; /* Push text up slightly so categories can float over */
+}
+
+.menu-hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+    color: #ffffff;
+    filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.6));
+}
+
+@keyframes soft-turquoise-pulse {
+    0% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+    100% { background-position: 0% center; }
+}
+
+.menu-hero-content p {
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.allergens {
+    font-size: 0.7em;
+    color: var(--text-muted);
+    font-weight: normal;
+    margin-left: 4px;
+    vertical-align: super;
+}
+
+/* Header CTA small */
+.header-cta-sm {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+}
+
+/* Active nav link */
+.active-link {
+    color: var(--accent-color) !important;
+}
+.active-link::after {
+    width: 100%;
+    background: var(--accent-color);
+}
+
+/* --- Category Navigation --- */
+.menu-categories {
+    position: sticky;
+    top: calc(var(--header-h, 92px) + var(--search-h, 56px));
+    z-index: 100;
+    background: #f4f2ee; /* Needs solid background so items don't overlap when scrolling */
+    border-bottom: none;
+    padding: 0;
+    overflow-x: auto;
+    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.menu-categories::-webkit-scrollbar {
+    display: none;
+}
+
+.categories-track {
+    display: flex;
+    gap: 12px;
+    padding: 14px 30px; /* Increased side padding for mask */
+    padding-top: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+.cat-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 10px 22px;
+    border-radius: 40px;
+    background: transparent;
+    color: #999;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-style: normal;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+    letter-spacing: 0.4px;
+    box-shadow: none;
+    border: none;
+    position: relative;
+}
+
+.cat-btn::before, .cat-btn::after {
+    display: none;
+}
+
+.cat-btn:hover {
+    color: #333;
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.cat-btn.active {
+    color: #1a1a1a;
+    font-weight: 700;
+    background: #e4decb; /* Elegant gold-ish cream pill */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+}
+
+/* --- Menu Content Wrapper --- */
+.menu-wrapper {
+    position: relative;
+    z-index: 2;
+    padding: 20px 0 80px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.menu-category-section {
+    margin-bottom: 60px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.menu-item.has-image {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+}
+
+/* Reference layout: full-bleed, no radius, no shadow */
+.menu-item-image {
+    width: 100%;
+    aspect-ratio: 5 / 4;
+    height: auto;
+    max-height: 600px;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Overlay title hidden — title shown below image only to avoid duplication */
+.menu-item-overlay-title {
+    display: none;
+}
+
+.menu-item-overlay-title h4 {
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.3px;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.menu-item-overlay-title h4 span.allergens {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.8);
+    font-weight: 400;
+    vertical-align: super;
+}
+
+/* No dark overlay gradient — clean editorial look */
+.menu-item-image::after {
+    display: none;
+}
+
+.menu-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+    filter: contrast(1.05) saturate(1.05);
+}
+
+.menu-item.has-image:hover .menu-item-image img {
+    transform: scale(1.06);
+}
+
+.menu-item-content {
+    padding: 15px 20px 30px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.menu-category-section.hidden {
+    display: none;
+}
+
+.category-header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.category-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    font-style: italic;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.category-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    font-style: italic;
+    font-family: var(--font-heading);
+}
+
+.category-header::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #111111;
+    margin: 20px auto 0;
+    opacity: 0.3;
+}
+
+.menu-item-group {
+    margin-bottom: 40px;
+}
+
+.menu-item-group > h3 {
+    font-family: var(--font-heading);
+    color: var(--text-light);
+    font-size: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    display: inline-block;
+}
+
+/* Mobile default: single column, full width */
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding-bottom: 40px;
+}
+
+.menu-list::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual Item Details — full-bleed, no padding, no radius */
+.menu-item {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    overflow: visible;
+    position: relative;
+}
+
+/* ============================================
+   DESKTOP LAYOUT (≥ 901px)
+   2-column grid, landscape images, wider layout
+   ============================================ */
+@media (min-width: 901px) {
+    .menu-wrapper {
+        max-width: 1200px;
+        padding: 40px 60px 100px;
+    }
+
+    .menu-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px;
+    }
+
+    /* Desktop: gentle radius and refined shadow */
+    .menu-item-image {
+        aspect-ratio: 5 / 4 !important;
+        max-height: 400px !important;
+        border-radius: 8px !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+    }
+
+    .menu-item {
+        max-width: unset;
+        margin: 0;
+    }
+
+    .menu-item:hover {
+        transform: translateY(-4px);
+    }
+
+    .menu-item-content {
+        padding: 15px 0 25px 0;
+    }
+
+    .category-header h2 {
+        font-size: 3.5rem;
+    }
+
+    .menu-wrapper .menu-category-section {
+        margin-bottom: 80px;
+    }
+}
+
+/* Elegant Separator */
+.menu-item:not(:last-child)::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 1px;
+    background: rgba(0,0,0,0.15);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.menu-item:hover {
+    background: transparent;
+    transform: translateY(-5px);
+}
+
+.menu-item:hover .menu-item-image {
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12) !important;
+}
+
+.menu-item-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.menu-item-num {
+    display: none;
+}
+
+.menu-item-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-right: 0;
+}
+
+.menu-item-title-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 15px;
+}
+
+.menu-item.has-image .menu-item-title-row {
+    justify-content: space-between;
+}
+
+.view-details-wrapper {
+    width: 100%;
+    text-align: left;
+    margin-top: 15px;
+}
+
+.menu-item-title h4 {
+    color: var(--text-light);
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: 0.3px;
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+    text-align: center;
+    gap: 6px;
+}
+
+.menu-item-title h4 span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    vertical-align: super;
+}
+
+.menu-item-tr {
+    /* Küçük metin (0.9rem) — altın krem zeminde 1.72:1 kontrastla
+       okunmuyordu. Büyük/vurgulu metinlerde (fiyat gibi) altın kalıyor,
+       küçük metinlerde espresso kahverengiye geçildi (8:1 üzeri). */
+    font-size: 0.9rem;
+    color: #4a4238;
+    margin-top: 2px;
+}
+
+.menu-item-dots {
+    display: none;
+}
+
+/* No Image Item — compact, no forced height */
+.menu-item:not(.has-image) {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
+    border-left: 2px solid rgba(0,0,0,0.08);
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.menu-item:not(.has-image) .menu-item-content {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.menu-item:not(.has-image) .menu-item-header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.menu-item:not(.has-image) .menu-item-title {
+    padding-right: 0;
+    align-items: center;
+}
+
+.menu-item:not(.has-image) .menu-item-price {
+    text-align: center;
+}
+
+.no-image-badge {
+    /* Eski turkuaz kalıntısı (rgba(0,204,163,...)) kaldırıldı — bu sayfanın
+       aksan rengiyle (--accent-color, altın) hiç ilgisi yoktu ve metin
+       rengiyle çakışıyordu. */
+    margin-top: 20px;
+    padding: 8px 16px;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 30px;
+    font-size: 0.8rem;
+    color: #4a4238;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.menu-item-price {
+    font-family: 'Playfair Display', serif;
+    color: #2a2a2a; /* Dark, readable on cream background */
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+}
+
+.price-multiple {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    align-items: flex-end;
+    line-height: 1.2;
+}
+
+.price-multiple span {
+    font-size: 0.75rem;
+    color: #4a4238;
+}
+
+.menu-item-desc {
+    margin-top: auto;
+    padding-left: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Eskiden rgba(255,255,255,0.02) zemin + turkuaz kenarlık + --text-muted
+   (bu dosyada #8a9ab0, koyu zemin için) kullanıyordu — sayfa krem/açık
+   temalı olduğu için metin neredeyse görünmezdi. */
+.menu-item-group--legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+.menu-item-group--legend .menu-item-allergenes {
+    flex: 1 1 280px;
+}
+
+.menu-item-allergenes {
+    margin-top: 40px;
+    padding: 22px 24px;
+    background: #ede8e0;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+}
+.menu-item-allergenes h5 {
+    color: #2A241C;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+    font-family: var(--font-heading);
+}
+
+.menu-item-allergenes ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item-allergenes li {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #4a4238;
+}
+.menu-item-allergenes li strong {
+    color: #2A241C;
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+/* --- Info Banner ---
+   Eskiden koyu lacivert bir degradeydi (rgba(11,43,64,...) + neredeyse
+   siyah) — sayfanin geri kalani tamamen acik/krem temayken menu listesi
+   ile footer arasinda aniden koyu bir serit olarak beliriyordu. Artik
+   sayfanin kendi krem/altin paletiyle uyumlu. */
+.menu-info-banner {
+    position: relative;
+    z-index: 2;
+    padding: 50px 20px;
+    background: #ede8e0;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.info-banner-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.info-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.info-item h4 {
+    /* --text-light/--text-muted global degiskenleri bu dosyada BEYAZ/acik
+       mavi-gri olarak tanimli (koyu zeminler icin) — bu bant artik acik
+       zeminli oldugu icin kendi koyu espresso tonlarini kullaniyor. */
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    color: #2A241C;
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+.info-item p {
+    color: #6b6157;
+    font-size: 0.88rem;
+}
+
+.info-phone {
+    color: #2A241C;
+    font-weight: 600;
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.info-phone:hover {
+    color: var(--accent-color);
+}
+
+.info-divider {
+    width: 1px;
+    height: 45px;
+    background: linear-gradient(to top, rgba(42, 36, 28, 0.25), transparent);
+    z-index: 1;
+    transition: background 1.8s ease;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .menu-hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .categories-track {
+        justify-content: flex-start;
+        padding: 12px 16px;
+    }
+
+    .cat-btn {
+        padding: 8px 14px;
+        font-size: 0.78rem;
+    }
+
+    .info-banner-content {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+
+    .info-item {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .info-divider {
+        width: 60px;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.4), transparent);
+    }
+}
+
+@media (max-width: 480px) {
+    .splash-logo {
+        max-width: 150px;
+    }
+}
+
+/* =========================================
+   ABSOLUTE PIXEL PERFECT VIDEO MATCH 
+   ========================================= */
+
+/* 0. Global Theme Overrides (Applies to Desktop & Mobile) */
+html {
+    --bg-dark: #f4f2ee !important; 
+    background-color: #f4f2ee !important;
+}
+body {
+    background-color: #f4f2ee !important;
+}
+
+/* === STICKY HEADER + CATEGORY NAV BLOCK === */
+/* Combined they form the fixed top area that stays on scroll */
+#header,
+#header.scrolled {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: rgba(237, 232, 224, 0.97) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    transition: box-shadow 0.3s ease !important;
+    padding: 10px 0 !important; /* önceden 22px — sticky üst bölüm çok yer kaplıyordu */
+}
+
+#header.has-shadow,
+#header.scrolled.has-shadow {
+    box-shadow: 0 2px 20px rgba(0,0,0,0.07) !important;
+}
+
+/* Logo artık alt alta değil yan yana — dikey yer kazanmak için
+   (üst bölüm kaydırınca sabit kaldığından mümkün olduğunca ince olmalı). */
+.text-logo-container {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: baseline !important;
+    gap: 10px;
+}
+.taka-text-logo {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.5rem !important;
+    color: #1a1a1a !important;
+    letter-spacing: 1.5px !important;
+    font-weight: 400 !important;
+    text-transform: uppercase;
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap; /* flex satırında daraltılınca 3 satıra bölünüyordu */
+    flex-shrink: 0;
+}
+.taka-text-sub {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.6rem !important;
+    color: #777 !important;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 0;
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* Dar ekranda "TAKA FISH HOUSE" + dil seçici (6 dil) yan yana sığmıyor,
+   yatay taşmaya sebep oluyordu. Bu kural, aynı isimli temel kuraldan
+   (yukarıda) SONRA geldiği için kazanıyor — sıralama önemli. */
+@media (max-width: 480px) {
+    .taka-text-sub {
+        display: none !important;
+    }
+    .taka-text-logo {
+        font-size: 1rem !important;
+        letter-spacing: 0.5px !important;
+    }
+}
+
+/* =========================================
+   MOBILE-FIRST OVERRIDES (Max Width 900px)
+   (Protects the Desktop Grid Layout)
+   ========================================= */
+@media (max-width: 900px) {
+    /* 1. Header (Logo & Language Switcher) */
+    .header-container {
+        background: #ede8e0 !important;
+        border-bottom: none;
+        padding: 10px 20px !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .nav-links {
+        display: none !important;
+    }
+
+    /* === LANGUAGE SWITCHER: DE | EN | TR style === */
+    .lang-switcher {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+    .lang-btn {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 0.75rem !important;
+        font-style: normal !important;
+        font-weight: 500 !important;
+        color: #aaa !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 2px 6px !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        cursor: pointer !important;
+        position: relative;
+        transition: color 0.2s ease !important;
+        line-height: 1;
+    }
+    .lang-btn:hover {
+        color: #555 !important;
+    }
+    .lang-btn.active {
+        color: #1a1a1a !important;
+        font-weight: 700 !important;
+    }
+    /* Pipe separator between language buttons */
+    .lang-btn:not(:last-child)::after {
+        content: '|';
+        color: #ccc;
+        position: absolute;
+        right: -1px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: 300;
+        font-size: 0.75rem;
+    }
+
+    /* 2. Sticky Category Nav — elegant italic serif
+       top burada sabit 64px'ti; gerçek (iki satıra sarabilen) mobil header
+       yüksekliği bunu aşınca kategori çubuğu header'ın arkasında kalıp
+       görünmez oluyordu. Artık aynı JS-ölçümlü değişkenlere bağlı. */
+    .menu-categories {
+        position: -webkit-sticky !important;
+        position: sticky !important;
+        top: calc(var(--header-h, 84px) + var(--search-h, 56px)) !important;
+        z-index: 199 !important;
+        background: #ede8e0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .categories-track {
+        gap: 20px !important;
+        padding: 12px 24px 14px 24px !important;
+        justify-content: flex-start !important;
+    }
+    .cat-btn {
+        font-family: 'Playfair Display', serif !important;
+        font-size: 1.05rem !important;
+        font-style: normal !important;
+        font-weight: 700 !important;
+        color: #aaa !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 4px 0 6px 0 !important;
+        margin: 0;
+        box-shadow: none !important;
+        letter-spacing: 0.3px !important;
+        transition: color 0.2s ease !important;
+    }
+    .cat-btn:hover {
+        color: #555 !important;
+        transform: none;
+    }
+    .cat-btn.active {
+        color: #1a1a1a !important;
+        border-bottom: 2px solid #1a1a1a !important;
+        font-weight: 600 !important;
+        background: transparent !important;
+    }
+    .category-header {
+        display: none !important;
+    }
+
+    /* 3. Full-bleed Images (kenardan kenara, referans gibi) */
+    .menu-item {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        margin-bottom: 60px !important;
+        padding: 0 !important; /* No side padding = image goes edge-to-edge */
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .menu-item:not(:last-child)::after {
+        content: '' !important;
+        display: block !important;
+        width: 60px !important;
+        height: 1px !important;
+        background: rgba(0,0,0,0.15) !important;
+        position: absolute !important;
+        bottom: -30px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .menu-item-image {
+        aspect-ratio: 5 / 4 !important; /* Reference photo ratio */
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 0 !important; /* Edge-to-edge, no rounding */
+        box-shadow: none !important;
+        margin-bottom: 0 !important;
+        overflow: hidden !important;
+    }
+    .menu-item-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover !important;
+        border-radius: 0 !important;
+    }
+    .menu-item-badges,
+    .menu-item-actions {
+        display: none; /* Hide heart/allergen icons overlaying the image */
+    }
+
+    /* 4. Text and Title Adjustments */
+    .menu-item-content {
+        padding: 14px 20px 20px 20px !important; /* Padding only on text, not image */
+    }
+    .menu-item-header {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+    }
+    
+    .menu-item-title-row {
+        display: flex;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: baseline !important;
+        margin-bottom: 4px;
+        padding: 0;
+        width: 100% !important;
+    }
+    .menu-item-title {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+        padding-right: 0 !important;
+    }
+    .menu-item-title h4 {
+        font-family: 'Playfair Display', serif !important;
+        font-size: 1.5rem !important;
+        color: #222 !important;
+        font-weight: 400 !important;
+        margin: 0;
+        text-align: left !important;
+    }
+    .menu-item-price {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 1.15rem !important;
+        color: #111 !important;
+        font-weight: 600 !important;
+        margin-top: 6px !important;
+    }
+    .menu-item-desc-inline {
+        padding: 0 10px !important;
+        font-family: 'Inter', sans-serif !important;
+        color: #777 !important;
+        line-height: 1.5 !important;
+        font-size: 0.95rem !important;
+        margin-bottom: 12px !important;
+        text-align: center !important;
+    }
+    .view-details-btn {
+        display: inline-block;
+        padding: 8px 20px !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 0.7rem !important;
+        color: #1a1a1a !important;
+        letter-spacing: 3px !important;
+        text-transform: uppercase !important;
+        font-weight: 500 !important;
+        border: 1px solid rgba(0,0,0,0.25) !important;
+        border-radius: 0 !important;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 8px !important;
+    }
+    .view-details-btn:hover {
+        background: #1a1a1a !important;
+        color: #f4f2ee !important;
+    }
+}
+
+/* 5. Large Modal for Story/Allergens (Global) */
+.story-modal-content {
+    background-color: #f4f2ee !important;
+    width: 95% !important;
+    max-width: 500px !important;
+    border-radius: 12px !important;
+    padding: 0;
+    overflow: hidden;
+    max-height: 90vh !important;
+}
+.story-modal-image-wrapper {
+    height: 40vh !important;
+}
+.modal-allergens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+.modal-allergen-badge {
+    background: #e2dfd4;
+    color: #444;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .menu-hero {
+        height: auto;
+        min-height: 260px;
+        padding-bottom: 40px;
+    }
+    .menu-list {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .categories-track {
+        gap: 4px;
+    }
+
+    .category-header h2 {
+        font-size: 2rem;
+    }
+    
+    .menu-item-header {
+        align-items: flex-start;
+    }
+    
+    .menu-item-title h4 {
+        font-size: 1.15rem;
+    }
+    
+    .menu-item-price {
+        font-size: 1.2rem;
+    }
+    
+    .menu-item-allergenes ul {
+        columns: 1;
+    }
+}
+
+/* --- Digital Footer --- */
+.digital-footer {
+    text-align: center;
+    padding: 30px 20px 40px;
+    background-color: var(--bg-dark);
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 300;
+    opacity: 0.7;
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.digital-footer a {
+    color: #4a4238;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.digital-footer a:hover {
+    color: #ff8c00;
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(255,140,0,0.5);
+}
+
+/* Back to Home Button */
+.back-to-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 0;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.back-to-home-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--text-light);
+    transform: translateY(-2px);
+}
+
+/* ===== MICRO-INTERACTIONS & UI FILTERS ===== */
+
+/* Heart / Favorite Button */
+.fav-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-left: auto;
+    padding: 0 4px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.fav-btn:hover {
+    color: #ff4757;
+    transform: scale(1.1);
+}
+
+.fav-btn.active {
+    color: #ff4757;
+}
+.fav-btn.active svg {
+    fill: #ff4757;
+}
+
+/* Diet Filters */
+.diet-filters-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px 20px;
+    background: var(--bg-dark);
+    position: relative;
+    z-index: 10;
+}
+
+.diet-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 50px;
+    background: transparent;
+    color: #4a4238;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.diet-filter-btn:hover {
+    background: rgba(212, 175, 55, 0.12);
+}
+
+.diet-filter-btn.active {
+    background: var(--accent-color);
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.45);
+}
+
+/* Glassmorphism Lightbox */
+.glass-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.glass-lightbox.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-lightbox.active .lightbox-content {
+    transform: scale(1);
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    object-fit: contain;
+}
+
+.lightbox-title {
+    margin-top: 20px;
+    color: var(--text-light);
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.lightbox-close:hover {
+    transform: rotate(90deg) scale(1.1);
+    color: var(--accent-color);
+}
+
+.lightbox-trigger {
+    cursor: zoom-in;
+}
+
+/* ===== STORYTELLING MODAL (Bottom Sheet for Mobile, Popup for Desktop) ===== */
+.story-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10001;
+    background: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Desktop */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    padding: 20px;
+}
+
+.story-modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.story-modal-content {
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 420px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(30px) scale(0.95);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none;
+}
+.story-modal-content::-webkit-scrollbar {
+    display: none;
+}
+
+.story-modal-overlay.active .story-modal-content {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.modal-drag-handle {
+    display: none;
+    width: 40px;
+    height: 4px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 4px;
+    margin: 12px auto;
+}
+
+.story-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    transition: background 0.3s;
+}
+.story-modal-close:hover {
+    background: var(--accent-color);
+    color: #000;
+}
+
+.story-modal-image-wrapper {
+    width: 100%;
+    aspect-ratio: 5 / 4;
+    height: auto;
+    overflow: hidden;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.story-modal-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.story-modal-body {
+    padding: 25px 20px;
+    text-align: left;
+}
+
+.story-modal-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.story-modal-title {
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    margin-bottom: 0;
+}
+
+.story-modal-price {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+.story-modal-desc-container {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border-left: 3px solid var(--accent-color);
+    text-align: left;
+}
+
+.story-modal-desc {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.story-modal-pairing {
+    background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(0, 0, 0, 0));
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.story-modal-pairing.hidden {
+    display: none;
+}
+
+.pairing-badge {
+    color: #D4AF37; /* Gold */
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.pairing-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.pairing-content img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.pairing-info h4 {
+    /* Beyazdı — kutunun zemini rgba(212,175,55,0.1)'den transparent'a
+       geçen soluk krem/altın gradyan, beyaz metin neredeyse görünmüyordu. */
+    color: #2A241C;
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+}
+
+.pairing-info p {
+    color: #4a4238;
+    margin: 0;
+    font-weight: 600;
+}
+
+.story-modal-disclaimer {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.75rem;
+    margin-top: 15px;
+}
+
+/* ===== NEW PREMIUM UI COMPONENTS ===== */
+
+/* Swipeable Row for Specific Categories */
+.swipeable-row .menu-list {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding-bottom: 20px;
+    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.swipeable-row .menu-list::-webkit-scrollbar {
+    display: none; /* Chrome */
+}
+.swipeable-row .menu-item {
+    flex: 0 0 85%; /* 85% width on mobile */
+    max-width: 420px;
+    scroll-snap-align: center;
+}
+
+/* Dietary Badges */
+.menu-item-image {
+    position: relative;
+}
+.diet-badges {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 6px;
+    z-index: 2;
+}
+.badge-icon {
+    width: 28px;
+    height: 28px;
+    background: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.15);
+    font-size: 0.8rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Back to Top Button */
+.back-to-top-btn {
+    position: fixed;
+    bottom: -80px; /* hidden initially */
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border: none;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    cursor: pointer;
+    z-index: 999;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    opacity: 0;
+    pointer-events: none;
+}
+.back-to-top-btn.visible {
+    bottom: 20px;
+    opacity: 1;
+    pointer-events: all;
+}
+.back-to-top-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.55);
+}
+/* ===== PREMIUM SPLASH ENHANCEMENTS ===== */
+.premium-splash.is-exiting {
+    opacity: 0;
+    transform: scale(1.15);
+    filter: blur(15px);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.splash-logo-container {
+    position: relative;
+    z-index: 2;
+    animation: 
+        splash-logo-enter 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+        splash-neon-pulse 2s infinite ease-in-out alternate forwards;
+    animation-delay: 0s, 1.5s; /* Neon starts after entry */
+}
+
+@keyframes splash-logo-enter {
+    0% { opacity: 0; transform: scale(0.6) translateY(30px) rotateX(-20deg); filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
+    100% { opacity: 1; transform: scale(1) translateY(0) rotateX(0deg); filter: drop-shadow(0 0 15px rgba(0, 150, 255, 0.4)); }
+}
+
+@keyframes splash-neon-pulse {
+    0% { filter: drop-shadow(0 0 15px rgba(0, 150, 255, 0.6)) drop-shadow(0 0 30px rgba(0, 150, 255, 0.3)); transform: scale(1); }
+    100% { filter: drop-shadow(0 0 25px rgba(0, 230, 184, 0.9)) drop-shadow(0 0 50px rgba(0, 230, 184, 0.7)) drop-shadow(0 0 90px rgba(0, 230, 184, 0.5)); transform: scale(1.05); }
+}
+
+/* =========================================
+   DYNAMIC OVERRIDES FROM DESIGN LAB
+   ========================================= */
+
+/* BACKGROUND: WARM CREAM (matches reference photo) */
+body.dl-bg-white, html.dl-bg-white, body.dl-bg-white .header-container, body.dl-bg-white .menu-categories {
+    background-color: #EDE8E0 !important;
+}
+body.dl-bg-white .story-modal-content {
+    background-color: #FFFFFF !important;
+}
+body.dl-bg-white .story-modal-title {
+    color: #111 !important;
+    font-family: 'Playfair Display', serif !important;
+    font-style: italic !important;
+}
+body.dl-bg-white .story-modal-price {
+    color: #111 !important;
+    font-family: 'Inter', sans-serif !important;
+}
+body.dl-bg-white .story-modal-desc {
+    color: #666 !important;
+    font-family: 'Inter', sans-serif !important;
+}
+body.dl-bg-white .story-modal-desc-container {
+    background: #f9f9f9 !important;
+    border-left: 3px solid #111 !important;
+}
+
+/* TYPOGRAPHY: SANS SERIF */
+body.dl-font-sans h1, body.dl-font-sans h2, body.dl-font-sans h3, body.dl-font-sans h4, body.dl-font-sans .cat-btn, body.dl-font-sans .taka-text-logo {
+    font-family: 'Inter', sans-serif !important;
+    font-style: normal !important;
+    letter-spacing: -0.5px !important;
+}
+body.dl-font-sans .taka-text-logo { letter-spacing: 1px !important; font-weight: 600 !important; }
+body.dl-font-sans .cat-btn.active { border-bottom: 2px solid #111 !important; }
+
+/* MENU STYLE: NO CARDS (ONLY VERTICAL IMAGE + TEXT OVERLAY) */
+body.dl-card-transparent .menu-item {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    position: relative;
+    padding: 0 !important;
+    margin-bottom: 30px !important;
+}
+body.dl-card-transparent .menu-item-content {
+    position: relative !important;
+    padding: 25px 0 0 0 !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    z-index: 2;
+}
+body.dl-card-transparent .menu-item-title h4 {
+    color: #111 !important;
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.6rem !important;
+    letter-spacing: 0.5px !important;
+}
+body.dl-card-transparent .menu-item-price {
+    color: #111 !important;
+    background: transparent !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+    padding-top: 5px !important;
+}
+body.dl-card-transparent .menu-item-desc-inline {
+    /* Kart üzerinde uzun açıklama istenmiyor — tıklayınca açılan
+       hikaye modalında zaten gösteriliyor. DOM'da kalıyor (arama
+       açıklama metnini de tarıyor), sadece görsel olarak gizli. */
+    display: none !important;
+}
+body.dl-card-transparent .view-details-btn {
+    display: inline-block !important;
+    color: #2E5C4E !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    font-size: 0.85rem !important;
+    margin-top: 10px !important;
+    background: none !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+/* IMAGE FORMAT: FULL-BLEED EDITORIAL (no radius, no shadow)
+   4/5 (dikey "reel" oranı) — bu, en yüksek özgüllüğe sahip kural
+   olduğu için sayfadaki diğer tüm .menu-item-image aspect-ratio
+   tanımlarını (5/4 içerenler dahil) ezip kazanıyor. object-fit:cover
+   sayesinde görsel bu dikey çerçeveye kırpılarak tam oturuyor. */
+body.dl-style-vertical .menu-item-image {
+    aspect-ratio: 4/5 !important;
+    height: auto !important;
+    max-height: none !important; /* masaüstü kuralındaki 400px sınırı 4/5 oranını bozuyordu */
+    width: 100% !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+body.dl-style-vertical .menu-item-image img {
+    object-fit: cover !important;
+}
+
+/* NAVIGATION: SHARP/UNDERLINE ONLY */
+body.dl-nav-sharp .cat-btn {
+    border-radius: 0 !important;
+    border: none !important;
+    border-bottom: 1px solid transparent !important;
+    box-shadow: none !important;
+    color: #999 !important;
+    font-family: 'Playfair Display', serif !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    letter-spacing: 0.5px !important;
+    padding-bottom: 5px !important;
+}
+body.dl-nav-sharp .cat-btn::before, 
+body.dl-nav-sharp .cat-btn::after {
+    display: none !important; /* Kill the dark neon pills */
+}
+body.dl-nav-sharp .cat-btn.active {
+    border-bottom: 1px solid #111 !important;
+    background: transparent !important;
+    color: #111 !important;
+    font-weight: 700 !important;
+    font-style: normal !important;
+}
+
+/* POPUP: FULLSCREEN */
+body.dl-popup-fullscreen .story-modal-overlay {
+    background: #fff !important;
+    padding: 0 !important;
+}
+body.dl-popup-fullscreen .story-modal-content {
+    max-width: 100% !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+body.dl-popup-fullscreen .story-modal-image-wrapper {
+    height: auto !important;
+    aspect-ratio: 5 / 4 !important;
+}
+
+/* MOBILE VERTICAL SCROLL REDESIGN */
+@media (max-width: 768px) {
+    .menu-list {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 20px;
+        overflow: visible;
+        gap: 24px;
+    }
+    
+    .menu-item {
+        width: 100%;
+        max-width: 100%;
+        flex: none !important;
+    }
+    
+    .swipeable-row .menu-item {
+        max-width: 100%;
+        flex: none !important;
+    }
+    
+    .menu-item-image {
+        height: 260px; /* Slightly smaller for mobile screens */
+    }
+    
+    .menu-item-overlay-title h4 {
+        font-size: 1.3rem; /* Slightly smaller font */
+    }
+}
+
+/* =========================================
+   PERMANENT THEME: SOCIAL MEDIA VERTICAL
+   ========================================= */
+body {
+    background-color: #000000 !important;
+}
+body .menu-categories, body .header-container {
+    background: #000000 !important;
+}
+body #header, body #header.scrolled {
+    background: rgba(0, 0, 0, 0.9) !important;
+}
+body .taka-text-logo, body .cat-btn.active, body .lang-btn.active {
+    color: #fff !important;
+}
+body .cat-btn.active {
+    border-bottom-color: #fff !important;
+}
+body .menu-item {
+    padding: 0 !important;
+    margin-bottom: 30px !important;
+}
+body .menu-item:not(:last-child)::after {
+    display: none !important;
+}
+body .menu-item-image {
+    aspect-ratio: 4/5 !important;
+    height: auto !important;
+    border-radius: 16px !important;
+    margin: 0 10px !important;
+    width: calc(100% - 20px) !important;
+    box-shadow: none !important;
+}
+body .menu-item-image img {
+    border-radius: 16px !important;
+}
+body .menu-item-content {
+    padding: 15px 20px !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+}
+body .menu-item-title-row {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+body .menu-item-title h4 {
+    border-left: 3px solid #111;
+}
+
+
+
+/* =========================================
+   PERMANENT THEME: SOCIAL MEDIA VERTICAL (LAYOUT ONLY)
+   ========================================= */
+
+body .menu-item {
+    padding: 0 !important;
+    margin-bottom: 30px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+body .menu-item:not(:last-child)::after {
+    display: none !important;
+}
+body .menu-item-image {
+    aspect-ratio: 4/5 !important;
+    height: auto !important;
+    border-radius: 16px !important;
+    margin: 0 10px !important;
+    width: calc(100% - 20px) !important;
+    box-shadow: none !important;
+}
+body .menu-item-image img {
+    border-radius: 16px !important;
+    object-fit: cover !important;
+}
+body .menu-item-content {
+    padding: 15px 20px !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    background: transparent !important;
+}
+body .menu-item-title-row {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+body .menu-item-price {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1.25rem !important;
+    font-weight: 800 !important;
+}
+body .menu-item-desc-inline {
+    text-align: left !important;
+    padding: 0 !important;
+}
+
+/* FIX STICKY POSITIONING BUG */
+html, body {
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+}
+
+/* =========================================
+   LIVE SEARCH & BADGES
+   ========================================= */
+.search-container {
+    padding: 15px 20px 5px;
+    z-index: 90;
+    background: #f4f2ee;
+    position: sticky;
+    top: var(--header-h, 92px); /* JS ile gerçek header yüksekliğine senkronlanır */
+}
+.search-box {
+    position: relative;
+    width: 100%;
+    backdrop-filter: blur(10px); /* Glassmorphism */
+    -webkit-backdrop-filter: blur(10px);
+}
+.search-box .search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+.search-box .menu-search-input {
+    width: 100%;
+    padding: 14px 15px 14px 40px;
+    border-radius: 6px; /* pil değil kutu şeklinde */
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: rgba(255, 255, 255, 0.6);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+body:not(.dl-bg-white) .search-box .menu-search-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+body:not(.dl-bg-white) .search-box .search-icon {
+    color: rgba(255,255,255,0.6);
+}
+.search-box .menu-search-input:focus {
+    outline: none;
+    border-color: var(--accent-color, #D4AF37);
+    background: rgba(255,255,255,0.85);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+}
+.search-box .clear-search-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #999;
+    padding: 5px;
+    cursor: pointer;
+}
+
+/* Badges */
+.product-badge {
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+/* Neon gradyanlar kaldırıldı: #FF3366→#FF9933 ve #00C9FF→#92FE9D
+   marka paletinin dışındaydı ve beyaz metinle kontrastı 2.1–3.6:1'de
+   kalıyordu.
+   DİKKAT: Bu sayfada --accent-color altın (#D4AF37); ana sayfada bordo
+   (#8B1C24). Altın üzerine beyaz yazı 2.1:1 ile okunmuyor, bu yüzden
+   metin koyu bırakıldı (8.98:1). İki sayfanın aksan rengi birleştirilirse
+   burası da tek satırda sadeleşir. */
+.badge-popular {
+    background: var(--accent-color, #8B1C24);
+    color: #14100C;
+}
+.badge-chef {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================
+   LIGHT BACKGROUND (dl-bg-white) COLOR FIXES
+   ========================================= */
+body.dl-bg-white .taka-text-logo,
+body.dl-bg-white .taka-text-sub,
+body.dl-bg-white footer,
+body.dl-bg-white .footer-content h4,
+body.dl-bg-white .footer-brand p,
+body.dl-bg-white .footer-info p,
+body.dl-bg-white .footer-links a,
+body.dl-bg-white .footer-info a,
+body.dl-bg-white .footer-bottom p,
+body.dl-bg-white .footer-col h3,
+body.dl-bg-white .menu-item-title h4,
+body.dl-bg-white .menu-item-price,
+body.dl-bg-white .menu-item-desc-inline,
+body.dl-bg-white .category-header h2,
+body.dl-bg-white .cat-btn span {
+    color: #2A241C;
+}
+
+body.dl-bg-white .lang-switcher .lang-btn {
+    color: #2A241C !important;
+    border-color: rgba(42, 36, 28, 0.3) !important;
+}
+
+body.dl-bg-white .lang-switcher .lang-btn.active {
+    background: #2A241C !important;
+    color: #fff !important;
+    border-color: #2A241C !important;
+}
+
+body.dl-bg-white .footer-bottom,
+body.dl-bg-white footer {
+    border-color: rgba(42, 36, 28, 0.15);
+}
+
+body.dl-bg-white #header,
+body.dl-bg-white #header.scrolled {
+    background: #ffffff !important;
+    border-bottom: 1px solid rgba(42, 36, 28, 0.05);
+}
+
+body.dl-bg-white .nav-links a {
+    color: #2A241C !important;
+}
+
+body.dl-bg-white .nav-links a.active-link {
+    color: var(--primary-color) !important;
+}
+
+/* Enhanced Image Styling & Specific Fixes */
+.menu-item-image img {
+    filter: saturate(1.15) contrast(1.1) brightness(1.03);
+}
+/* Custom framing for photos that are off-center */
+.menu-item[data-id='13'] .menu-item-image img /* Havuç Tarator */ {
+    object-position: center !important; 
+}
+.menu-item[data-id='27'] .menu-item-image img, /* Urla Meze */
+.menu-item[data-id='31'] .menu-item-image img  /* Kuru Cacık */ {
+    object-position: left center !important; 
+}
+.menu-item[data-id='45'] .menu-item-image img /* Kaşarlı Mantar */ {
+    object-position: 20% 70% !important; 
+}
+
+.menu-item[data-id='81'] .menu-item-image img {
+    object-fit: contain !important;
+    background-color: var(--card-bg, #fff);
+}
+

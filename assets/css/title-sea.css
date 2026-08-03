@@ -1,0 +1,74 @@
+/* =====================================================
+   KARADENIZ — PREMIUM FLUID AURORA COLOR ANIMATION
+   ===================================================== */
+
+@keyframes fluidAurora {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes premiumGlow {
+    0%, 100% { filter: drop-shadow(0 0 12px rgba(0, 120, 255, 0.3)); }
+    50% { filter: drop-shadow(0 0 25px rgba(255, 51, 102, 0.6)); }
+}
+
+@keyframes laserShineSmooth {
+    0%   { transform: translateX(-150%) skewX(-25deg); opacity: 0; }
+    20%  { opacity: 1; }
+    80%  { opacity: 1; }
+    100% { transform: translateX(400%) skewX(-25deg); opacity: 0; }
+}
+
+.title-sea {
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 1px;
+    padding: 0 10px;
+    
+    /* Smooth, deeply vibrant fluid gradient */
+    background: linear-gradient(
+        -45deg,
+        #00E6B8 0%,    /* Vibrant Turquoise */
+        #0066FF 25%,   /* Electric Blue */
+        #8A2BE2 50%,   /* Blue Violet */
+        #FF007F 75%,   /* Bright Magenta */
+        #00E6B8 100%   /* Seamless loop */
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    /* Slower, more elegant flow for a premium feel */
+    animation: 
+        fluidAurora 8s cubic-bezier(0.4, 0.0, 0.2, 1) infinite,
+        premiumGlow 6s ease-in-out infinite;
+}
+
+/* Elegant, soft light sweep inside the text (wow effect) */
+.title-sea::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color: transparent;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.85) 50%, transparent 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shineInside 4.5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
+    padding: 0 10px; /* Must match the parent's padding */
+}
+
+@keyframes shineInside {
+    0%   { background-position: 200% center; }
+    100% { background-position: -200% center; }
+}

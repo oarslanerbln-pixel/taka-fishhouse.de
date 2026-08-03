@@ -1,0 +1,103 @@
+/* ----- FEATURES SECTION (Avant-Garde Editorial) ----- */
+.features-editorial {
+    padding: var(--section-padding);
+    background: var(--bg-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+.editorial-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: clamp(6rem, 15vw, 20rem);
+    color: var(--glass-border);
+    font-weight: 800;
+    pointer-events: none;
+    z-index: 0;
+    white-space: nowrap;
+}
+
+.features-editorial-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: relative;
+    z-index: 1;
+}
+
+.editorial-block {
+    position: relative;
+    padding: 60px 40px;
+    background: transparent;
+    border: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 901px) {
+    .editorial-block:not(:last-child) {
+        border-right: 1px solid var(--glass-border);
+    }
+}
+
+.editorial-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: 8rem;
+    color: var(--glass-border);
+    font-weight: 800;
+    z-index: -1;
+    pointer-events: none;
+    line-height: 1;
+}
+
+.editorial-block h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--accent-color);
+    margin-bottom: 16px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-right: -3px;
+}
+
+.editorial-block p {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.8;
+    max-width: 280px;
+}
+
+.editorial-line {
+    width: 0; /* GSAP animates this */
+    height: 1px;
+    background: var(--accent-color);
+    margin: 30px auto 0;
+}
+
+@media (max-width: 900px) {
+    .features-editorial-container {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .editorial-block {
+        padding: 40px 20px;
+    }
+    
+    .editorial-block:not(:last-child) {
+        border-bottom: 1px solid var(--glass-border);
+    }
+}

@@ -1,0 +1,23 @@
+/* Google'ın CDN'inden değil yerelden servis ediliyor (DSGVO) —
+   bkz. assets/css/google-fonts-local.css ve scripts/localize-fonts.js. */
+@import url('../../google-fonts-local.css');
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+}
+
+.oversized-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 24px;
+}
+
+.outline-text {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--accent-color);
+}

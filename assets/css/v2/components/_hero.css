@@ -1,0 +1,248 @@
+/* ----- HERO SECTION -----
+   Bu dosyadan silinenler (hiçbir HTML sayfasında kullanılmıyordu):
+   .hero-badge, .hero-title-minimal/-elegant/-premium, .circular-badge,
+   .rotating-text*, .badge-center-icon, .hero-social-icons (footer'a
+   taşındı), .hero-features-glass, .title-sea.
+   Bunlarla birlikte turkuaz (#00CCA3), cyan (#00d2ff) ve altın
+   (#e8c963 / #c5a55a) kalıntı paletleri de gitti. */
+
+.hero, .hero-cinematic {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-video-container {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.hero-video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 8, 6, 0.32) 0%,
+        rgba(10, 8, 6, 0.50) 50%,
+        rgba(10, 8, 6, 0.95) 100%
+    );
+    z-index: 2;
+}
+
+/* Grain texture overlay */
+.hero::before, .hero-cinematic::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.hero-content {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    text-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+.hero-title-classic {
+    font-weight: 800;
+    letter-spacing: 16px;
+    margin-right: -16px; /* Offset for symmetry */
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.hero-title .word { display: inline-block; overflow: hidden; }
+.hero-title .char { display: inline-block; }
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 50px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    margin-right: -6px; /* Offset for symmetry */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    max-width: 600px;
+}
+
+/* Sosyal ikonlar footer'a taşındığı için alt bant boşaldı;
+   CTA'lar 96px'e alınıp scroll göstergesine yer bırakıldı. */
+.hero-actions {
+    position: absolute;
+    bottom: 96px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 1;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+}
+
+.scroll-indicator span {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+}
+
+.scroll-mouse {
+    width: 22px;
+    height: 36px;
+    border: none;
+    border-radius: 12px;
+    position: relative;
+}
+
+.scroll-mouse::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 6px;
+    background: var(--accent-color);
+    border-radius: 3px;
+    animation: scroll-bob 1.6s ease-in-out infinite;
+}
+
+@keyframes scroll-bob {
+    0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    50% { opacity: 0.2; transform: translateX(-50%) translateY(10px); }
+}
+
+/* Dynamic Lighting (Vignette Flashlight) */
+.hero-light-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.hero:hover .hero-light-overlay, .hero-cinematic:hover .hero-light-overlay { opacity: 1; }
+
+/* Cinematic Audio Toggle — sağ üstte, header'ın altında.
+   Eskiden sağ altta CTA/scroll göstergesiyle çakışıyordu. */
+.audio-toggle {
+    position: absolute;
+    top: 110px;
+    right: 40px;
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    cursor: pointer;
+    transition: var(--transition);
+    overflow: hidden;
+    opacity: 0;
+}
+
+.audio-toggle:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+.audio-wave {
+    width: 2px;
+    height: 12px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: height 0.3s ease;
+}
+
+.audio-toggle.playing .audio-wave {
+    animation: wave-bounce 1.2s ease-in-out infinite;
+    background: var(--accent-color);
+}
+.audio-toggle.playing .audio-wave:nth-child(1) { animation-delay: 0.1s; }
+.audio-toggle.playing .audio-wave:nth-child(2) { animation-delay: 0.3s; }
+.audio-toggle.playing .audio-wave:nth-child(3) { animation-delay: 0.2s; }
+.audio-toggle.playing .audio-wave:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes wave-bounce {
+    0%, 100% { height: 6px; }
+    50% { height: 18px; }
+}
+
+@media (max-width: 900px) {
+    .hero, .hero-cinematic {
+        height: 100vh;
+        min-height: 640px;
+    }
+    .hero-content {
+        margin-top: 0;
+    }
+    .audio-toggle {
+        top: 88px;
+        right: 20px;
+        width: 42px;
+        height: 42px;
+    }
+    .hero-actions { bottom: 64px; }
+    .scroll-indicator {
+        display: none;
+    }
+}

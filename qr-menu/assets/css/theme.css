@@ -1,0 +1,103 @@
+/* LIGHT THEME (Cream / Whiteish - Minimalist Video Design) */
+html[data-theme="light"] {
+    --bg-dark: #f4f2ee !important; 
+    --card-bg: transparent; 
+    --text-primary: #111111;
+    --text-secondary: #555555;
+    --border-color: rgba(0, 0, 0, 0.05);
+    --border-glow: transparent;
+    --hover-bg: rgba(0, 0, 0, 0.05);
+    background-color: var(--bg-dark) !important;
+    color: var(--text-primary);
+}
+
+html[data-theme="light"] body {
+    background-color: var(--bg-dark) !important;
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="light"] .theme-toggle-btn {
+    display: none !important;
+}
+
+html[data-theme="light"] .theme-icon-light {
+    display: none !important;
+}
+html[data-theme="light"] .theme-icon-dark {
+    display: inline-block !important;
+    color: #1a1a1a;
+}
+
+/* Base styles for the icons */
+.theme-icon-dark { display: none; }
+.theme-icon-light { display: inline-block; color: #fff; }
+
+.theme-toggle-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+.theme-toggle-btn:hover {
+    background: var(--hover-bg);
+}
+
+/* Premium Hero Section — sinematik koyu görünüm (krem/beyaz sis kaldırıldı,
+   video artık tam renkli/opak, alt kısımda siyah gradyan metin okunurluğu
+   sağlıyor — menu.html'deki orijinal videolu hero ile aynı görünüm). */
+html[data-theme="light"] .menu-hero::after {
+    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 50%, transparent 100%) !important;
+}
+html[data-theme="light"] .hero-gradient-bottom {
+    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.25) 30%, transparent 80%) !important;
+}
+html[data-theme="light"] .menu-hero .hero-video-container {
+    background: #000 !important;
+}
+html[data-theme="light"] .menu-hero .hero-video-container video {
+    opacity: 1 !important;
+    mix-blend-mode: normal;
+    filter: none;
+}
+
+/* Standalone Text Block - Premium Glassmorphism for Light Theme */
+html[data-theme="light"] .standalone-text-block {
+    background: rgba(255, 255, 255, 0.85) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important; 
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08) !important;
+    border-radius: 24px !important;
+    margin-bottom: 90px !important; 
+    z-index: 10 !important;
+}
+html[data-theme="light"] .hero-text-block h1,
+html[data-theme="light"] .menu-hero-content h1 {
+    color: #fff !important;
+    background: none !important;
+    -webkit-text-fill-color: #fff !important;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4) !important;
+    font-weight: 600 !important;
+    font-family: 'Playfair Display', serif !important;
+    letter-spacing: 1px !important;
+}
+html[data-theme="light"] .hero-text-block p,
+html[data-theme="light"] .menu-hero-content p {
+    color: rgba(255,255,255,0.85) !important;
+    font-weight: 400 !important;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.4) !important;
+    font-size: 1.1rem !important;
+}
+
+/* FIX: Logo size limit and Video premium look for light theme */
+.splash-logo {
+    max-width: 180px !important;
+    height: auto !important;
+}

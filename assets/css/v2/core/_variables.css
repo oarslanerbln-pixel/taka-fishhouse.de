@@ -1,0 +1,67 @@
+/* ============================================================
+   TAKA — TEK PALET
+   Marka bordo + krem + espresso. Başka aksan rengi yok.
+   Eski turkuaz (#00CCA3), cyan (#00d2ff) ve neon rozet
+   gradyanları bilinçli olarak kaldırıldı.
+   ============================================================ */
+:root {
+    --primary-color: #0B1B32;
+    --primary-dark: #060F1E;
+
+    /* Marka — bordo */
+    --accent-color: #8B1C24;
+    --accent-brand: #8B1C24;
+    --accent-hover: #6a131a;
+    --accent-gold: #8B1C24; /* geriye dönük uyum: bordo, altın DEĞİL */
+    --accent-warm: #B8873A; /* gerçek altın — sadece ödül/rozet vurgusu için */
+
+    /* --- LIGHT THEME (Creamy Brown) --- */
+    --text-light: #2A241C; /* espresso — krem üzerinde 11.1:1 */
+    --text-muted: #5c5246; /* krem üzerinde 5.5:1 — AA */
+    --text-dim: #6B6157;   /* krem üzerinde 4.6:1 — AA. Eski #8b8073 2.8:1 ile kalıyordu. */
+
+    /* qr-menu/ ile birebir aynı krem-beyaz zemin (önceden #E4DAC4 —
+       "cappuccino" denen belirgin kahverengi bir tondu, menüyle uyuşmuyordu). */
+    --bg-dark: #F4F2EE;
+    --bg-deep: #EDE8E0;
+    --bg-card: rgba(42, 36, 28, 0.04); /* Faint dark transparent for cards */
+
+    --glass-bg: rgba(244, 242, 238, 0.85);
+    --glass-border: rgba(42, 36, 28, 0.12); /* Slightly stronger border */
+
+    /* --- TYPOGRAPHY & SPACING (Global) --- */
+    --font-heading: 'Oswald', sans-serif;
+    --font-display: 'Oswald', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-hero: 'Oswald', sans-serif;
+    
+    --navy-1: #020B18;
+    --navy-2: #041525;
+    --navy-3: #0B1B32;
+    --gold-1: #8B1C24;
+    --gold-2: #6a131a;
+    --gold-3: rgba(139,28,36,0.15);
+
+    --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --transition-slow: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+    --section-padding: 80px 20px;
+    --section-padding-mobile: 60px 20px;
+    --max-width: 1240px;
+}
+
+/* --- DARK THEME SCOPE (For Hero, Atmosphere, etc.) ---
+   Sıcak siyah: krem/bordo şemasıyla yan yana geldiğinde
+   eski mavi-siyah (#050A14) soğuk bir kırılma yapıyordu. */
+.force-dark {
+    --text-light: #ffffff;
+    --text-muted: #b9ada0;
+    --text-dim: #d6cec4;
+
+    --bg-dark: #14100C;
+    --bg-deep: #0A0806;
+    --bg-card: rgba(255, 255, 255, 0.04);
+
+    --glass-bg: rgba(20, 16, 12, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}

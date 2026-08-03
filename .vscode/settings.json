@@ -1,0 +1,31 @@
+{
+    "files.exclude": {
+        "**/*.py": true,
+        "**/*.json": false,
+        "**/*.log": true,
+        "**/scratch_*": true,
+        "**/*scratch*": true,
+        "**/wolt_imgs": true,
+        "**/lieferando_imgs": true,
+        "**/ubereats_imgs": true,
+        "**/_DSC*": true,
+        "**/.zencoder": true,
+        "**/.zenflow": true,
+        "**/qr-menu/assets/wolt_imgs": true,
+        "**/qr-menu/assets/lieferando_imgs": true,
+        "**/qr-menu/assets/ubereats_imgs": true,
+        "vercel.json": false,
+        "package.json": false,
+        ".vscode": false,
+        "clean_up.py": false
+    },
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./scripts",
+        "-p",
+        "*test*.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true
+}
