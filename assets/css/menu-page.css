@@ -910,13 +910,13 @@
 
 
 /* Custom framing for photos that are off-center */
-.menu-item[data-id=\'13\'] .menu-item-image img /* Havuç Tarator */ {
-    object-position: center !important; 
+.menu-item[data-id='13'] .menu-item-image img /* Havuç Tarator */ {
+    object-position: center !important;
 }
-.menu-item[data-id=\'27\'] .menu-item-image img, /* Urla Meze */
-.menu-item[data-id=\'31\'] .menu-item-image img  /* Kuru Cacık */ {
-    object-position: left center !important; 
+.menu-item[data-id='27'] .menu-item-image img, /* Urla Meze */
+.menu-item[data-id='31'] .menu-item-image img  /* Kuru Cacık */ {
+    object-position: left center !important;
 }
-.menu-item[data-id=\'45\'] .menu-item-image img /* Kaşarlı Mantar */ {
-    object-position: 20% 70% !important; 
+.menu-item[data-id='45'] .menu-item-image img /* Kaşarlı Mantar */ {
+    object-position: 20% 70% !important;
 }
