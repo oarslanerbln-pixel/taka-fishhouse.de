@@ -145,6 +145,103 @@ header.scrolled .btn-outline-square:hover {
     box-shadow: 0 2px 10px rgba(139, 21, 56, 0.5);
 }
 
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--nav-text);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+}
+
+header.nav-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 100%; }
+header.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+header.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 100%; }
+
+.nav-mobile-cta { display: none; }
+
+.nav-backdrop {
+    display: none;
+}
+
+body.nav-lock-scroll {
+    overflow: hidden;
+}
+
 @media (max-width: 991px) {
     .sm-hidden { display: none !important; }
+
+    .nav-toggle { display: flex; }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: min(78vw, 320px);
+        /* Fixed espresso tone — --bg-dark resolves to the light cream
+           background outside .force-dark sections, which made white
+           nav text unreadable. */
+        background: var(--text-light, #2A241C);
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 28px;
+        padding: 100px 40px 40px;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.35);
+        z-index: 1000;
+    }
+
+    header.nav-open .nav-links {
+        transform: translateX(0);
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+        color: #ffffff !important;
+    }
+
+    .nav-mobile-cta {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 12px 28px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    .nav-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        z-index: 999;
+    }
+
+    header.nav-open .nav-backdrop {
+        opacity: 1;
+        visibility: visible;
+    }
 }

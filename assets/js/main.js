@@ -185,6 +185,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     // =====================================================
+    // MOBILE NAV TOGGLE (hamburger)
+    // =====================================================
+    const navToggle = document.getElementById('navToggle');
+    const navBackdrop = document.getElementById('navBackdrop');
+    const navLinks = document.getElementById('navLinks');
+
+    function closeMobileNav() {
+        if (header) header.classList.remove('nav-open');
+        if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-lock-scroll');
+    }
+
+    function toggleMobileNav() {
+        if (!header) return;
+        const isOpen = header.classList.toggle('nav-open');
+        if (navToggle) navToggle.setAttribute('aria-expanded', String(isOpen));
+        document.body.classList.toggle('nav-lock-scroll', isOpen);
+    }
+
+    if (navToggle) navToggle.addEventListener('click', toggleMobileNav);
+    if (navBackdrop) navBackdrop.addEventListener('click', closeMobileNav);
+    if (navLinks) navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileNav));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobileNav(); });
+    window.addEventListener('resize', () => { if (window.innerWidth > 991) closeMobileNav(); }, { passive: true });
+
+    // =====================================================
     // SMOOTH SCROLL for anchor links
     // =====================================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
