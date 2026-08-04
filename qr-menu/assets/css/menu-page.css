@@ -780,7 +780,7 @@
     margin-top: 15px;
 }
 
-.menu-item-title h4 {
+.menu-item-title-row h4 {
     color: var(--text-light);
     font-family: var(--font-heading);
     font-size: 1.6rem;
@@ -794,7 +794,7 @@
     gap: 6px;
 }
 
-.menu-item-title h4 span {
+.menu-item-title-row h4 span {
     font-size: 0.75rem;
     color: var(--text-muted);
     font-weight: 300;
@@ -1312,7 +1312,7 @@ body {
         justify-content: center !important;
         padding-right: 0 !important;
     }
-    .menu-item-title h4 {
+    .menu-item-title-row h4 {
         font-family: 'Playfair Display', serif !important;
         font-size: 1.5rem !important;
         color: #222 !important;
@@ -1413,7 +1413,7 @@ body {
         align-items: flex-start;
     }
     
-    .menu-item-title h4 {
+    .menu-item-title-row h4 {
         font-size: 1.15rem;
     }
     
@@ -1813,7 +1813,7 @@ body {
 }
 
 .story-modal-disclaimer {
-    color: rgba(255,255,255,0.4);
+    color: rgba(42, 36, 28, 0.55);
     font-size: 0.75rem;
     margin-top: 15px;
 }
@@ -1979,7 +1979,7 @@ body.dl-card-transparent .menu-item-content {
     border-radius: 0 !important;
     z-index: 2;
 }
-body.dl-card-transparent .menu-item-title h4 {
+body.dl-card-transparent .menu-item-title-row h4 {
     color: #111 !important;
     font-family: 'Playfair Display', serif !important;
     font-size: 1.6rem !important;
@@ -2023,6 +2023,8 @@ body.dl-style-vertical .menu-item-image {
     height: auto !important;
     max-height: none !important; /* masaüstü kuralındaki 400px sınırı 4/5 oranını bozuyordu */
     width: 100% !important;
+    margin: 0 !important; /* "body .menu-item-image" kuralındaki 10px kenar boşluğu
+        bu full-bleed kural width:100% ile eşleşince görseli karttan taşırıyordu */
     border-radius: 0 !important;
     box-shadow: none !important;
 }
@@ -2149,8 +2151,9 @@ body .menu-item-title-row {
     justify-content: space-between !important;
     align-items: center !important;
 }
-body .menu-item-title h4 {
+body .menu-item-title-row h4 {
     border-left: 3px solid #111;
+    padding-left: 12px;
 }
 
 
@@ -2318,7 +2321,7 @@ body.dl-bg-white .footer-links a,
 body.dl-bg-white .footer-info a,
 body.dl-bg-white .footer-bottom p,
 body.dl-bg-white .footer-col h3,
-body.dl-bg-white .menu-item-title h4,
+body.dl-bg-white .menu-item-title-row h4,
 body.dl-bg-white .menu-item-price,
 body.dl-bg-white .menu-item-desc-inline,
 body.dl-bg-white .category-header h2,
