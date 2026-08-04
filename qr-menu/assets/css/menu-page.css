@@ -2030,6 +2030,7 @@ body.dl-style-vertical .menu-item-image {
 }
 body.dl-style-vertical .menu-item-image img {
     object-fit: cover !important;
+    border-radius: 0 !important; /* Konteynerin köşesiyle eşleşsin — eskiden 16px kalıp fotoğraf köşelerini "pil" gibi kesiyordu */
 }
 
 /* NAVIGATION: SHARP/UNDERLINE ONLY */
@@ -2338,6 +2339,11 @@ body.dl-bg-white .lang-switcher .lang-btn.active {
     background: #2A241C !important;
     color: #fff !important;
     border-color: #2A241C !important;
+}
+body.dl-bg-white .lang-switcher .lang-btn.active::after {
+    /* Dolgu zaten seçili durumu gösteriyor; kutunun alt kenarındaki
+       1px beyaz çizgi görünmez/gereksizdi. */
+    display: none !important;
 }
 
 body.dl-bg-white .footer-bottom,
