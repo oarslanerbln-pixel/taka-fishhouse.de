@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let newPath = imagePath;
         
         // Ufak uzantı ve path düzeltmeleri
-        if (newPath.endsWith('barbun.jpg')) newPath = newPath.replace('barbun.jpg', 'barbun.jpg.jpg');
         if (newPath.endsWith('uskumru.jpg')) newPath = newPath.replace('uskumru.jpg', 'uskumru.jpg.jpg');
         if (newPath.endsWith('kizarmis_dondurma_tek_top.jpg')) newPath = newPath.replace('kizarmis_dondurma_tek_top.jpg', 'kizarmis_dondurma.jpg');
         
