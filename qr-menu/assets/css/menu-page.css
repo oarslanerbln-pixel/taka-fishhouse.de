@@ -211,7 +211,13 @@
     position: relative;
     z-index: 2;
     padding-bottom: 100px;
-    min-height: 100vh;
+    /* min-height:100vh BURADAYDI. "Tümü" filtresinde 100+ ürün olduğu
+       için zaten hiç fark etmiyordu, ama az ürünlü bir kategoriye
+       filtrelenince (örn. "Suppen" — tek ürün) içerik bittikten sonra
+       sayfa yine de en az bir ekran boyu BOŞ kalıp öyle footer'a
+       geçiyordu — kullanıcının bildirdiği "kategori sekmelerinden sonra
+       büyük boşluk, sonra footer" hatası tam olarak buydu. Kaldırıldı;
+       kısa filtrelenmiş listeler artık doğrudan footer'a devam ediyor. */
 }
 
 .hero-gradient-bottom {
@@ -1082,7 +1088,11 @@ body {
     position: sticky;
     top: 0;
     z-index: 200;
-    background: rgba(237, 232, 224, 0.97) !important;
+    /* Logo görselinin (assets/taka_logo.png) arka planı şeffaf değil,
+       BEYAZ — header'ın krem rengiyle (237,232,224) yan yana gelince
+       logonun etrafında istenmeyen bir "kutu/hale" gibi görünüyordu.
+       Header'ı da beyaza çekince logo arka planla kaynaşıp kayboluyor. */
+    background: rgba(255, 255, 255, 0.97) !important;
     -webkit-backdrop-filter: blur(20px) !important;
     backdrop-filter: blur(20px) !important;
     border-bottom: none !important;
@@ -1132,7 +1142,10 @@ body {
 @media (max-width: 900px) {
     /* 1. Header (Logo & Language Switcher) */
     .header-container {
-        background: #ede8e0 !important;
+        /* Logo görselinin arka planı beyaz — bu satırın krem tonu
+           (#ede8e0) logonun etrafında bir kutu gibi görünmesine sebep
+           oluyordu (bkz. #header'daki aynı not). */
+        background: #ffffff !important;
         border-bottom: none;
         padding: 10px 20px !important;
         display: flex;
@@ -1430,6 +1443,18 @@ body {
 }
 
 /* --- Digital Footer --- */
+/* #contact'ın (marka/menü/iletişim bloğu) kendi yatay boşluğu hiç yoktu —
+   .footer-content de padding taşımıyor, bu yüzden metin özellikle
+   mobilde ekranın kenarına yapışık duruyordu. */
+#contact {
+    padding: 50px 24px 30px;
+}
+@media (max-width: 600px) {
+    #contact {
+        padding: 40px 28px 30px;
+    }
+}
+
 .digital-footer {
     text-align: center;
     padding: 30px 20px 40px;
@@ -1529,7 +1554,9 @@ body {
     gap: 6px;
     padding: 6px 14px;
     border: 1px solid rgba(212, 175, 55, 0.35);
-    border-radius: 50px;
+    /* Sitenin "dl-nav-sharp" tasarım dilinde köşeler hep keskin (bkz.
+       .cat-btn) — bu buton hâlâ eski pil/hap şekliyle kalmıştı. */
+    border-radius: 0;
     background: transparent;
     color: #4a4238;
     font-size: 0.8rem;
@@ -1944,6 +1971,13 @@ body {
 /* BACKGROUND: WARM CREAM (matches reference photo) */
 body.dl-bg-white, html.dl-bg-white, body.dl-bg-white .header-container, body.dl-bg-white .menu-categories {
     background-color: #EDE8E0 !important;
+}
+/* Logo görseli (assets/taka_logo.png) şeffaf değil, beyaz zeminli — yukarıdaki
+   krem rengiyle üst üste binince logonun etrafında kutu/hale gibi görünüyordu.
+   Aynı özgüllük ("body.dl-bg-white .header-container") + dosyada daha SONRA
+   geldiği için kazanıyor. */
+body.dl-bg-white .header-container {
+    background-color: #ffffff !important;
 }
 body.dl-bg-white .story-modal-content {
     background-color: #FFFFFF !important;

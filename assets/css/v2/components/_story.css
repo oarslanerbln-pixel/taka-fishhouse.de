@@ -348,5 +348,7 @@
         gap: 50px;
     }
     .story-floating-stats { right: 20px; }
-    .story-values-row { justify-content: center; }
+    /* Ortalanmış 3'lü liste dar ekranda dengesiz görünüyordu (madde
+       uzunlukları farklı olunca ortalama düzensiz duruyor) — sola
+       yaslı bırakıldı, base kural zaten flex-start. */
 }
