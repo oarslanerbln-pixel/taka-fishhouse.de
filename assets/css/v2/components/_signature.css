@@ -69,6 +69,31 @@
     .signature-marquee-wrapper { overflow-x: auto; }
 }
 
+/* Dokunmatik cihazlarda (hover yok) otomatik kayan şerit parmakla
+   tutulup elle kaydırılamıyordu — animasyonun transform'u native touch
+   scroll ile çakışıyor, kullanıcı şeridi durdurup kendi hızında
+   gezemiyordu. Bu yüzden dokunmatikte animasyonu kapatıp native
+   yatay kaydırmaya (elle tutup sürüklenebilir) geçiyoruz — masaüstünde
+   fare/hover olan cihazlarda otomatik kayan şerit aynen kalıyor. */
+@media (hover: none) {
+    .signature-marquee-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+    }
+    .signature-marquee-track {
+        animation: none;
+    }
+    .sig-card {
+        scroll-snap-align: start;
+    }
+    /* Sonsuz döngü animasyonu için eklenen birebir kopya kartlar (SET 2)
+       artık gereksiz — elle kaydırmada aynı 4 ürünü iki kez göstermesin. */
+    .sig-card[aria-hidden="true"] {
+        display: none;
+    }
+}
+
 /* ----- Kart ----- */
 .sig-card {
     flex: 0 0 auto;

@@ -153,6 +153,11 @@
     z-index: -1;
     transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
     background: #000;
+    /* İçindeki <video> siyah bantları temizlemek için transform:scale()
+       ile büyütülüyor (mobilde 3x'e kadar) — bu konteynerde overflow:hidden
+       olmayınca büyütülen video, kutunun dışına (sayfanın geneline) taşıp
+       tüm sayfada yatay kaydırma/boşluk sorununa yol açıyordu. */
+    overflow: hidden;
 }
 
 .standalone-text-block {
@@ -447,7 +452,13 @@
 /* --- Category Navigation --- */
 .menu-categories {
     position: sticky;
-    top: calc(var(--header-h, 92px) + var(--search-h, 56px));
+    /* Eski fallback (92px + 56px) artık gerçek mobil yükseklikle
+       uyuşmuyordu; JS (syncStickyOffsets) her zaman gerçek değeri yazıyor
+       olsa da, JS henüz çalışmadan önceki ilk boyama karesinde bu
+       fallback kullanılıyor — gerçekçi olmayan bir değer, çubuğun bir an
+       için header'ın ARKASINDA (dolayısıyla görünmez) render olmasına
+       sebep olabiliyordu. */
+    top: calc(var(--header-h, 106px) + var(--search-h, 70px));
     z-index: 100;
     background: #f4f2ee; /* Needs solid background so items don't overlap when scrolling */
     border-bottom: none;
@@ -455,6 +466,12 @@
     overflow-x: auto;
     -ms-overflow-style: none; /* IE/Edge */
     scrollbar-width: none; /* Firefox */
+    /* iOS Safari'de position:sticky + backdrop-filter'lı komşu elemanlar
+       bazen kaydırma sırasında geç/yanlış boyanıp kısa süreliğine
+       kayboluyor (bilinen bir WebKit compositing hatası). Elemanı kendi
+       GPU katmanına almak bunu güvenilir şekilde çözüyor. */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .menu-categories::-webkit-scrollbar {
@@ -1077,7 +1094,18 @@ body {
     border-bottom: none !important;
     box-shadow: none !important;
     transition: box-shadow 0.3s ease !important;
-    padding: 10px 0 !important; /* önceden 22px — sticky üst bölüm çok yer kaplıyordu */
+    /* Çentikli/Dynamic Island'lı telefonlarda header top:0'a yapışınca
+       içerik (logo, dil seçici) durum çubuğunun/çentiğin ALTINA gizlenip
+       ekranın en üst kenarına yapışık duruyordu. env(safe-area-inset-top)
+       güvenli alanı üst padding'e ekliyor; bunu desteklemeyen
+       tarayıcılarda 0 sayılır, davranış değişmez. */
+    padding: calc(10px + env(safe-area-inset-top)) 0 10px 0 !important; /* önceden 22px — sticky üst bölüm çok yer kaplıyordu */
+    /* sticky + backdrop-filter kombinasyonu iOS Safari'de kaydırırken
+       kısa süreliğine yanlış/geç boyanıp "kayboluyor" izlenimi verebiliyor
+       (bilinen WebKit compositing hatası) — kendi GPU katmanına alınca
+       bu güvenilir şekilde önleniyor. */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 #header.has-shadow,
@@ -1085,48 +1113,27 @@ body {
     box-shadow: 0 2px 20px rgba(0,0,0,0.07) !important;
 }
 
-/* Logo artık alt alta değil yan yana — dikey yer kazanmak için
-   (üst bölüm kaydırınca sabit kaldığından mümkün olduğunca ince olmalı). */
-.text-logo-container {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: baseline !important;
-    gap: 10px;
-}
-.taka-text-logo {
-    font-family: 'Playfair Display', serif !important;
-    font-size: 1.5rem !important;
-    color: #1a1a1a !important;
-    letter-spacing: 1.5px !important;
-    font-weight: 400 !important;
-    text-transform: uppercase;
-    display: inline-block;
-    line-height: 1;
-    white-space: nowrap; /* flex satırında daraltılınca 3 satıra bölünüyordu */
-    flex-shrink: 0;
-}
-.taka-text-sub {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 0.6rem !important;
-    color: #777 !important;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 0;
-    display: inline-block;
-    line-height: 1;
-    white-space: nowrap;
+/* Header'daki metin logosu ("TAKA FISH HOUSE" yazısı) yerine artık ana
+   sayfadaki bordo/mavi resim logo (assets/taka_logo.png) kullanılıyor —
+   kullanıcı isteği. Yükseklik menu-page.js'teki syncStickyOffsets() ile
+   otomatik ölçülüp sticky kategori çubuğunun offset'ine yansıyor, bu yüzden
+   burada tam piksel tutturmaya gerek yok; sadece dar ekranda 6 dilli dil
+   seçiciyle yan yana sığması için küçültülüyor. */
+.brand-logo-img {
+    height: 44px;
+    width: auto;
+    display: block;
 }
 
-/* Dar ekranda "TAKA FISH HOUSE" + dil seçici (6 dil) yan yana sığmıyor,
-   yatay taşmaya sebep oluyordu. Bu kural, aynı isimli temel kuraldan
-   (yukarıda) SONRA geldiği için kazanıyor — sıralama önemli. */
-@media (max-width: 480px) {
-    .taka-text-sub {
-        display: none !important;
+@media (max-width: 900px) {
+    .brand-logo-img {
+        height: 36px;
     }
-    .taka-text-logo {
-        font-size: 1rem !important;
-        letter-spacing: 0.5px !important;
+}
+
+@media (max-width: 480px) {
+    .brand-logo-img {
+        height: 30px;
     }
 }
 
@@ -1200,13 +1207,25 @@ body {
     .menu-categories {
         position: -webkit-sticky !important;
         position: sticky !important;
-        top: calc(var(--header-h, 84px) + var(--search-h, 56px)) !important;
+        /* Eski fallback (84px + 56px = 140px) artık gerçek mobil
+           yükseklikten (header ~64-76px + arama kutusu ~70px) belirgin
+           şekilde düşüktü. JS her zaman gerçek değeri yazsa da, sayfa
+           ilk boyandığı an (JS henüz çalışmadan önce) bu fallback
+           kullanılıyor — düşük değer, çubuğun bir kare boyunca
+           header'ın/arama kutusunun ÜSTÜNE (görsel olarak arkasına)
+           binip kaybolmuş gibi görünmesine sebep olabiliyordu. */
+        top: calc(var(--header-h, 106px) + var(--search-h, 70px)) !important;
         z-index: 199 !important;
         background: #ede8e0 !important;
         padding-top: 0 !important;
         padding-bottom: 0 !important;
         border-bottom: 1px solid rgba(0,0,0,0.08) !important;
         box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        /* iOS Safari'de sticky + backdrop-filter'lı komşu header
+           kaydırma sırasında geç boyanabiliyor (WebKit compositing
+           hatası) — kendi GPU katmanına almak bunu önlüyor. */
+        transform: translateZ(0);
+        will-change: transform;
     }
     .categories-track {
         gap: 20px !important;
@@ -1366,6 +1385,7 @@ body {
     padding: 0;
     overflow: hidden;
     max-height: 90vh !important;
+    max-height: 90dvh !important;
 }
 .story-modal-image-wrapper {
     height: 40vh !important;
@@ -1629,7 +1649,15 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
+    /* Mobil tarayıcılarda (özellikle iOS Safari) adres çubuğu açılıp
+       kapandıkça "100vh" gerçek görünür yüksekliği değil, adres çubuğunun
+       ARKASINDAKİ alanı da içeren daha büyük "layout viewport"u baz alır
+       — bu yüzden ortalanmış popup, kullanıcının o an gördüğü ekranda
+       ortalanmış GÖRÜNMÜYORDU (fazladan yükseklik hep alta taşıyordu).
+       100dvh gerçek görünür yüksekliği kullanır; desteklemeyen eski
+       tarayıcılar için 100vh fallback olarak kalıyor. */
     height: 100vh;
+    height: 100dvh;
     z-index: 10001;
     background: rgba(0, 0, 0, 0.4);
     -webkit-backdrop-filter: blur(12px);
@@ -1655,6 +1683,7 @@ body {
     width: 100%;
     max-width: 420px;
     max-height: 90vh;
+    max-height: 90dvh;
     overflow-y: auto;
     position: relative;
     transform: translateY(30px) scale(0.95);
@@ -2212,6 +2241,16 @@ html, body {
     overflow-y: visible !important;
 }
 
+/* Ürün popup'ı (story modal) açıkken arka planın kaymasını engeller.
+   JS document.body.classList.add('modal-open') ile tetikler. Class
+   selector'ün özgüllüğü (0,1,1) yukarıdaki "html, body" kuralından
+   (0,0,1) yüksek olduğu için — ikisi de !important olsa bile — bu kural
+   kazanır ve sticky pozisyon düzeltmesini bozmadan scroll kilidini geri
+   getirir. */
+body.modal-open {
+    overflow-y: hidden !important;
+}
+
 /* =========================================
    LIVE SEARCH & BADGES
    ========================================= */
@@ -2220,7 +2259,9 @@ html, body {
     z-index: 90;
     background: #f4f2ee;
     position: sticky;
-    top: var(--header-h, 92px); /* JS ile gerçek header yüksekliğine senkronlanır */
+    top: var(--header-h, 106px); /* JS ile gerçek header yüksekliğine senkronlanır */
+    transform: translateZ(0);
+    will-change: transform;
 }
 .search-box {
     position: relative;

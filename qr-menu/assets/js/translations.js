@@ -24,6 +24,9 @@ const translations = {
         "menu-highlight-desc": "Taze yeşil salata ve çıtır baget ile tamamlanan özel tariflerimiz.",
         "view-full-menu": "Tüm Menüyü İncele",
         "coming-soon": "Görsel Hazırlanıyor",
+        "view-details": "DETAYLARI GÖR",
+        "badge-popular": "Popüler",
+        "badge-chef": "Şefin Seçimi",
 
         // Story
         "story-badge": "Bizim Hikayemiz",
@@ -141,6 +144,9 @@ const translations = {
         "menu-highlight-desc": "Unsere Spezialitäten, abgerundet mit frischem grünem Salat und knusprigem Baguette.",
         "view-full-menu": "Gesamtes Menü",
         "coming-soon": "Bild in Vorbereitung",
+        "view-details": "DETAILS ANSEHEN",
+        "badge-popular": "Beliebt",
+        "badge-chef": "Empfehlung des Chefs",
 
         // Story
         "story-badge": "Unsere Geschichte",
@@ -257,6 +263,10 @@ const translations = {
         "menu-highlight-title": "Featured Specialities",
         "menu-highlight-desc": "Our special recipes served with fresh green salad and crispy baguette.",
         "view-full-menu": "See Full Menu",
+        "coming-soon": "Photo Coming Soon",
+        "view-details": "VIEW DETAILS",
+        "badge-popular": "Popular",
+        "badge-chef": "Chef's Choice",
 
         // Story
         "story-badge": "Our Story",
@@ -366,6 +376,10 @@ const translations = {
         "menu-highlight-title": "Наши блюда",
         "menu-highlight-desc": "Наши специальные рецепты.",
         "view-full-menu": "Смотреть меню",
+        "coming-soon": "Фото скоро появится",
+        "view-details": "ПОДРОБНЕЕ",
+        "badge-popular": "Популярно",
+        "badge-chef": "Выбор шефа",
         "story-badge": "Наша история",
         "story-title": "От Черного моря <br><span>до Кройцберга</span>",
         "story-p1": "TAKA Fish House...",
@@ -434,6 +448,10 @@ const translations = {
         "menu-highlight-title": "Especialidades",
         "menu-highlight-desc": "Nuestras recetas especiales.",
         "view-full-menu": "Ver menú completo",
+        "coming-soon": "Foto próximamente",
+        "view-details": "VER DETALLES",
+        "badge-popular": "Popular",
+        "badge-chef": "Elección del Chef",
         "story-badge": "Nuestra Historia",
         "story-title": "Del Mar Negro <br><span>a Kreuzberg</span>",
         "story-p1": "TAKA Fish House...",
@@ -502,6 +520,10 @@ const translations = {
         "menu-highlight-title": "أطباق مميزة",
         "menu-highlight-desc": "وصفاتنا الخاصة.",
         "view-full-menu": "عرض القائمة",
+        "coming-soon": "الصورة قريبًا",
+        "view-details": "عرض التفاصيل",
+        "badge-popular": "شائع",
+        "badge-chef": "اختيار الشيف",
         "story-badge": "قصتنا",
         "story-title": "من البحر الأسود <br><span>إلى كرويتزبرغ</span>",
         "story-p1": "تأكا فيش هاوس...",
