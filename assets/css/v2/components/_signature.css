@@ -61,9 +61,20 @@
        görüntüden çıkıyormuş gibi görünür. */
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
     mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    cursor: grab; /* main.js'teki mousedown/mousemove sürükleme için ipucu */
 }
 .signature-marquee-wrapper::-webkit-scrollbar {
     display: none; /* Chrome/Safari */
+}
+.signature-marquee-wrapper.is-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+}
+.signature-marquee-wrapper.is-dragging .sig-card {
+    /* Sürüklerken kart metni seçilmesin. Bırakınca linke gitmesini
+       (yeterince sürüklenmişse) main.js'teki click bastırma engelliyor —
+       burada sadece görsel seçim davranışı kapatılıyor. */
+    user-select: none;
 }
 
 .signature-marquee-track {
