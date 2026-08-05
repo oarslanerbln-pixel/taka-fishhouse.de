@@ -466,12 +466,6 @@
     overflow-x: auto;
     -ms-overflow-style: none; /* IE/Edge */
     scrollbar-width: none; /* Firefox */
-    /* iOS Safari'de position:sticky + backdrop-filter'lı komşu elemanlar
-       bazen kaydırma sırasında geç/yanlış boyanıp kısa süreliğine
-       kayboluyor (bilinen bir WebKit compositing hatası). Elemanı kendi
-       GPU katmanına almak bunu güvenilir şekilde çözüyor. */
-    transform: translateZ(0);
-    will-change: transform;
 }
 
 .menu-categories::-webkit-scrollbar {
@@ -1100,12 +1094,6 @@ body {
        güvenli alanı üst padding'e ekliyor; bunu desteklemeyen
        tarayıcılarda 0 sayılır, davranış değişmez. */
     padding: calc(10px + env(safe-area-inset-top)) 0 10px 0 !important; /* önceden 22px — sticky üst bölüm çok yer kaplıyordu */
-    /* sticky + backdrop-filter kombinasyonu iOS Safari'de kaydırırken
-       kısa süreliğine yanlış/geç boyanıp "kayboluyor" izlenimi verebiliyor
-       (bilinen WebKit compositing hatası) — kendi GPU katmanına alınca
-       bu güvenilir şekilde önleniyor. */
-    transform: translateZ(0);
-    will-change: transform;
 }
 
 #header.has-shadow,
@@ -1221,11 +1209,6 @@ body {
         padding-bottom: 0 !important;
         border-bottom: 1px solid rgba(0,0,0,0.08) !important;
         box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        /* iOS Safari'de sticky + backdrop-filter'lı komşu header
-           kaydırma sırasında geç boyanabiliyor (WebKit compositing
-           hatası) — kendi GPU katmanına almak bunu önlüyor. */
-        transform: translateZ(0);
-        will-change: transform;
     }
     .categories-track {
         gap: 20px !important;
@@ -2260,8 +2243,6 @@ body.modal-open {
     background: #f4f2ee;
     position: sticky;
     top: var(--header-h, 106px); /* JS ile gerçek header yüksekliğine senkronlanır */
-    transform: translateZ(0);
-    will-change: transform;
 }
 .search-box {
     position: relative;
