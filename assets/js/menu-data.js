@@ -3,6 +3,10 @@ const menuData = [
         "categoryId": "hauptgerichte",
         "categoryTR": "Ana Yemekler",
         "categoryDE": "Hauptgerichte",
+        "categoryNameEN": "Main Courses",
+        "categoryNameRU": "Основные блюда",
+        "categoryNameES": "Platos principales",
+        "categoryNameAR": "الأطباق الرئيسية",
         "icon": "fa-fish-fins",
         "items": [
             {
@@ -217,6 +221,10 @@ const menuData = [
         "categoryId": "corbalar",
         "categoryTR": "Çorbalar",
         "categoryDE": "Suppen",
+        "categoryNameEN": "Soups",
+        "categoryNameRU": "Супы",
+        "categoryNameES": "Sopas",
+        "categoryNameAR": "الشوربات",
         "icon": "fa-bowl-food",
         "items": [
             {
@@ -241,6 +249,10 @@ const menuData = [
         "categoryId": "salatalar",
         "categoryTR": "Salatalar",
         "categoryDE": "Salate",
+        "categoryNameEN": "Salads",
+        "categoryNameRU": "Салаты",
+        "categoryNameES": "Ensaladas",
+        "categoryNameAR": "السلطات",
         "icon": "fa-leaf",
         "items": [
             {
@@ -342,6 +354,10 @@ const menuData = [
         "categoryId": "soguk-mezeler",
         "categoryTR": "Soğuk Mezeler",
         "categoryDE": "Kalte Vorspeisen",
+        "categoryNameEN": "Cold Appetizers",
+        "categoryNameRU": "Холодные закуски",
+        "categoryNameES": "Aperitivos fríos",
+        "categoryNameAR": "المقبلات الباردة",
         "icon": "fa-plate-wheat",
         "items": [
             {
@@ -600,6 +616,10 @@ const menuData = [
         "categoryId": "ara-sicaklar",
         "categoryTR": "Ara Sıcaklar",
         "categoryDE": "Warme Zwischengerichte",
+        "categoryNameEN": "Warm Appetizers",
+        "categoryNameRU": "Тёплые закуски",
+        "categoryNameES": "Aperitivos calientes",
+        "categoryNameAR": "المقبلات الساخنة",
         "icon": "fa-fire-burner",
         "items": [
             {
@@ -750,6 +770,10 @@ const menuData = [
         "categoryId": "deniz-mahsulleri",
         "categoryTR": "Deniz Mahsülleri",
         "categoryDE": "Meeresfrüchte",
+        "categoryNameEN": "Seafood",
+        "categoryNameRU": "Морепродукты",
+        "categoryNameES": "Mariscos",
+        "categoryNameAR": "المأكولات البحرية",
         "icon": "fa-shrimp",
         "items": [
             {
@@ -934,6 +958,10 @@ const menuData = [
         "categoryId": "balik-ekmek",
         "categoryTR": "Balık Sandviç / Dürüm",
         "categoryDE": "Fisch Sandwich / Dürüm",
+        "categoryNameEN": "Fish Sandwich / Wrap",
+        "categoryNameRU": "Рыбный сэндвич / дюрюм",
+        "categoryNameES": "Sándwich de pescado / dürüm",
+        "categoryNameAR": "ساندويتش السمك / دوروم",
         "icon": "fa-hotdog",
         "items": [
             {
@@ -1102,6 +1130,10 @@ const menuData = [
         "categoryId": "cocuk-menusu",
         "categoryTR": "Çocuk Menüsü",
         "categoryDE": "Kindermenü",
+        "categoryNameEN": "Kids' Menu",
+        "categoryNameRU": "Детское меню",
+        "categoryNameES": "Menú infantil",
+        "categoryNameAR": "قائمة الأطفال",
         "icon": "fa-child",
         "items": [
             {
@@ -1174,6 +1206,10 @@ const menuData = [
         "categoryId": "tatlilar",
         "categoryTR": "Tatlılar",
         "categoryDE": "Desserts",
+        "categoryNameEN": "Desserts",
+        "categoryNameRU": "Десерты",
+        "categoryNameES": "Postres",
+        "categoryNameAR": "الحلويات",
         "icon": "fa-ice-cream",
         "items": [
             {
@@ -1262,6 +1298,10 @@ const menuData = [
         "categoryId": "soguk-icecekler",
         "categoryTR": "Soğuk İçecekler",
         "categoryDE": "Kalte Getränke",
+        "categoryNameEN": "Cold Drinks",
+        "categoryNameRU": "Холодные напитки",
+        "categoryNameES": "Bebidas frías",
+        "categoryNameAR": "المشروبات الباردة",
         "icon": "fa-glass-water",
         "items": [
             {
@@ -1587,6 +1627,10 @@ const menuData = [
         "categoryId": "sicak-icecekler",
         "categoryTR": "Sıcak İçecekler",
         "categoryDE": "Warme Getränke",
+        "categoryNameEN": "Hot Drinks",
+        "categoryNameRU": "Горячие напитки",
+        "categoryNameES": "Bebidas calientes",
+        "categoryNameAR": "المشروبات الساخنة",
         "icon": "fa-mug-hot",
         "items": [
             {

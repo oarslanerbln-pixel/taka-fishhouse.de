@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     banner.className = 'taka-cookie-banner';
     banner.innerHTML = `
         <div class="cookie-content">
-            <p><strong>Datenschutz & Cookies:</strong> Wir verwenden Cookies und ähnliche Technologien, um Ihnen das beste Erlebnis auf unserer Website zu bieten. Weitere Informationen finden Sie in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+            <p><strong>Datenschutz & Cookies:</strong> Wir verwenden Cookies und ähnliche Technologien, um Ihnen das beste Erlebnis auf unserer Website zu bieten. Weitere Informationen finden Sie in unserer <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
             <div class="cookie-buttons">
                 <button id="acceptCookies" class="btn btn-primary btn-sm">Akzeptieren</button>
             </div>
