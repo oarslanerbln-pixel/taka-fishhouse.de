@@ -683,4 +683,67 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // =====================================================
+    // SIGNATURE DISHES MARQUEE (kendiliğinden kayan + elle kaydırılabilir)
+    // Eskiden salt CSS transform animasyonuydu — elle tutulup
+    // kaydırılamıyordu (ne masaüstünde ne mobilde), çünkü transform
+    // native scroll/drag ile aynı anda çalışmaz. Artık gerçek bir
+    // yatay scroll konteyneri (.signature-marquee-wrapper) üzerinde
+    // scrollLeft'i kare kare ilerletiyoruz; kullanıcı dokunur/tıklarsa
+    // otomatik kayma duruyor, bıraktıktan ~2.5sn sonra kaldığı yerden
+    // devam ediyor. SET 2 (aria-hidden kopya kartlar) hâlâ DOM'da —
+    // scrollLeft şeridin yarısına ulaşınca fark ettirmeden başa
+    // sarılıyor, böylece sonsuz döngü hissi korunuyor.
+    // =====================================================
+    (function signatureMarquee() {
+        const wrapper = document.querySelector('.signature-marquee-wrapper');
+        const track = document.querySelector('.signature-marquee-track');
+        if (!wrapper || !track) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const SPEED = 0.55; // px / frame (~60fps ≈ 33px/sn)
+        let paused = false;
+        let resumeTimer = null;
+        let rafId = null;
+
+        function loopWidth() {
+            // SET 1 + SET 2 birebir aynı olduğu için tam yarısı bir döngü.
+            return track.scrollWidth / 2;
+        }
+
+        function tick() {
+            if (!paused) {
+                const half = loopWidth();
+                let next = wrapper.scrollLeft + SPEED;
+                if (half > 0 && next >= half) next -= half;
+                wrapper.scrollLeft = next;
+            }
+            rafId = requestAnimationFrame(tick);
+        }
+
+        function pause() {
+            paused = true;
+            clearTimeout(resumeTimer);
+        }
+        function scheduleResume(delay) {
+            clearTimeout(resumeTimer);
+            resumeTimer = setTimeout(function () { paused = false; }, delay || 2500);
+        }
+
+        ['pointerdown', 'touchstart', 'wheel'].forEach(function (evt) {
+            wrapper.addEventListener(evt, pause, { passive: true });
+        });
+        ['pointerup', 'touchend', 'mouseleave'].forEach(function (evt) {
+            wrapper.addEventListener(evt, function () { scheduleResume(2500); });
+        });
+        wrapper.addEventListener('mouseenter', pause);
+        // Fare tekerleği/trackpad ile kaydırma da scroll event'i doğurur —
+        // bırakınca yine otomatik kaymaya dönsün.
+        wrapper.addEventListener('scroll', function () {
+            if (paused) scheduleResume(2500);
+        }, { passive: true });
+
+        rafId = requestAnimationFrame(tick);
+    })();
+
 });

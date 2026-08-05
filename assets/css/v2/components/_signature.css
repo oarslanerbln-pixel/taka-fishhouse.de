@@ -31,15 +31,39 @@
     margin: 0 auto;
 }
 
-/* ----- Marquee ----- */
+/* ----- Marquee -----
+   Eskiden salt CSS transform animasyonuyla kayıyordu — bu yüzden ne
+   masaüstünde ne de dokunmatikte elle tutulup kaydırılamıyordu (transform
+   native scroll/drag ile çakışıyor). Artık şerit gerçek bir yatay scroll
+   konteyneri; otomatik kaymayı assets/js/v2/modules/... değil, doğrudan
+   main.js'teki küçük bir script scrollLeft'i kare kare ilerleterek
+   sağlıyor, kullanıcı dokunur/tıklarsa duruyor, bıraktıktan bir süre
+   sonra kaldığı yerden devam ediyor. Böylece hem "elle kaydırılabilir"
+   hem "kendiliğinden devam eden döngü" isteği aynı anda karşılanıyor. */
 .signature-marquee-wrapper {
     width: 100%;
-    overflow: hidden;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* scroll-snap-type BİLEREK yok: proximity snap bile JS'in her karede
+       yaptığı küçük (~0.5px) scrollLeft artışlarını en yakın kart
+       sınırına geri yuvarlayıp otomatik kaymayı tamamen durduruyordu —
+       sürekli/akıcı bir marquee ile snap noktaları birlikte çalışmıyor. */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
     position: relative;
+    /* html { scroll-behavior: smooth; } global kuralı, JS'in her karede
+       yaptığı küçük scrollLeft artışlarını her seferinde yeni bir
+       "smooth" animasyon gibi ele alıp bir öncekini yarıda kesiyordu —
+       sonuç: hiç ilerlemiyormuş gibi görünüyordu. Bu elemanda anlık
+       (instant) davranışa zorlanıyor. */
+    scroll-behavior: auto;
     /* Kenarlarda yumuşak geçiş: kartlar kesilmiş gibi değil,
        görüntüden çıkıyormuş gibi görünür. */
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
     mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.signature-marquee-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
 }
 
 .signature-marquee-track {
@@ -48,50 +72,6 @@
     width: max-content;
     gap: var(--sig-gap);
     padding: 4px 0;
-    animation: marquee-scroll 60s linear infinite;
-}
-
-/* Şeridin üstüne gelince durur — okumak isteyen okuyabilsin. */
-.signature-marquee-wrapper:hover .signature-marquee-track,
-.signature-marquee-track:focus-within {
-    animation-play-state: paused;
-}
-
-@keyframes marquee-scroll {
-    /* Set 2 birebir kopya olduğu için -50% kusursuz döngü verir.
-       Aradaki gap de sayıldığından yarım gap kadar fazladan kaydırılır. */
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(calc(-50% - (var(--sig-gap) / 2))); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .signature-marquee-track { animation: none; }
-    .signature-marquee-wrapper { overflow-x: auto; }
-}
-
-/* Dokunmatik cihazlarda (hover yok) otomatik kayan şerit parmakla
-   tutulup elle kaydırılamıyordu — animasyonun transform'u native touch
-   scroll ile çakışıyor, kullanıcı şeridi durdurup kendi hızında
-   gezemiyordu. Bu yüzden dokunmatikte animasyonu kapatıp native
-   yatay kaydırmaya (elle tutup sürüklenebilir) geçiyoruz — masaüstünde
-   fare/hover olan cihazlarda otomatik kayan şerit aynen kalıyor. */
-@media (hover: none) {
-    .signature-marquee-wrapper {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x proximity;
-    }
-    .signature-marquee-track {
-        animation: none;
-    }
-    .sig-card {
-        scroll-snap-align: start;
-    }
-    /* Sonsuz döngü animasyonu için eklenen birebir kopya kartlar (SET 2)
-       artık gereksiz — elle kaydırmada aynı 4 ürünü iki kez göstermesin. */
-    .sig-card[aria-hidden="true"] {
-        display: none;
-    }
 }
 
 /* ----- Kart ----- */
