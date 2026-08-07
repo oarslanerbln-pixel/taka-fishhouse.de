@@ -32,6 +32,15 @@
       ]
     },
     {
+      "source": "/(.*)\\.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    },
+    {
       "source": "/assets/(img|wolt_imgs|lieferando_imgs|ubereats_imgs|drinks)/(.*)",
       "headers": [
         {
