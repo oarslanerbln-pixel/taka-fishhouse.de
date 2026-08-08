@@ -81,6 +81,19 @@
 </head>
 <body class="dl-bg-white dl-card-transparent dl-style-vertical dl-nav-sharp">
 
+    <!-- Speisekarte'ye geçiş introsu — CSS'te (.premium-splash) ve JS'te
+         (menu-page.js, "Premium Splash Screen Logic") hazır bekleyen ama
+         hiç HTML karşılığı olmayan bir sistemdi. -->
+    <div class="premium-splash" id="premium-splash" aria-hidden="true">
+        <div class="splash-ripple"></div>
+        <div class="splash-content">
+            <div class="splash-mask">
+                <span class="splash-text">TAKA FISH HOUSE</span>
+            </div>
+            <div class="splash-glow"></div>
+        </div>
+    </div>
+
         <!-- Header Navigation -->
     <header id="header" class="scrolled">
         <div class="header-container">
@@ -288,7 +301,7 @@
     <script src="assets/js/i18n.js?v=3.2"></script>
     <script src="assets/js/main.js?v=3.2"></script>
     <script src="../assets/js/menu-data.js?v=4.6"></script>
-    <script src="assets/js/menu-page.js?v=3.5"></script>
+    <script src="assets/js/menu-page.js?v=3.6"></script>
     <script src="../assets/js/cookie-banner.js"></script>
 </body>
 </html>

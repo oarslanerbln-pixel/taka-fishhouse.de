@@ -827,21 +827,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== Premium Splash Screen Logic =====
     const premiumSplash = document.getElementById('premium-splash');
     if (premiumSplash) {
-        // Prevent scrolling during splash
-        document.body.style.overflow = 'hidden';
-        
-        // Max 2.5 seconds total experience
-        setTimeout(() => {
-            premiumSplash.style.opacity = '0';
-            premiumSplash.style.visibility = 'hidden';
-            
-            // Allow scrolling again
-            document.body.style.overflow = '';
-            
-            // Remove from DOM to keep things clean
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            premiumSplash.remove();
+        } else {
+            // Prevent scrolling during splash
+            document.body.style.overflow = 'hidden';
+
+            // ~1.8 saniyelik kısa bir karşılama — sonra kayboluyor
             setTimeout(() => {
-                premiumSplash.remove();
-            }, 1200);
-        }, 2500);
+                premiumSplash.classList.add('is-exiting');
+
+                // Allow scrolling again
+                document.body.style.overflow = '';
+
+                // Remove from DOM to keep things clean
+                setTimeout(() => {
+                    premiumSplash.remove();
+                }, 1200);
+            }, 1800);
+        }
     }
 });
