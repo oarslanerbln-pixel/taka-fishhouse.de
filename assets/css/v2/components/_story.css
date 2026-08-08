@@ -41,7 +41,7 @@
     position: relative;
     width: 100%;
     aspect-ratio: 4/5;
-    border-radius: 20px;
+    border-radius: 0;
     overflow: hidden;
     order: 2;
 }
@@ -350,5 +350,12 @@
     .story-floating-stats { right: 20px; }
     /* Ortalanmış 3'lü liste dar ekranda dengesiz görünüyordu (madde
        uzunlukları farklı olunca ortalama düzensiz duruyor) — sola
-       yaslı bırakıldı, base kural zaten flex-start. */
+       yaslı bırakıldı. Ayrıca dar ekranda alt alta dizmek (column)
+       yatay sıkışmayı da önlüyor. */
+    .story-values-row {
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
 }

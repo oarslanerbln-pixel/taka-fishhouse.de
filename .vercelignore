@@ -6,6 +6,14 @@ _archive_data/
 _unused_imgs_archive/
 scratch_*/
 *scratch*
+scratch/
+.venv/
+.claude/
+.agents/
+_image_backups_*/
+_raw_originals/
+Taka Fisch Haus - git-backup/
+
 # wolt_imgs/
 # lieferando_imgs/
 # ubereats_imgs/

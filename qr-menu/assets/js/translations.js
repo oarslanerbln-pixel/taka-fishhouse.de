@@ -51,7 +51,7 @@ const translations = {
 
         // Footer
         "footer-brand-p": "Berlin Kreuzberg",
-        "footer-menu-title": "Menü",
+        "footer-menu-title": "Sayfalar",
         "footer-contact-title": "İletişim",
         "footer-hours": "Her Gün: 11:00 - 23:00",
         "hero-title-city": "Kreuzberg'te",
@@ -171,7 +171,7 @@ const translations = {
 
         // Footer
         "footer-brand-p": "Berlin Kreuzberg",
-        "footer-menu-title": "Menü",
+        "footer-menu-title": "Seiten",
         "footer-contact-title": "Kontakt",
         "footer-hours": "Mo-So: 11:00 - 23:00",
         "hero-title-city": "In Kreuzberg",
@@ -291,7 +291,7 @@ const translations = {
 
         // Footer
         "footer-brand-p": "Berlin Kreuzberg",
-        "footer-menu-title": "Menu",
+        "footer-menu-title": "Pages",
         "footer-contact-title": "Contact",
         "footer-hours": "Mon-Sun: 11:00 - 23:00",
         "hero-title-city": "In Kreuzberg",
@@ -394,7 +394,7 @@ const translations = {
         "res-call": "Позвонить",
         "res-soon": "Скоро!",
         "footer-brand-p": "Berlin Kreuzberg",
-        "footer-menu-title": "Меню",
+        "footer-menu-title": "Страницы",
         "footer-contact-title": "Контакты",
         "footer-hours": "Пн-Вс: 11:00 - 23:00",
         "menu-page-hero-title": "Наше Меню",
@@ -466,7 +466,7 @@ const translations = {
         "res-call": "Llamar ahora",
         "res-soon": "Pronto!",
         "footer-brand-p": "Berlin Kreuzberg",
-        "footer-menu-title": "Menú",
+        "footer-menu-title": "Páginas",
         "footer-contact-title": "Contacto",
         "footer-hours": "Lun-Dom: 11:00 - 23:00",
         "menu-page-hero-title": "Nuestro Menú",
@@ -538,7 +538,7 @@ const translations = {
         "res-call": "اتصل الان",
         "res-soon": "قريباً!",
         "footer-brand-p": "Berlin Kreuzberg",
-        "footer-menu-title": "القائمة",
+        "footer-menu-title": "صفحات",
         "footer-contact-title": "اتصال",
         "footer-hours": "يوميا: 11:00 - 23:00",
         "menu-page-hero-title": "قائمتنا",

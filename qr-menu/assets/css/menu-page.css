@@ -1,5 +1,22 @@
 /* ===== MENU PAGE TEXT DESIGN — SITE NATIVE THEME ===== */
 
+/* General Sans — kategori sekmeleri için, self-hosted (DSGVO,
+   Fontshare CDN'inden çağırmak yerine dosyalar buraya indirildi) */
+@font-face {
+    font-family: 'General Sans';
+    src: url('../../../assets/fonts/general-sans-600.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'General Sans';
+    src: url('../../../assets/fonts/general-sans-700.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* --- Premium WOW Splash Intro --- */
 .premium-splash {
     position: fixed;
@@ -150,6 +167,9 @@
     width: 100%;
     height: 45vh;
     min-height: 350px;
+    overflow: hidden; /* iOS Safari'de video kutusunun dışına taşıp yatay
+        kaydırmaya sebep olmasını engeller — genişlik/oran hangi kural
+        kazanırsa kazansın görsel taşma artık burada kesiliyor */
     z-index: -1;
     transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
     background: #000;
@@ -495,10 +515,10 @@
     justify-content: center;
     flex-shrink: 0;
     padding: 10px 22px;
-    border-radius: 40px;
+    border-radius: 8px;
     background: transparent;
     color: #999;
-    font-family: 'Playfair Display', serif;
+    font-family: 'General Sans', 'Inter', sans-serif;
     font-size: 1.05rem;
     font-style: normal;
     font-weight: 600;
@@ -1229,7 +1249,7 @@ body {
         justify-content: flex-start !important;
     }
     .cat-btn {
-        font-family: 'Playfair Display', serif !important;
+        font-family: 'General Sans', 'Inter', sans-serif !important;
         font-size: 1.05rem !important;
         font-style: normal !important;
         font-weight: 700 !important;
@@ -1328,10 +1348,10 @@ body {
         padding-right: 0 !important;
     }
     .menu-item-title-row h4 {
-        font-family: 'Playfair Display', serif !important;
+        font-family: 'Inter', sans-serif !important;
         font-size: 1.5rem !important;
         color: #222 !important;
-        font-weight: 400 !important;
+        font-weight: 700 !important;
         margin: 0;
         text-align: left !important;
     }
@@ -1980,15 +2000,16 @@ body {
    ========================================= */
 
 /* BACKGROUND: WARM CREAM (matches reference photo) */
-body.dl-bg-white, html.dl-bg-white, body.dl-bg-white .header-container, body.dl-bg-white .menu-categories {
+body.dl-bg-white, html.dl-bg-white {
     background-color: #EDE8E0 !important;
 }
-/* Logo görseli (assets/taka_logo.png) şeffaf değil, beyaz zeminli — yukarıdaki
-   krem rengiyle üst üste binince logonun etrafında kutu/hale gibi görünüyordu.
-   Aynı özgüllük ("body.dl-bg-white .header-container") + dosyada daha SONRA
-   geldiği için kazanıyor. */
-body.dl-bg-white .header-container {
-    background-color: #ffffff !important;
+/* Üst navigasyon (logo + dil seçici + kategori sekmeleri): masaüstü/mobil
+   aynı — beyaz zemin. Ürün listesi altta krem renginde kalmaya devam ediyor.
+   Ayrıca logo görseli (assets/taka_logo.png) şeffaf değil, beyaz zeminli —
+   krem renkle üst üste binince logonun etrafında kutu/hale gibi görünüyordu. */
+body.dl-bg-white .header-container,
+body.dl-bg-white .menu-categories {
+    background-color: #FFFFFF !important;
 }
 body.dl-bg-white .story-modal-content {
     background-color: #FFFFFF !important;
@@ -2038,7 +2059,8 @@ body.dl-card-transparent .menu-item-content {
 }
 body.dl-card-transparent .menu-item-title-row h4 {
     color: #111 !important;
-    font-family: 'Playfair Display', serif !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 700 !important;
     font-size: 1.6rem !important;
     letter-spacing: 0.5px !important;
 }
@@ -2071,14 +2093,15 @@ body.dl-card-transparent .view-details-btn {
 }
 
 /* IMAGE FORMAT: FULL-BLEED EDITORIAL (no radius, no shadow)
-   4/5 (dikey "reel" oranı) — bu, en yüksek özgüllüğe sahip kural
+   4/3 (dengeli yatay dikdörtgen) — bu, en yüksek özgüllüğe sahip kural
    olduğu için sayfadaki diğer tüm .menu-item-image aspect-ratio
-   tanımlarını (5/4 içerenler dahil) ezip kazanıyor. object-fit:cover
-   sayesinde görsel bu dikey çerçeveye kırpılarak tam oturuyor. */
+   tanımlarını ezip kazanıyor. object-fit:cover sayesinde görsel bu
+   çerçeveye kırpılarak tam oturuyor. Yeni AI ürün görsellerinin çoğu
+   kare/yatay geldiği için 4/3, önceki dikey 4/5'ten daha az kırpıyor. */
 body.dl-style-vertical .menu-item-image {
-    aspect-ratio: 4/5 !important;
+    aspect-ratio: 4/3 !important;
     height: auto !important;
-    max-height: none !important; /* masaüstü kuralındaki 400px sınırı 4/5 oranını bozuyordu */
+    max-height: none !important; /* masaüstü kuralındaki 400px sınırı oranı bozuyordu */
     width: 100% !important;
     margin: 0 !important; /* "body .menu-item-image" kuralındaki 10px kenar boşluğu
         bu full-bleed kural width:100% ile eşleşince görseli karttan taşırıyordu */
@@ -2097,7 +2120,7 @@ body.dl-nav-sharp .cat-btn {
     border-bottom: 1px solid transparent !important;
     box-shadow: none !important;
     color: #999 !important;
-    font-family: 'Playfair Display', serif !important;
+    font-family: 'General Sans', 'Inter', sans-serif !important;
     font-style: normal !important;
     font-weight: 700 !important;
     font-size: 1.1rem !important;
@@ -2257,6 +2280,13 @@ body .menu-item-price {
     font-family: 'Inter', sans-serif !important;
     font-size: 1.25rem !important;
     font-weight: 800 !important;
+    white-space: nowrap !important; /* "24,50 €" iki satıra bölünmesin — uzun
+        başlıklarda (ör. "Dorade (gegrillt oder gebraten)") flex satırı
+        sıkışınca fiyat "24,50" ve "€" olarak ayrı satırlara düşüyordu */
+    flex-shrink: 0 !important;
+}
+body .menu-item-title-row h4 {
+    min-width: 0; /* flex item'ın taşmadan doğru şekilde sarabilmesi için */
 }
 body .menu-item-desc-inline {
     text-align: left !important;
@@ -2312,6 +2342,7 @@ body.modal-open {
     font-size: 1rem;
     transition: all 0.3s ease;
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    text-overflow: ellipsis;
 }
 body:not(.dl-bg-white) .search-box .menu-search-input {
     background: rgba(255, 255, 255, 0.1);
@@ -2451,5 +2482,13 @@ body.dl-bg-white .nav-links a.active-link {
 .menu-item[data-id='81'] .menu-item-image img {
     object-fit: contain !important;
     background-color: var(--card-bg, #fff);
+}
+
+/* Bu sayfanın footer'ı (#contact) style.css'teki .footer-content'i
+   kullanıyor ama o kural sadece "margin:0 auto" ile ortalıyor, kenar
+   boşluğu (padding) hiç yok — içerik ekranın sol/sağ kenarına
+   yapışıyordu. */
+#contact {
+    padding: 50px 20px 30px;
 }
 
