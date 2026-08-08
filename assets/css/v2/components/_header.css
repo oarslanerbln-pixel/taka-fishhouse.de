@@ -78,7 +78,35 @@ header.scrolled .btn-outline-square:hover {
 }
 
 .brand-logo:hover { transform: scale(1.04) translateY(-1px); }
-.brand-logo-img { height: 48px; }
+
+.brand-logo-img {
+    height: 48px;
+    animation: logo-entrance 1.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes logo-entrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.82) translateY(-10px);
+        filter: blur(8px);
+    }
+    55% {
+        opacity: 1;
+        filter: blur(0);
+    }
+    72% {
+        transform: scale(1.045) translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .brand-logo-img { animation: none; }
+}
 
 .nav-links {
     display: flex;

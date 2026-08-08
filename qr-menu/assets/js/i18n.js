@@ -77,12 +77,20 @@ const i18n = {
 // Auto-init
 document.addEventListener('DOMContentLoaded', () => {
     i18n.init();
-    
+
     // Setup event listeners for switcher buttons
     document.addEventListener('click', (e) => {
         if (e.target.classList.contains('lang-btn')) {
             const lang = e.target.dataset.lang;
             i18n.setLanguage(lang);
         }
+    });
+
+    // Mobil dokunsal geri bildirim (haptic) — dil butonları, kategori
+    // sekmeleri ve diğer basılabilir butonlarda hafif titreşim.
+    // iOS Safari navigator.vibrate desteklemiyor, feature-detect şart.
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('button, .btn, .lang-btn, .cat-btn, .fav-btn, .clear-search-btn');
+        if (btn && navigator.vibrate) navigator.vibrate(10);
     });
 });

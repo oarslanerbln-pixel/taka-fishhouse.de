@@ -81,12 +81,20 @@ window.i18n = i18n; // Expose globally to fix click issues
 // Auto-init
 document.addEventListener('DOMContentLoaded', () => {
     i18n.init();
-    
+
     // Setup event listeners for switcher buttons
     document.addEventListener('click', (e) => {
         if (e.target.classList.contains('lang-btn')) {
             const lang = e.target.dataset.lang;
             i18n.setLanguage(lang);
         }
+    });
+
+    // Mobil dokunsal geri bildirim (haptic) — dil butonları ve diğer
+    // basılabilir butonlarda hafif titreşim. iOS Safari navigator.vibrate
+    // desteklemiyor, bu yüzden feature-detect şart.
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('button, .btn, .lang-btn, .whatsapp-btn, .footer-socials a, .res-submit, .scroll-top');
+        if (btn && navigator.vibrate) navigator.vibrate(10);
     });
 });

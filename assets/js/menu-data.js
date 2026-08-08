@@ -15,7 +15,7 @@ const menuData = [
                 "nameES": "Dorada (A la plancha o frita)",
                 "nameAR": "دنيس (مشوي أو مقلي)",
                 "price": "24,50",
-                "image": "assets/lieferando_imgs/dorade_teller.jpg",
+                "image": "assets/img/products/dorade.jpg",
                 "pairingId": 22,
                 "storyTR": "Ege'nin serin sularından özenle seçilmiş, şefimizin özel zeytinyağı marinasyonu ile hazırlanan taptaze Çipura. Izgara ateşinde mühürlenerek sululuğunu ve o eşsiz deniz aromasını kaybetmeden masanıza gelir.",
                 "storyDE": "Sorgfältig aus den kühlen Gewässern der Ägäis ausgewählt, wird diese frische Dorade mit einer speziellen Olivenöl-Marinade unseres Küchenchefs zubereitet. Auf dem Grill versiegelt, um ihre Saftigkeit und das unvergleichliche Meeresaroma zu bewahren.",
@@ -35,7 +35,7 @@ const menuData = [
                 "nameES": "Lubina (A la plancha o frita)",
                 "nameAR": "قاروص (مشوي أو مقلي)",
                 "price": "24,50",
-                "image": "assets/lieferando_imgs/wolfsbarsch_teller.jpg",
+                "image": "assets/img/products/levrek.jpg",
                 "pairingId": 20,
                 "storyTR": "Günün en taze avlarından... Kar beyazı eti ve pürüzsüz dokusuyla Levrek, deniz ürünleri tutkunları için bir başyapıt. Özel baharat harmanımızla marine edilerek dışı çıtır, içi pamuk gibi servis edilir.",
                 "storyDE": "Einer der frischesten Fänge des Tages... Mit seinem schneeweißen Fleisch und der geschmeidigen Textur ist der Wolfsbarsch ein Meisterwerk für Liebhaber von Meeresfrüchten. Mit unserer speziellen Gewürzmischung mariniert, wird er außen knusprig und innen butterweich serviert.",
@@ -55,7 +55,7 @@ const menuData = [
                 "nameES": "Anchoas fritas",
                 "nameAR": "أنشوجة مقلية",
                 "price": "20,00",
-                "image": "assets/img/products/hamsi_web.jpg",
+                "image": "assets/img/products/hamsi_gebraten.jpg",
                 "allergens": "1,4",
                 "diet": {
                     "vegetarian": false,
@@ -91,7 +91,7 @@ const menuData = [
                 "nameES": "Caballa",
                 "nameAR": "إسقمري",
                 "price": "22,00",
-                "image": "assets/img/products/uskumru.jpg.jpg",
+                "image": "assets/img/products/makrele.jpg",
                 "allergens": "1,4",
                 "diet": {
                     "vegetarian": false,
@@ -107,7 +107,7 @@ const menuData = [
                 "nameES": "Filete de salmón",
                 "nameAR": "فيليه سلمون",
                 "price": "26,00",
-                "image": "assets/ubereats_imgs/lachsfilet.jpg",
+                "image": "assets/img/products/lachsfilet.jpg",
                 "allergens": "4",
                 "diet": {
                     "vegetarian": false,
@@ -139,7 +139,7 @@ const menuData = [
                 "nameES": "Merlán",
                 "nameAR": "بياض",
                 "price": "22,00",
-                "image": "assets/ubereats_imgs/merlan.jpg",
+                "image": "assets/img/products/merlan.jpg",
                 "allergens": "1,4",
                 "diet": {
                     "vegetarian": false,
@@ -155,7 +155,7 @@ const menuData = [
                 "nameES": "Jurel",
                 "nameAR": "شيم",
                 "price": "22,00",
-                "image": "assets/lieferando_imgs/st_cker_teller.jpg",
+                "image": "assets/img/products/istavrit.jpg",
                 "allergens": "1,4",
                 "diet": {
                     "vegetarian": false,
@@ -188,7 +188,7 @@ const menuData = [
                 "nameES": "Lenguado",
                 "nameAR": "سمك موسى",
                 "price": "32,00",
-                "image": "assets/dil_baligi.png",
+                "image": "assets/img/products/dil_baligi.jpg",
                 "allergens": "4",
                 "diet": {
                     "vegetarian": false,
@@ -204,7 +204,7 @@ const menuData = [
                 "nameES": "Menú Especial Taka para 2 personas",
                 "nameAR": "طبق قائمة تاكا الخاصة لشخصين",
                 "price": "75,00",
-                "image": "assets/img/products/karisik_izgara_2_kisilik.jpg",
+                "image": "assets/img/products/taka_spezial_2_personen.jpg",
                 "allergens": "4",
                 "diet": {
                     "vegetarian": false,
@@ -228,7 +228,7 @@ const menuData = [
                 "nameES": "Sopa de pescado (Salmón)",
                 "nameAR": "شوربة سمك (سلمون)",
                 "price": "8,50",
-                "image": "assets/ubereats_imgs/lachssuppe.jpg",
+                "image": "assets/img/products/lachssuppe.jpg",
                 "allergens": "4,7",
                 "diet": {
                     "vegetarian": false,
@@ -252,7 +252,7 @@ const menuData = [
                 "nameES": "Ensalada verde mixta",
                 "nameAR": "سلطة خضراء مشكلة",
                 "price": "6,00 / 8,00",
-                "image": "assets/lieferando_imgs/gemischter_salat.jpg",
+                "image": "assets/img/products/gemischter_gruener_salat.jpg",
                 "diet": {
                     "vegetarian": true,
                     "glutenFree": true
@@ -267,7 +267,7 @@ const menuData = [
                 "nameES": "Ensalada del pastor",
                 "nameAR": "سلطة الراعي",
                 "price": "6,50 / 8,50",
-                "image": "assets/ubereats_imgs/bauernsalat.jpg",
+                "image": "assets/img/products/bauernsalat.jpg",
                 "diet": {
                     "vegetarian": true,
                     "glutenFree": true
@@ -277,7 +277,7 @@ const menuData = [
                 "id": 6,
                 "nameTR": "Roka Salatası",
                 "nameDE": "Ruccolasalat",
-                "image": "assets/ubereats_imgs/rucolasalat.jpg",
+                "image": "assets/img/products/rucolasalat.jpg",
                 "nameEN": "Arugula Salad",
                 "nameRU": "Салат с рукколой",
                 "nameES": "Ensalada de rúcula",
@@ -292,7 +292,7 @@ const menuData = [
                 "id": 7,
                 "nameTR": "Somon Salatası",
                 "nameDE": "Lachssalat",
-                "image": "assets/ubereats_imgs/lachssalat.jpg",
+                "image": "assets/img/products/lachssalat.jpg",
                 "nameEN": "Salmon Salad",
                 "nameRU": "Салат с лососем",
                 "nameES": "Ensalada de salmón",
@@ -308,7 +308,7 @@ const menuData = [
                 "id": 8,
                 "nameTR": "Karides Salatası",
                 "nameDE": "Garnelensalat",
-                "image": "assets/ubereats_imgs/garnelensalat.jpg",
+                "image": "assets/img/products/garnelensalat.jpg",
                 "nameEN": "Shrimp Salad",
                 "nameRU": "Салат с креветками",
                 "nameES": "Ensalada de camarones",
@@ -324,7 +324,7 @@ const menuData = [
                 "id": 9,
                 "nameTR": "Hamsi Salatası",
                 "nameDE": "Hamsisalat",
-                "image": "assets/ubereats_imgs/hamsisalat.jpg",
+                "image": "assets/img/products/hamsisalat.jpg",
                 "nameEN": "Anchovy Salad",
                 "nameRU": "Салат с хамсой",
                 "nameES": "Ensalada de anchoas",
@@ -353,7 +353,7 @@ const menuData = [
                 "nameES": "Plato de Aperitivos Mixtos",
                 "nameAR": "مقبلات مشكلة",
                 "price": "13,50 / 22,50",
-                "image": "assets/img/products/karisik_meze_tabagi_ai.png",
+                "image": "assets/img/products/karisik_meze_tabagi.jpg",
                 "diet": {
                     "vegetarian": true,
                     "glutenFree": false
@@ -368,7 +368,7 @@ const menuData = [
                 "nameES": "Tarator de zanahoria",
                 "nameAR": "طرطور جزر",
                 "price": "4,50 / 7,50",
-                "image": "assets/img/products/havuc_tarator_yeni.jpg",
+                "image": "assets/img/products/havuc_tarator.jpg",
                 "allergens": "7",
                 "diet": {
                     "vegetarian": true,
@@ -384,7 +384,7 @@ const menuData = [
                 "nameES": "Pasta picante (Antep Ezme)",
                 "nameAR": "معجون حار (عنتاب إزمي)",
                 "price": "4,50 / 7,50",
-                "image": "https://imageproxy.wolt.com/assets/69a80b2fe2de7f22b84d7fee",
+                "image": "assets/img/products/acili_ezme.jpg",
                 "diet": {
                     "vegetarian": true,
                     "glutenFree": false
@@ -400,7 +400,7 @@ const menuData = [
                 "nameAR": "حمص",
                 "price": "4,50 / 7,50",
                 "allergens": "11",
-                "image": "https://imageproxy.wolt.com/assets/69a80b6e23e151913f38f30e",
+                "image": "assets/img/products/humus.jpg",
                 "diet": {
                     "vegetarian": true,
                     "glutenFree": true
@@ -431,7 +431,7 @@ const menuData = [
                 "nameES": "Mariscos",
                 "nameAR": "مأكولات بحرية",
                 "price": "8,50 / 12,50",
-                "image": "assets/img/products/deniz_mahsulleri_yeni.jpg",
+                "image": "assets/img/products/meeresfruechte_meze.jpg",
                 "allergens": "2,4,14",
                 "diet": {
                     "vegetarian": false,
@@ -442,7 +442,7 @@ const menuData = [
                 "id": 18,
                 "nameTR": "Şakşuka",
                 "nameDE": "Şakşuka",
-                "image": "https://imageproxy.wolt.com/assets/69a80bb97d25f60394a12da0",
+                "image": "assets/img/products/saksuka.jpg",
                 "nameEN": "Şakşuka",
                 "nameRU": "Шакшука",
                 "nameES": "Shakshuka",
@@ -478,7 +478,7 @@ const menuData = [
                 "nameES": "Köpoğlu (Berenjena asada y yogur)",
                 "nameAR": "كوبوغلو (باذنجان مشوي مع زبادي)",
                 "price": "4,50 / 7,50",
-                "image": "https://imageproxy.wolt.com/assets/69a80c4de2de7f22b84d8232",
+                "image": "assets/img/products/kopoglu.jpg",
                 "allergens": "7",
                 "diet": {
                     "vegetarian": true,
@@ -494,7 +494,7 @@ const menuData = [
                 "nameES": "Ensalada de pulpo",
                 "nameAR": "سلطة أخطبوط",
                 "price": "9,50 / 14,50",
-                "image": "https://imageproxy.wolt.com/assets/69a80c6be2de7f22b84d823a",
+                "image": "assets/img/products/oktopussalat.jpg",
                 "allergens": "14",
                 "diet": {
                     "vegetarian": false,
@@ -520,7 +520,7 @@ const menuData = [
                 "id": 27,
                 "nameTR": "Urla Meze",
                 "nameDE": "Urla Meze",
-                "image": "assets/img/products/urla_meze_yeni.jpg",
+                "image": "assets/img/products/urla_meze.jpg",
                 "nameEN": "Urla Meze",
                 "nameRU": "Урла Мезе",
                 "nameES": "Urla Meze",
@@ -536,7 +536,7 @@ const menuData = [
                 "id": 30,
                 "nameTR": "Yoğurtlu Patlıcan",
                 "nameDE": "Aubergine mit Joghurt",
-                "image": "https://imageproxy.wolt.com/assets/69a80dce7d25f60394a12fcb",
+                "image": "assets/img/products/aubergine_mit_joghurt.jpg",
                 "nameEN": "Eggplant with Yogurt",
                 "nameRU": "Баклажаны с йогуртом",
                 "nameES": "Berenjena con yogur",
@@ -571,7 +571,7 @@ const menuData = [
                 "nameRU": "Свекла с йогуртом и чесноком",
                 "nameES": "Remolacha con yogur y ajo",
                 "nameAR": "شمندر مع زبادي وثوم",
-                "image": "https://imageproxy.wolt.com/assets/69a80e3523e151913f38f56e",
+                "image": "assets/img/products/pembe_sultan.jpg",
                 "price": "4,50 / 7,50",
                 "allergens": "7",
                 "diet": {
@@ -588,7 +588,7 @@ const menuData = [
                 "nameES": "Espárrago de mar",
                 "nameAR": "هليون البحر",
                 "price": "9,50 / 12,50",
-                "image": "assets/img/products/deniz-borulcesi.jpg",
+                "image": "assets/img/products/deniz_borulcesi.jpg",
                 "diet": {
                     "vegetarian": true,
                     "glutenFree": false
@@ -611,7 +611,7 @@ const menuData = [
                 "nameES": "Pescado sobre cama de puré de berenjena",
                 "nameAR": "سمك على هريس الباذنجان",
                 "price": "16,50",
-                "image": "assets/ubereats_imgs/fisch_auf_auberginenp_reebett.jpg",
+                "image": "assets/img/products/fisch_auf_auberginenpuereebett.jpg",
                 "allergens": "4,7",
                 "diet": {
                     "vegetarian": false,
@@ -627,7 +627,7 @@ const menuData = [
                 "nameES": "Kokoretsi de pescado",
                 "nameAR": "كوكوريتش سمك",
                 "price": "15,50",
-                "image": "assets/ubereats_imgs/geschnetzelte_fischpfanne.jpg",
+                "image": "assets/img/products/geschnetzelte_fischpfanne.jpg",
                 "allergens": "4",
                 "diet": {
                     "vegetarian": false,
@@ -643,7 +643,7 @@ const menuData = [
                 "nameES": "Mariscos especial Taka",
                 "nameAR": "مأكولات بحرية تاكا سبيشال",
                 "price": "18,50",
-                "image": "assets/img/products/deniz_mahsulleri_taka_spesiyal.png",
+                "image": "assets/img/products/deniz_mahsulleri_taka_spesiyal_ai.jpg",
                 "allergens": "2,4,14",
                 "diet": {
                     "vegetarian": false,
@@ -659,7 +659,7 @@ const menuData = [
                 "nameES": "Champiñones horneados con queso",
                 "nameAR": "فطر مخبوز بالجبن",
                 "price": "10,50",
-                "image": "assets/ubereats_imgs/gegrillte_champignons.jpg",
+                "image": "assets/img/products/kasarli_mantar.jpg",
                 "allergens": "7",
                 "diet": {
                     "vegetarian": true,
@@ -675,7 +675,7 @@ const menuData = [
                 "nameES": "Brócoli horneado con queso",
                 "nameAR": "بروكلي مخبوز بالجبن",
                 "price": "10,50",
-                "image": "assets/lieferando_imgs/broccoli.jpg",
+                "image": "assets/img/products/ueberbackene_brokkoli.jpg",
                 "allergens": "7",
                 "diet": {
                     "vegetarian": true,
@@ -707,7 +707,7 @@ const menuData = [
                 "nameES": "Patatas fritas especiales Taka",
                 "nameAR": "بطاطس مقلية تاكا سبيشال",
                 "price": "7,50",
-                "image": "assets/ubereats_imgs/bratkartoffel_taka_spezial.jpg",
+                "image": "assets/img/products/bratkartoffel_taka_spezial.jpg",
                 "diet": {
                     "vegetarian": true,
                     "glutenFree": false
@@ -717,7 +717,7 @@ const menuData = [
                 "id": 50,
                 "nameTR": "Patates Kızartması",
                 "nameDE": "Pommes frites",
-                "image": "assets/ubereats_imgs/pommes_frites.jpg",
+                "image": "assets/img/products/pommes_frites.jpg",
                 "nameEN": "French Fries",
                 "nameRU": "Картофель фри",
                 "nameES": "Patatas fritas",
@@ -761,7 +761,7 @@ const menuData = [
                 "nameES": "Anillos de calamar caseros",
                 "nameAR": "حلقات حبار منزلية",
                 "price": "22,00",
-                "image": "assets/lieferando_imgs/kalamar_teller.jpg",
+                "image": "assets/img/products/kalamaresringe.jpg",
                 "allergens": "1,14",
                 "diet": {
                     "vegetarian": false,
@@ -777,7 +777,7 @@ const menuData = [
                 "nameES": "Sartén de camarones jumbo a la mantequilla",
                 "nameAR": "مقلاة جمبري جامبو بالزبدة",
                 "price": "25,00",
-                "image": "assets/ubereats_imgs/garnelenpfanne_in_butter.jpg",
+                "image": "assets/img/products/garnelenpfanne_butter.jpg",
                 "allergens": "2,7",
                 "diet": {
                     "vegetarian": false,
@@ -793,7 +793,7 @@ const menuData = [
                 "nameES": "Sartén de camarones en salsa de tomate picante",
                 "nameAR": "مقلاة جمبري بصلصة طماطم حارة",
                 "price": "25,00",
-                "image": "assets/lieferando_imgs/garnelen_pfanne.jpg",
+                "image": "assets/img/products/garnelenpfanne_tomatensosse.jpg",
                 "allergens": "2",
                 "diet": {
                     "vegetarian": false,
@@ -804,7 +804,7 @@ const menuData = [
                 "id": 77,
                 "nameTR": "Taka Spesiyal Karides Tavası",
                 "nameDE": "Garnelenpfanne TAKA Spezial",
-                "image": "assets/ubereats_imgs/garnelenpfanne_taka_spezial.jpg",
+                "image": "assets/img/products/garnelenpfanne_taka_spezial.jpg",
                 "nameEN": "TAKA Special Shrimp Pan",
                 "nameRU": "Креветки на сковороде TAKA Special",
                 "nameES": "Sartén de camarones TAKA Especial",
@@ -825,7 +825,7 @@ const menuData = [
                 "nameES": "Pulpo a la parrilla",
                 "nameAR": "أخطبوط مشوي",
                 "price": "32,00",
-                "image": "assets/img/products/izgara_ahtapot_yeni.jpg",
+                "image": "assets/img/products/izgara_ahtapot.jpg",
                 "allergens": "14",
                 "diet": {
                     "vegetarian": false,
@@ -841,7 +841,7 @@ const menuData = [
                 "nameES": "Cazuela de camarones horneada con queso",
                 "nameAR": "طاجن جمبري مخبوز بالجبن",
                 "price": "19,50",
-                "image": "assets/ubereats_imgs/berbackener_garnelenauflauf.jpg",
+                "image": "assets/img/products/ueberbackener_garnelenauflauf.jpg",
                 "allergens": "2,7",
                 "diet": {
                     "vegetarian": false,
@@ -873,7 +873,7 @@ const menuData = [
                 "nameES": "Pulpo con pastrami",
                 "nameAR": "أخطبوط بالبسطرمة",
                 "price": "18,50",
-                "image": "assets/ubereats_imgs/oktopus_mit_speck.jpg",
+                "image": "assets/img/products/oktopus_mit_pastirma.jpg",
                 "allergens": "14",
                 "diet": {
                     "vegetarian": false,
@@ -889,7 +889,7 @@ const menuData = [
                 "nameES": "Especial Mariscos Taka",
                 "nameAR": "طبق تاكا البحري الخاص",
                 "price": "35,00",
-                "image": "assets/img/products/taka_spesiyal_deniz_mahsulleri.jpg",
+                "image": "assets/img/products/taka_meeresfruechte_spezial.jpg",
                 "diet": {
                     "vegetarian": false,
                     "glutenFree": false
@@ -904,7 +904,7 @@ const menuData = [
                 "nameES": "Camarones Crujientes",
                 "nameAR": "جمبري مقرمش",
                 "price": "22,50",
-                "image": "assets/img/products/citir_karides.png",
+                "image": "assets/img/products/crispy_garnelen.jpg",
                 "diet": {
                     "vegetarian": false,
                     "glutenFree": false
@@ -945,7 +945,7 @@ const menuData = [
                 "nameES": "Sándwich de salmón",
                 "nameAR": "ساندويتش سلمون",
                 "price": "9,00",
-                "image": "assets/ubereats_imgs/lachs_sandwich.jpg",
+                "image": "assets/img/products/lachs_sandwich.jpg",
                 "allergens": "1,4",
                 "diet": {
                     "vegetarian": false,
@@ -961,7 +961,7 @@ const menuData = [
                 "nameES": "Sándwich de dorada",
                 "nameAR": "ساندويتش دنيس",
                 "price": "9,00",
-                "image": "assets/ubereats_imgs/dorade_sandwich.jpg",
+                "image": "assets/img/products/dorade_sandwich.jpg",
                 "allergens": "1,4",
                 "diet": {
                     "vegetarian": false,
@@ -977,7 +977,7 @@ const menuData = [
                 "nameES": "Sándwich de caballa",
                 "nameAR": "ساندويتش إسقمري",
                 "price": "8,00",
-                "image": "assets/ubereats_imgs/makrele_sandwich.jpg",
+                "image": "assets/img/products/makrele_sandwich.jpg",
                 "allergens": "1,4",
                 "diet": {
                     "vegetarian": false,
@@ -993,7 +993,7 @@ const menuData = [
                 "nameES": "Sándwich de merlán",
                 "nameAR": "ساندويتش بياض",
                 "price": "8,00",
-                "image": "assets/ubereats_imgs/sardine_sandwich.jpg",
+                "image": "assets/img/products/sardine_sandwich.jpg",
                 "allergens": "1,4",
                 "diet": {
                     "vegetarian": false,
@@ -1009,7 +1009,7 @@ const menuData = [
                 "nameES": "Sándwich de anchoa",
                 "nameAR": "ساندويتش أنشوجة",
                 "price": "9,00",
-                "image": "assets/lieferando_imgs/garnelen_sandwich.jpg",
+                "image": "assets/img/products/garnele_sandwich.jpg",
                 "allergens": "1,2",
                 "diet": {
                     "vegetarian": false,
@@ -1041,7 +1041,7 @@ const menuData = [
                 "nameES": "Wrap de dorada",
                 "nameAR": "راب دنيس",
                 "price": "10,00",
-                "image": "assets/lieferando_imgs/d_r_m_doraden.jpg",
+                "image": "assets/img/products/dorade_duerum.jpg",
                 "allergens": "1,4",
                 "diet": {
                     "vegetarian": false,
@@ -1057,7 +1057,7 @@ const menuData = [
                 "nameES": "Wrap de caballa",
                 "nameAR": "راب إسقمري",
                 "price": "9,00",
-                "image": "assets/lieferando_imgs/d_r_m_makrelen.jpg",
+                "image": "assets/img/products/makrele_duerum.jpg",
                 "allergens": "1,4",
                 "diet": {
                     "vegetarian": false,
@@ -1074,7 +1074,7 @@ const menuData = [
                 "nameAR": "دوروم السردين",
                 "price": "9,00",
                 "allergens": "1,4",
-                "image": "assets/lieferando_imgs/d_r_m_sardinen.jpg",
+                "image": "assets/img/products/sardine_duerum.jpg",
                 "diet": {
                     "vegetarian": false,
                     "glutenFree": false
@@ -1089,7 +1089,7 @@ const menuData = [
                 "nameES": "Wrap de anchoa",
                 "nameAR": "راب أنشوجة",
                 "price": "10,00",
-                "image": "assets/lieferando_imgs/d_r_m_garnelen.jpg",
+                "image": "assets/img/products/garnele_duerum.jpg",
                 "allergens": "1,2",
                 "diet": {
                     "vegetarian": false,
@@ -1114,7 +1114,7 @@ const menuData = [
                 "nameAR": "قائمة برجر سمك (مع بطاطس ومشروب)",
                 "price": "16,00",
                 "allergens": "1,4",
-                "image": "assets/img/products/balik_burger_ai.jpg",
+                "image": "assets/img/products/fisch_burger.jpg",
                 "diet": {
                     "vegetarian": false,
                     "glutenFree": false
@@ -1145,7 +1145,7 @@ const menuData = [
                 "nameES": "Pasta con salmón (Salsa especial)",
                 "nameAR": "مكرونة بالسلمون (صلصة خاصة)",
                 "price": "20,00",
-                "image": "assets/ubereats_imgs/nudeln_mit_lachsfilet.jpg",
+                "image": "assets/img/products/somonlu_makarna.jpg",
                 "allergens": "1,4,7",
                 "diet": {
                     "vegetarian": false,
@@ -1161,7 +1161,7 @@ const menuData = [
                 "nameES": "Pasta con camarones (Salsa especial)",
                 "nameAR": "مكرونة بالجمبري (صلصة خاصة)",
                 "price": "20,00",
-                "image": "assets/ubereats_imgs/nudeln_mit_garnelen.jpg",
+                "image": "assets/img/products/penne_mit_garnelen.jpg",
                 "allergens": "1,2,7",
                 "diet": {
                     "vegetarian": false,
@@ -1185,7 +1185,7 @@ const menuData = [
                 "nameES": "Halva de sémola tibia con helado",
                 "nameAR": "حلاوة سميد دافئة مع آيس كريم",
                 "price": "9,00",
-                "image": "assets/ubereats_imgs/warmer_grie_halva_mit_eis.jpg",
+                "image": "assets/img/products/warmer_griess_halva.jpg",
                 "allergens": "7",
                 "diet": {
                     "vegetarian": true,
@@ -1217,7 +1217,7 @@ const menuData = [
                 "nameES": "Arroz con leche al horno (Hamsiköy)",
                 "nameAR": "أرز بالحليب مخبوز في الفرن (هامسيكوي)",
                 "price": "5,90",
-                "image": "assets/img/products/hamsikoy_sutlac_ai.png",
+                "image": "assets/img/products/hamsikoy_sutlac.jpg",
                 "allergens": "7",
                 "diet": {
                     "vegetarian": false,
@@ -1233,7 +1233,7 @@ const menuData = [
                 "nameES": "Magnolia de Fresa",
                 "nameAR": "ماغنوليا فراولة",
                 "price": "5,90",
-                "image": "assets/img/cicekli_magnolia.avif",
+                "image": "assets/img/products/erdbeer_magnolia.jpg",
                 "allergens": "7",
                 "diet": {
                     "vegetarian": true,
@@ -1249,7 +1249,7 @@ const menuData = [
                 "nameES": "Helado frito",
                 "nameAR": "آيس كريم مقلي",
                 "price": "9,00",
-                "image": "assets/img/products/kizarmis_dondurma_yeni.jpg",
+                "image": "assets/img/products/kizarmis_dondurma_ai.jpg",
                 "allergens": "7",
                 "diet": {
                     "vegetarian": true,
