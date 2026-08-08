@@ -683,4 +683,109 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // =====================================================
+    // SIGNATURE DISHES MARQUEE (kendiliğinden kayan + elle kaydırılabilir)
+    //
+    // Eskiden salt CSS transform animasyonuydu — elle tutulup
+    // kaydırılamıyordu (ne masaüstünde ne mobilde), çünkü transform
+    // native scroll/drag ile aynı anda çalışmaz. Sonra ayrı bir "paused"
+    // flag + setTimeout ile duraklat/devam-et yapıldı, ama bu dağınık
+    // durum (her event kendi timer'ını kurup iptal ediyordu) hover'dan
+    // çıkınca bazen hiç devam etmeme hatasına yol açtı — flag bir yerde
+    // "true" kalıp bir daha false olmuyordu.
+    //
+    // Artık TEK bir kaynak var: lastInteraction (son etkileşim zamanı).
+    // Her kare "üstünden ne kadar süre geçti" diye SORUYOR, hiçbir yerde
+    // kalıcı bir "duraklatıldı" durumu tutulmuyor — bu yüzden yarışa
+    // (race condition) hiç açık değil, kendiliğinden her zaman doğru
+    // duruma dönüyor.
+    //
+    // Ayrıca: native overflow-x:auto sadece dokunmatik/trackpad'de elle
+    // kaydırmayı destekler — normal FARE ile "tutup çekmek" tarayıcının
+    // kendiliğinden yapmadığı bir şey, bu yüzden gerçek mousedown/
+    // mousemove/mouseup tabanlı sürükleme burada elle eklendi.
+    // =====================================================
+    (function signatureMarquee() {
+        const wrapper = document.querySelector('.signature-marquee-wrapper');
+        const track = document.querySelector('.signature-marquee-track');
+        if (!wrapper || !track) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const SPEED = 0.55;       // px / kare (~60fps ≈ 33px/sn)
+        const RESUME_DELAY = 2000; // son etkileşimden bu kadar ms sonra otomatik kayma geri başlar
+
+        let lastInteraction = 0; // 0 = henüz hiç etkileşim yok -> hep kayar
+        let isDragging = false;
+        let dragStartX = 0;
+        let dragStartScroll = 0;
+        let dragDistance = 0; // sürüklerken alınan toplam yatay yol (px)
+
+        function markInteraction() {
+            lastInteraction = performance.now();
+        }
+
+        function loopWidth() {
+            // SET 1 + SET 2 birebir aynı olduğu için tam yarısı bir döngü.
+            return track.scrollWidth / 2;
+        }
+
+        function tick() {
+            const idleFor = performance.now() - lastInteraction;
+            if (!isDragging && idleFor > RESUME_DELAY) {
+                const half = loopWidth();
+                let next = wrapper.scrollLeft + SPEED;
+                if (half > 0 && next >= half) next -= half;
+                wrapper.scrollLeft = next;
+            }
+            requestAnimationFrame(tick);
+        }
+
+        // --- Fare ile tut-sürükle (native değil, elle yazıldı) ---
+        wrapper.addEventListener('mousedown', function (e) {
+            isDragging = true;
+            dragDistance = 0;
+            markInteraction();
+            dragStartX = e.pageX;
+            dragStartScroll = wrapper.scrollLeft;
+            wrapper.classList.add('is-dragging');
+            e.preventDefault(); // metin/kart seçimini engelle
+        });
+        window.addEventListener('mousemove', function (e) {
+            if (!isDragging) return;
+            markInteraction();
+            const dx = e.pageX - dragStartX;
+            dragDistance = Math.abs(dx);
+            wrapper.scrollLeft = dragStartScroll - dx;
+        });
+        window.addEventListener('mouseup', function () {
+            if (!isDragging) return;
+            isDragging = false;
+            wrapper.classList.remove('is-dragging');
+            markInteraction();
+        });
+        // Kullanıcı bir kartı gerçekten SÜRÜKLEDİYSE (5px'ten fazla), aynı
+        // el bırakmadan doğan click'in linke gitmesini engelle — yoksa her
+        // sürükleme yanlışlıkla qr-menu/ sayfasına atlıyordu. Az hareket
+        // (gerçek bir tıklama) etkilenmiyor.
+        wrapper.addEventListener('click', function (e) {
+            if (dragDistance > 5) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        }, true);
+
+        // --- Dokunmatik/trackpad: native scroll zaten çalışıyor, sadece
+        //     "az önce etkileşim oldu" diye işaretlememiz yeterli ---
+        ['touchstart', 'touchmove', 'wheel'].forEach(function (evt) {
+            wrapper.addEventListener(evt, markInteraction, { passive: true });
+        });
+        wrapper.addEventListener('scroll', markInteraction, { passive: true });
+        // Üstüne gelince dursun (okumak isteyen okuyabilsin) — el çekilince
+        // hiçbir ek işlem gerekmiyor, tick() zaten RESUME_DELAY sonra
+        // kendiliğinden devam ediyor.
+        wrapper.addEventListener('mouseenter', markInteraction);
+
+        requestAnimationFrame(tick);
+    })();
+
 });

@@ -348,7 +348,11 @@
         gap: 50px;
     }
     .story-floating-stats { right: 20px; }
-    .story-values-row { 
+    /* Ortalanmış 3'lü liste dar ekranda dengesiz görünüyordu (madde
+       uzunlukları farklı olunca ortalama düzensiz duruyor) — sola
+       yaslı bırakıldı. Ayrıca dar ekranda alt alta dizmek (column)
+       yatay sıkışmayı da önlüyor. */
+    .story-values-row {
         justify-content: flex-start;
         flex-direction: column;
         align-items: flex-start;

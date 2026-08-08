@@ -72,11 +72,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!imagePath || imagePath.startsWith('http') || imagePath.includes('placeholder') || imagePath.startsWith('data:')) return imagePath;
 
         let newPath = imagePath;
-        
-        // Ufak uzantı ve path düzeltmeleri
-        if (newPath.endsWith('uskumru.jpg')) newPath = newPath.replace('uskumru.jpg', 'uskumru.jpg.jpg');
-        if (newPath.endsWith('kizarmis_dondurma_tek_top.jpg')) newPath = newPath.replace('kizarmis_dondurma_tek_top.jpg', 'kizarmis_dondurma.jpg');
-        
+
+        // NOT: Burada eskiden "uskumru.jpg" ve "kizarmis_dondurma_tek_top.jpg"
+        // için elle dosya adı düzeltmeleri vardı. Veri artık doğru dosya
+        // adlarını (uskumru.jpg.jpg) doğrudan kullanıyor, o yüzden bu iki kural
+        // hiçbir zaman eşleşmiyordu (ölü kod) — ikincisi ayrıca var olmayan bir
+        // dosyaya (kizarmis_dondurma.jpg) işaret ediyordu, yani bir gün veri
+        // yeniden eşleşirse sessizce 404 verecekti (Rotbarbe'de daha önce
+        // yaşanan hatayla — bkz. commit cda3848 — aynı kalıp). İkisi de
+        // kaldırıldı.
+
         // Vercel root directory'ye çıkmak için ../ kullanıyoruz
         if (!newPath.startsWith('../') && !newPath.startsWith('/') && !newPath.startsWith('http')) {
             newPath = '../' + newPath;
@@ -377,6 +382,15 @@ document.addEventListener('DOMContentLoaded', () => {
             menuWrapper.appendChild(allSection);
 
             initInteractions();
+
+            // i18n.updateUI() sayfa ilk açılırken (i18n.js'nin kendi
+            // DOMContentLoaded'ı) BU fonksiyondan ÖNCE bir kere çalışıyor —
+            // yani "Popüler"/"Şefin Seçimi" rozeti gibi renderMenu()'nun
+            // kendisinin oluşturduğu data-i18n elemanları o an DOM'da hiç
+            // yoktu ve hiçbir zaman çevrilmiyordu. Her render'dan sonra
+            // burada tekrar çağırarak yeni oluşturulan elemanların da
+            // güncel dile göre dolmasını sağlıyoruz.
+            if (typeof i18n !== 'undefined') i18n.updateUI();
         }
     }
 
@@ -447,7 +461,118 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('languageChanged', () => {
         renderMenu();
         applyDietFilters(); // Re-apply diet filters when language changes
+
+        // Modal (#storyModalOverlay) menuWrapper'ın DIŞINDA yaşıyor, bu yüzden
+        // renderMenu() ona hiç dokunmaz. Popup açıkken dil değiştirilirse
+        // içerik (başlık/fiyat/açıklama/alerjen) eski dilde donuk kalıyordu —
+        // açıksa güncel dile göre yeniden dolduruyoruz.
+        const openModal = document.getElementById('storyModalOverlay');
+        if (openModal && openModal.classList.contains('active') && currentOpenItemId) {
+            populateStoryModal(currentOpenItemId);
+        }
     });
+
+    // Şu an popup'ta açık olan ürünün id'si (kapalıyken null). languageChanged
+    // handler'ının hangi ürünü yeniden dolduracağını bilmesi için tutuluyor.
+    let currentOpenItemId = null;
+
+    // Modal içeriğini (başlık/fiyat/açıklama/alerjen/eşleşen ürün) doldurur.
+    // Hem ürün kartına tıklanınca hem de modal AÇIKKEN dil değiştirilince
+    // (yukarıdaki languageChanged handler'ı) çağrılabilsin diye ayrı bir
+    // fonksiyona çıkarıldı. itemId bulunamazsa false döner.
+    function populateStoryModal(itemId) {
+        const sImg = document.getElementById('storyModalImg');
+        const sTitle = document.getElementById('storyModalTitle');
+        const sPrice = document.getElementById('storyModalPrice');
+        const sDesc = document.getElementById('storyModalDesc');
+        const sPairing = document.getElementById('storyModalPairing');
+        if (!sTitle || typeof menuData === 'undefined') return false;
+
+        let foundItem = null;
+        for (let cat of menuData) {
+            const f = cat.items?.find(i => i.id === itemId);
+            if (f) { foundItem = f; break; }
+        }
+        if (!foundItem) return false;
+
+        const lang = typeof i18n !== 'undefined' ? i18n.currentLang : 'de';
+
+        let itemName = foundItem.nameDE;
+        if (lang === 'tr') itemName = foundItem.nameTR;
+        if (lang === 'en' && foundItem.nameEN) itemName = foundItem.nameEN;
+        if (lang === 'ru' && foundItem.nameRU) itemName = foundItem.nameRU;
+        if (lang === 'es' && foundItem.nameES) itemName = foundItem.nameES;
+        if (lang === 'ar' && foundItem.nameAR) itemName = foundItem.nameAR;
+
+        sTitle.textContent = itemName;
+        sPrice.textContent = foundItem.price ? foundItem.price + ' €' : '';
+
+        let modalImgSrc = getCorrectImageUrl(foundItem.image || 'assets/placeholder.jpg');
+        sImg.src = modalImgSrc;
+
+        // Story logic without fallback leaking to other languages.
+        // storyRU/ES/AR veri setinde yok — bu diller için İngilizce'ye,
+        // o da yoksa Almanca/Türkçe'ye düşülür (boş açıklama modalı yerine).
+        let story = foundItem['story' + lang.toUpperCase()]
+            || foundItem.storyEN || foundItem.storyDE || foundItem.storyTR;
+        sDesc.textContent = story || '';
+        sDesc.style.display = story ? '' : 'none';
+
+        // Allergen Logic
+        let sAllergens = document.getElementById('storyModalAllergens');
+        if (!sAllergens) {
+            sAllergens = document.createElement('div');
+            sAllergens.id = 'storyModalAllergens';
+            sAllergens.className = 'modal-allergens';
+            const descContainer = document.querySelector('.story-modal-desc-container');
+            if (descContainer) descContainer.appendChild(sAllergens);
+        }
+
+        if (foundItem.allergens) {
+            // "Alerjen:" etiketi dil ne olursa olsun hep Türkçe sabitti —
+            // Almanca/İngilizce modda bile değişmiyordu.
+            const allergenLabel = (typeof translations !== 'undefined' && translations[lang] && translations[lang]['modal-allergen-label']) || 'Allergen';
+            const algArray = foundItem.allergens.split(',');
+            let algHtml = '';
+            algArray.forEach(alg => {
+                algHtml += `<span class="modal-allergen-badge">${allergenLabel}: ${alg.trim()}</span>`;
+            });
+            sAllergens.innerHTML = algHtml;
+            sAllergens.style.display = 'flex';
+        } else {
+            sAllergens.style.display = 'none';
+        }
+
+        // Smart Pairing Logic
+        if (foundItem.pairingId) {
+            let pairingItem = null;
+            for (let cat of menuData) {
+                const p = cat.items?.find(i => i.id === foundItem.pairingId);
+                if (p) { pairingItem = p; break; }
+            }
+            if (pairingItem) {
+                let pName = pairingItem.nameDE;
+                if (lang === 'tr') pName = pairingItem.nameTR;
+                if (lang === 'en' && pairingItem.nameEN) pName = pairingItem.nameEN;
+                if (lang === 'ru' && pairingItem.nameRU) pName = pairingItem.nameRU;
+                if (lang === 'es' && pairingItem.nameES) pName = pairingItem.nameES;
+                if (lang === 'ar' && pairingItem.nameAR) pName = pairingItem.nameAR;
+                document.getElementById('pairingTitle').textContent = pName;
+                document.getElementById('pairingPrice').textContent = pairingItem.price ? pairingItem.price + ' €' : '';
+
+                let pImgSrc = getCorrectImageUrl(pairingItem.image || 'assets/placeholder.jpg');
+                document.getElementById('pairingImg').src = pImgSrc;
+
+                sPairing.classList.remove('hidden');
+            } else {
+                sPairing.classList.add('hidden');
+            }
+        } else {
+            sPairing.classList.add('hidden');
+        }
+
+        return true;
+    }
 
     // ===== INTERACTION LOGIC (ScrollSpy, Lightbox, Hearts) =====
     function initInteractions() {
@@ -462,131 +587,50 @@ document.addEventListener('DOMContentLoaded', () => {
         // Storytelling Modal & Lightbox Logic
         const storyModal = document.getElementById('storyModalOverlay');
         const sClose = document.getElementById('storyModalClose');
-        const sImg = document.getElementById('storyModalImg');
-        const sTitle = document.getElementById('storyModalTitle');
-        const sPrice = document.getElementById('storyModalPrice');
-        const sDesc = document.getElementById('storyModalDesc');
-        const sPairing = document.getElementById('storyModalPairing');
-        
+
         if (storyModal) {
             document.querySelectorAll('.menu-item').forEach(itemCard => {
                 itemCard.addEventListener('click', (e) => {
                     // Ignore clicks on fav btn
                     if (e.target.closest('.fav-btn')) return;
-                    
+
                     // ASMR & Haptics
                     if (navigator.vibrate) navigator.vibrate(15);
                     playAsmrSound('click');
 
                     const itemId = parseInt(itemCard.dataset.id);
-                    if(!itemId) return;
+                    if (!itemId) return;
+                    if (!populateStoryModal(itemId)) return;
 
-                    // Lookup item
-                    let foundItem = null;
-                    if(typeof menuData !== 'undefined') {
-                        for(let cat of menuData) {
-                            const f = cat.items?.find(i => i.id === itemId);
-                            if(f) { foundItem = f; break; }
-                        }
-                    }
-
-                    if(foundItem) {
-                        const lang = typeof i18n !== 'undefined' ? i18n.currentLang : 'de';
-                        
-                        let itemName = foundItem.nameDE;
-                        if (lang === 'tr') itemName = foundItem.nameTR;
-                        if (lang === 'en' && foundItem.nameEN) itemName = foundItem.nameEN;
-                        if (lang === 'ru' && foundItem.nameRU) itemName = foundItem.nameRU;
-                        if (lang === 'es' && foundItem.nameES) itemName = foundItem.nameES;
-                        if (lang === 'ar' && foundItem.nameAR) itemName = foundItem.nameAR;
-
-                        sTitle.textContent = itemName;
-                        sPrice.textContent = foundItem.price ? foundItem.price + ' €' : '';
-                        
-                        let modalImgSrc = getCorrectImageUrl(foundItem.image || 'assets/placeholder.jpg');
-                        sImg.src = modalImgSrc;
-                        
-                        // Story logic without fallback leaking to other languages.
-                        // Eskiden hikaye metni yoksa (101 üründen 99'unda yok)
-                        // açıklama alanına ÜRÜN ADI TEKRAR yazılıyordu — başlığın
-                        // hemen altında aynı metnin iki kez görünmesi hem TR hem
-                        // DE'de (tüm dillerde) oluşan gerçek bir hataydı. Artık
-                        // hikaye yoksa açıklama alanı tamamen gizleniyor.
-                        // storyRU/ES/AR veri setinde yok — bu diller için
-                        // İngilizce'ye, o da yoksa Almanca/Türkçe'ye düşülür
-                        // (boş açıklama modalı yerine).
-                        let story = foundItem['story'+lang.toUpperCase()]
-                            || foundItem.storyEN || foundItem.storyDE || foundItem.storyTR;
-                        sDesc.textContent = story || '';
-                        sDesc.style.display = story ? '' : 'none';
-
-                        // Allergen Logic
-                        let sAllergens = document.getElementById('storyModalAllergens');
-                        if (!sAllergens) {
-                            // If the element doesn't exist, create and append it inside the desc container
-                            sAllergens = document.createElement('div');
-                            sAllergens.id = 'storyModalAllergens';
-                            sAllergens.className = 'modal-allergens';
-                            const descContainer = document.querySelector('.story-modal-desc-container');
-                            if (descContainer) descContainer.appendChild(sAllergens);
-                        }
-
-                        if (foundItem.allergens) {
-                            // "Alerjen:" etiketi dil ne olursa olsun hep Türkçe
-                            // sabitti — Almanca/İngilizce modda bile değişmiyordu.
-                            const allergenLabel = (typeof translations !== 'undefined' && translations[lang] && translations[lang]['modal-allergen-label']) || 'Allergen';
-                            const algArray = foundItem.allergens.split(',');
-                            let algHtml = '';
-                            algArray.forEach(alg => {
-                                algHtml += `<span class="modal-allergen-badge">${allergenLabel}: ${alg.trim()}</span>`;
-                            });
-                            sAllergens.innerHTML = algHtml;
-                            sAllergens.style.display = 'flex';
-                        } else {
-                            if(sAllergens) sAllergens.style.display = 'none';
-                        }
-
-                        // Smart Pairing Logic
-                        if(foundItem.pairingId) {
-                            let pairingItem = null;
-                            for(let cat of menuData) {
-                                const p = cat.items?.find(i => i.id === foundItem.pairingId);
-                                if(p) { pairingItem = p; break; }
-                            }
-                            if(pairingItem) {
-                                let pName = pairingItem.nameDE;
-                                if (lang === 'tr') pName = pairingItem.nameTR;
-                                if (lang === 'en' && pairingItem.nameEN) pName = pairingItem.nameEN;
-                                document.getElementById('pairingTitle').textContent = pName;
-                                document.getElementById('pairingPrice').textContent = pairingItem.price ? pairingItem.price + ' €' : '';
-                                
-                                let pImgSrc = getCorrectImageUrl(pairingItem.image || 'assets/placeholder.jpg');
-                                document.getElementById('pairingImg').src = pImgSrc;
-                                
-                                sPairing.classList.remove('hidden');
-                            } else {
-                                sPairing.classList.add('hidden');
-                            }
-                        } else {
-                            sPairing.classList.add('hidden');
-                        }
-
-                        storyModal.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    }
+                    currentOpenItemId = itemId;
+                    storyModal.classList.add('active');
+                    // overflow:hidden yerine class kullanıyoruz: menu-page.css'te
+                    // sticky pozisyon düzeltmesi html/body'e "overflow-y: visible
+                    // !important" veriyor ve bu, inline style'ı (JS'in eski hali)
+                    // eziyordu — modal açıkken arka plan telefonlarda kayabiliyordu.
+                    document.body.classList.add('modal-open');
                 });
             });
 
-            sClose.addEventListener('click', () => {
-                storyModal.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-            storyModal.addEventListener('click', (e) => {
-                if(e.target === storyModal) {
+            // sClose/storyModal statik elemanlar — menuWrapper'ın dışında,
+            // hiç yeniden oluşturulmuyor. initInteractions() her dil
+            // değişiminde (renderMenu() ile) tekrar çalıştığı için, bu
+            // dinleyicileri korumasız her seferinde eklemek üst üste
+            // yığılan "duplicate listener" birikimine yol açıyordu.
+            if (!storyModal.dataset.chromeBound) {
+                storyModal.dataset.chromeBound = 'true';
+
+                const closeStoryModal = () => {
                     storyModal.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            });
+                    document.body.classList.remove('modal-open');
+                    currentOpenItemId = null;
+                };
+
+                sClose.addEventListener('click', closeStoryModal);
+                storyModal.addEventListener('click', (e) => {
+                    if (e.target === storyModal) closeStoryModal();
+                });
+            }
         }
 
         // Heart/Favorite Toggle

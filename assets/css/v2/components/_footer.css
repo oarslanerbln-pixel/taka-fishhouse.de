@@ -244,4 +244,13 @@ footer, footer.force-dark {
     .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
     .scroll-top { right: 20px; bottom: 100px; }
     .whatsapp-btn { right: 20px; bottom: 20px; }
+
+    /* Tek sütuna inince ortalanmış metin (özellikle değişken uzunluktaki
+       link listesi ve iletişim satırları) düzensiz/dağınık görünüyordu.
+       Dar ekranda sola yaslı, standart bir footer listesi gibi okunması
+       için değiştirildi. */
+    .footer-content { text-align: left; }
+    .footer-brand p { margin: 0 0 20px; }
+    .footer-tagline { text-align: left; }
+    .footer-socials { justify-content: flex-start; }
 }

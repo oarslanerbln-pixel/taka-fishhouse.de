@@ -5,9 +5,13 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 24px 0;
+    /* Çentikli/Dynamic Island'lı telefonlarda fixed header top:0'a
+       yapışınca logo/menü durum çubuğunun altına gizlenip ekranın en üst
+       kenarına yapışık duruyordu. env(safe-area-inset-top) güvenli alanı
+       üst padding'e ekliyor; desteklemeyen tarayıcılarda 0 sayılır. */
+    padding: calc(24px + env(safe-area-inset-top)) 0 24px;
     transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-    
+
     /* Initial state over dark hero */
     --nav-text: #ffffff;
     --nav-dim: rgba(255, 255, 255, 0.7);
@@ -19,7 +23,7 @@ header.scrolled {
     background: var(--bg-dark) !important;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-    padding: 14px 0;
+    padding: calc(14px + env(safe-area-inset-top)) 0 14px;
     box-shadow: 0 4px 40px rgba(0, 0, 0, 0.05);
     border-bottom: 1px solid var(--glass-border);
     
