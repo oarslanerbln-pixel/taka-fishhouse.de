@@ -737,7 +737,7 @@ const menuData = [
                 "nameES": "Alcachofas crujientes rellenas de queso",
                 "nameAR": "خرشوف مقرمش محشو بالجبن",
                 "price": "17,50",
-                "image": "assets/img/products/spesiyal_enginar.jpg",
+                "image": "assets/img/products/spesiyal_enginar_ai.jpg",
                 "allergens": "7",
                 "diet": {
                     "vegetarian": true,
@@ -954,7 +954,7 @@ const menuData = [
             },
             {
                 "id": 91,
-                "nameTR": "ÇÇipura Sandviç",
+                "nameTR": "Çipura Sandviç",
                 "nameDE": "Dorade Sandwich",
                 "nameEN": "Sea Bream Sandwich",
                 "nameRU": "Сэндвич с дорадо",
@@ -1034,7 +1034,7 @@ const menuData = [
             },
             {
                 "id": 99,
-                "nameTR": "ÇÇipura Dürüm",
+                "nameTR": "Çipura Dürüm",
                 "nameDE": "Dorade Dürüm",
                 "nameEN": "Sea Bream Wrap",
                 "nameRU": "Ролл с дорадо",
@@ -1217,7 +1217,7 @@ const menuData = [
                 "nameES": "Arroz con leche al horno (Hamsiköy)",
                 "nameAR": "أرز بالحليب مخبوز في الفرن (هامسيكوي)",
                 "price": "5,90",
-                "image": "assets/img/products/hamsikoy_sutlac.jpg",
+                "image": "assets/img/products/hamsikoy_sutlac_ai.jpg",
                 "allergens": "7",
                 "diet": {
                     "vegetarian": false,

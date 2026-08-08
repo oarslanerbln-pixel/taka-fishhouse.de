@@ -1,5 +1,22 @@
 /* ===== MENU PAGE TEXT DESIGN — SITE NATIVE THEME ===== */
 
+/* General Sans — kategori sekmeleri için, self-hosted (DSGVO,
+   Fontshare CDN'inden çağırmak yerine dosyalar buraya indirildi) */
+@font-face {
+    font-family: 'General Sans';
+    src: url('../../../assets/fonts/general-sans-600.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'General Sans';
+    src: url('../../../assets/fonts/general-sans-700.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* --- Premium WOW Splash Intro --- */
 .premium-splash {
     position: fixed;
@@ -484,7 +501,7 @@
     border-radius: 8px;
     background: transparent;
     color: #999;
-    font-family: 'Playfair Display', serif;
+    font-family: 'General Sans', 'Inter', sans-serif;
     font-size: 1.05rem;
     font-style: normal;
     font-weight: 600;
@@ -1217,7 +1234,7 @@ body {
         justify-content: flex-start !important;
     }
     .cat-btn {
-        font-family: 'Playfair Display', serif !important;
+        font-family: 'General Sans', 'Inter', sans-serif !important;
         font-size: 1.05rem !important;
         font-style: normal !important;
         font-weight: 700 !important;
@@ -2051,7 +2068,7 @@ body.dl-nav-sharp .cat-btn {
     border-bottom: 1px solid transparent !important;
     box-shadow: none !important;
     color: #999 !important;
-    font-family: 'Playfair Display', serif !important;
+    font-family: 'General Sans', 'Inter', sans-serif !important;
     font-style: normal !important;
     font-weight: 700 !important;
     font-size: 1.1rem !important;
@@ -2403,5 +2420,13 @@ body.dl-bg-white .nav-links a.active-link {
 .menu-item[data-id='81'] .menu-item-image img {
     object-fit: contain !important;
     background-color: var(--card-bg, #fff);
+}
+
+/* Bu sayfanın footer'ı (#contact) style.css'teki .footer-content'i
+   kullanıyor ama o kural sadece "margin:0 auto" ile ortalıyor, kenar
+   boşluğu (padding) hiç yok — içerik ekranın sol/sağ kenarına
+   yapışıyordu. */
+#contact {
+    padding: 50px 20px 30px;
 }
 
