@@ -489,13 +489,8 @@
     background: #f4f2ee; /* Needs solid background so items don't overlap when scrolling */
     border-bottom: none;
     padding: 0;
-    overflow-x: auto;
-    -ms-overflow-style: none; /* IE/Edge */
-    scrollbar-width: none; /* Firefox */
-}
-
-.menu-categories::-webkit-scrollbar {
-    display: none;
+    display: flex;
+    align-items: stretch;
 }
 
 .categories-track {
@@ -507,6 +502,35 @@
     margin: 0 auto;
     justify-content: flex-start;
     flex-wrap: nowrap;
+    overflow-x: auto;
+    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none; /* Firefox */
+    /* Sağda daha fazla sekme olduğunu ima eden yumuşak "solma" ipucu —
+       şerit sona kadar kaydırılınca (scrollbar-gutter yok) fade otomatik
+       kaybolmaz ama en azından kaydırılabilirliği baştan belli eder. */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, black 16px, black calc(100% - 24px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, black 16px, black calc(100% - 24px), transparent 100%);
+}
+
+.categories-track::-webkit-scrollbar {
+    display: none;
+}
+
+/* Kaydırma şeridinin dışında, her zaman görünür sabit Alerjenler simgesi */
+.cat-btn-legend {
+    flex-shrink: 0;
+    margin: 10px 14px 10px 0;
+    padding: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    color: #777 !important;
+}
+
+.cat-btn-legend.active,
+.cat-btn-legend:hover {
+    border-color: currentColor !important;
 }
 
 .cat-btn {

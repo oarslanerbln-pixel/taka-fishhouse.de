@@ -75,7 +75,7 @@ const menuData = [
                 "nameES": "Salmonete",
                 "nameAR": "سلطان إبراهيم",
                 "price": "25,00",
-                "image": "assets/img/products/barbun.jpg",
+                "image": "assets/img/products/rotbarbe_ai.jpg",
                 "pairingId": 22,
                 "storyTR": "Taze avlanmış barbun balığı, ustalıkla temizlenip hafifçe unlanarak altın sarısı olana dek kızartılır. Çıtır dokusu ve nefis lezzetiyle Karadeniz esintisini sofranıza taşır.",
                 "storyDE": "Frisch gefangene Rotbarbe, fachmännisch gesäubert, leicht mehliert und goldbraun gebraten. Mit ihrer knusprigen Textur und dem köstlichen Geschmack bringt sie eine Brise des Schwarzen Meeres auf Ihren Tisch.",

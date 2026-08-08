@@ -658,9 +658,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (navigator.vibrate) navigator.vibrate(30);
             playAsmrSound('click');
             
-            // Center the clicked button in the scroll track
+            // Center the clicked button in the scroll track (sabit Alerjenler
+            // simgesi artık şeridin dışında bir kardeş öğe, bu mantığın dışında)
             const track = document.querySelector('.categories-track');
-            if(track) {
+            if(track && btn.closest('.categories-track')) {
                 const trackRect = track.getBoundingClientRect();
                 const btnRect = btn.getBoundingClientRect();
                 const scrollLeft = track.scrollLeft + (btnRect.left - trackRect.left) - (trackRect.width / 2) + (btnRect.width / 2);

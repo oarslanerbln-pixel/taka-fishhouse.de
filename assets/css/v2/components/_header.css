@@ -228,12 +228,14 @@ body.nav-lock-scroll {
         width: min(78vw, 320px);
         /* Fixed espresso tone — --bg-dark resolves to the light cream
            background outside .force-dark sections, which made white
-           nav text unreadable. */
-        background: var(--text-light, #2A241C);
+           nav text unreadable. Subtle gradient instead of flat fill so
+           the panel doesn't read as a plain block. */
+        background: linear-gradient(165deg, var(--text-light, #2A241C) 0%, #1c1712 100%);
+        border-left: 1px solid rgba(212, 175, 55, 0.25);
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        gap: 28px;
+        gap: 6px;
         padding: 100px 40px 40px;
         transform: translateX(100%);
         transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -246,19 +248,54 @@ body.nav-lock-scroll {
     }
 
     .nav-links a {
-        font-size: 1.1rem;
+        position: relative;
+        font-size: 1.15rem;
         color: #ffffff !important;
+        padding: 12px 0 12px 20px;
+        width: 100%;
+        border-left: 2px solid rgba(255, 255, 255, 0.12);
+        transition: border-color 0.3s ease, padding-left 0.3s ease, color 0.3s ease;
+        /* Panel açılınca her link sırayla kayarak/belirerek gelsin —
+           hepsi aynı anda "çat" diye görünmesin. */
+        opacity: 0;
+        transform: translateX(16px);
+        transition: opacity 0.45s ease, transform 0.45s ease, border-color 0.3s ease, padding-left 0.3s ease, color 0.3s ease;
+    }
+
+    header.nav-open .nav-links a {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .nav-links a:nth-child(1) { transition-delay: 0.08s; }
+    .nav-links a:nth-child(2) { transition-delay: 0.14s; }
+    .nav-links a:nth-child(3) { transition-delay: 0.20s; }
+    .nav-links a:nth-child(4) { transition-delay: 0.26s; }
+    .nav-links a:nth-child(5) { transition-delay: 0.32s; }
+
+    .nav-links a:hover,
+    .nav-links a:active {
+        border-left-color: var(--accent-color, #D4AF37);
+        padding-left: 26px;
+        color: var(--accent-color, #D4AF37) !important;
     }
 
     .nav-mobile-cta {
         display: inline-block;
-        margin-top: 12px;
+        margin-top: 18px;
         padding: 12px 28px;
         border: 1px solid rgba(255, 255, 255, 0.5);
-        border-radius: 50px;
+        border-radius: 0;
         font-size: 0.85rem;
         font-weight: 600;
         letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-mobile-cta:hover {
+        border-color: var(--accent-color, #D4AF37) !important;
+        background: var(--accent-color, #D4AF37);
+        color: #1c1712 !important;
     }
 
     .nav-backdrop {
@@ -266,6 +303,8 @@ body.nav-lock-scroll {
         position: fixed;
         inset: 0;
         background: rgba(0, 0, 0, 0.5);
+        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s ease, visibility 0.3s ease;
