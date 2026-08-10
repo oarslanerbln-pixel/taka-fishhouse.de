@@ -1184,6 +1184,121 @@ body {
 }
 
 /* =========================================
+   LANGUAGE SWITCHER — hover-to-open dropdown (desktop),
+   tap-to-open dropdown (mobile/touch, no :hover available).
+   Öncesinde tek satıra sığdırılmış "DE | EN | TR | RU | ES | AR" butonları
+   vardı; 6 dille dar ekranlarda sıkışıp taşıyordu. Artık tek bir "DE ⌄"
+   tetikleyici buton var, üstüne gelince/tıklayınca şık bir açılır liste
+   çıkıyor. */
+.lang-switcher {
+    position: relative;
+}
+.lang-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #2a241c;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+.lang-trigger i {
+    font-size: 0.65rem;
+    opacity: 0.6;
+}
+.lang-trigger:hover,
+.lang-switcher.open .lang-trigger {
+    border-color: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.03);
+}
+.lang-trigger-caret {
+    transition: transform 0.25s ease;
+}
+.lang-switcher.open .lang-trigger-caret {
+    transform: rotate(180deg);
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 170px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.22s;
+    z-index: 300;
+}
+.lang-switcher.open .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+/* Sadece gerçek fare/hover desteği olan cihazlarda üstüne gelince açılsın —
+   dokunmatik ekranlarda ":hover" takılı kalıp menüyü kapatılamaz halde
+   bırakabiliyordu, orada JS'teki tıkla-aç/kapa devrede. */
+@media (hover: hover) and (pointer: fine) {
+    .lang-switcher:hover .lang-dropdown {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+}
+
+.lang-dropdown .lang-btn {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 9px 12px;
+    border-radius: 9px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: #2a241c;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+.lang-dropdown .lang-btn:hover {
+    background: rgba(212, 175, 55, 0.14);
+}
+.lang-dropdown .lang-btn.active {
+    background: #2a241c;
+    color: #fff;
+}
+.lang-dropdown .lang-btn .lang-code {
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    opacity: 0.6;
+    min-width: 20px;
+}
+.lang-dropdown .lang-btn.active .lang-code {
+    opacity: 1;
+}
+
+/* =========================================
    MOBILE-FIRST OVERRIDES (Max Width 900px)
    (Protects the Desktop Grid Layout)
    ========================================= */
@@ -1204,49 +1319,14 @@ body {
         display: none !important;
     }
 
-    /* === LANGUAGE SWITCHER: DE | EN | TR style === */
-    .lang-switcher {
-        display: flex;
-        align-items: center;
-        gap: 0;
-        background: transparent !important;
-        box-shadow: none !important;
-        border: none !important;
-        padding: 0 !important;
+    /* === LANGUAGE SWITCHER: compact trigger on narrow screens === */
+    .lang-trigger {
+        padding: 5px 9px;
+        font-size: 0.7rem;
+        gap: 4px;
     }
-    .lang-btn {
-        font-family: 'Inter', sans-serif !important;
-        font-size: 0.75rem !important;
-        font-style: normal !important;
-        font-weight: 500 !important;
-        color: #aaa !important;
-        background: transparent !important;
-        border: none !important;
-        padding: 2px 6px !important;
-        letter-spacing: 1px !important;
-        text-transform: uppercase !important;
-        cursor: pointer !important;
-        position: relative;
-        transition: color 0.2s ease !important;
-        line-height: 1;
-    }
-    .lang-btn:hover {
-        color: #555 !important;
-    }
-    .lang-btn.active {
-        color: #1a1a1a !important;
-        font-weight: 700 !important;
-    }
-    /* Pipe separator between language buttons */
-    .lang-btn:not(:last-child)::after {
-        content: '|';
-        color: #ccc;
-        position: absolute;
-        right: -1px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-weight: 300;
-        font-size: 0.75rem;
+    .lang-dropdown {
+        right: -4px;
     }
 
     /* 2. Sticky Category Nav — elegant italic serif
@@ -2318,11 +2398,21 @@ body .menu-item-price {
     flex-shrink: 0 !important;
 }
 body .menu-item-title-row h4 {
-    min-width: 0; /* flex item'ın taşmadan doğru şekilde sarabilmesi için */
+    /* min-width: 0 gerekli: flex item'ın varsayılan min-width'i (auto) en
+       uzun kelimenin genişliğine eşit oluyor, bu da başlığın fiyatın
+       alanına girmesine ve üst üste binmesine sebep oluyordu.
+       overflow-wrap:break-word İŞE YARAMIYOR: spec'e göre bu değer satır
+       sarma aşamasında kullanılır ama flex/grid item'ın "otomatik minimum
+       boyut" hesabını etkilemez — o yüzden min-width:0 olsa bile uzun tek
+       kelime (ör. "Augerberginenpüreebett") kutunun dışına taşıp fiyatın
+       üstüne biniyordu. overflow-wrap:anywhere ise minimum boyut hesabına
+       dahil olduğu için başlık gerektiğinde kelimenin içinden sarıp
+       fiyatla çakışmadan daralabiliyor. */
+    min-width: 0;
     flex-wrap: wrap !important;
     justify-content: flex-start !important;
     text-align: left !important;
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
 }
 body .menu-item-desc-inline {
     text-align: left !important;
