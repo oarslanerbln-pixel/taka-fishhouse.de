@@ -75,7 +75,7 @@ const menuData = [
                 "nameES": "Salmonete",
                 "nameAR": "سلطان إبراهيم",
                 "price": "25,00",
-                "image": "assets/img/products/rotbarbe_ai.jpg",
+                "image": "assets/img/products/rotbarbe_ai2.jpg",
                 "pairingId": 22,
                 "storyTR": "Taze avlanmış barbun balığı, ustalıkla temizlenip hafifçe unlanarak altın sarısı olana dek kızartılır. Çıtır dokusu ve nefis lezzetiyle Karadeniz esintisini sofranıza taşır.",
                 "storyDE": "Frisch gefangene Rotbarbe, fachmännisch gesäubert, leicht mehliert und goldbraun gebraten. Mit ihrer knusprigen Textur und dem köstlichen Geschmack bringt sie eine Brise des Schwarzen Meeres auf Ihren Tisch.",
@@ -127,7 +127,7 @@ const menuData = [
                 "nameES": "Trucha",
                 "nameAR": "تروتة",
                 "price": "23,00",
-                "image": "assets/lieferando_imgs/forelle_teller.jpg",
+                "image": "assets/img/products/forelle_ai.jpg",
                 "allergens": "4",
                 "diet": {
                     "vegetarian": false,
@@ -176,7 +176,7 @@ const menuData = [
                 "nameES": "Parrillada mixta especial Taka",
                 "nameAR": "مشاوي مشكلة تاكا سبيشال",
                 "price": "29,50",
-                "image": "assets/ubereats_imgs/gemischter_taka_spezial_teller.jpg",
+                "image": "assets/img/products/gemischter_taka_spezial_teller_ai.jpg",
                 "allergens": "2,4,14",
                 "diet": {
                     "vegetarian": false,
@@ -431,7 +431,7 @@ const menuData = [
                 "nameES": "Lubina marinada",
                 "nameAR": "قاروص متبل",
                 "price": "8,50 / 12,50",
-                "image": "assets/img/products/levrek_marin.png",
+                "image": "assets/img/products/wolfsbarsch_marin_ai.jpg",
                 "allergens": "4",
                 "diet": {
                     "vegetarian": false,
@@ -478,7 +478,7 @@ const menuData = [
                 "nameES": "Pasta de queso cretense",
                 "nameAR": "معجون جبن كريتي",
                 "price": "4,50 / 7,50",
-                "image": "https://imageproxy.wolt.com/assets/69a80bd97d25f60394a12eaa",
+                "image": "assets/img/products/girit_ezmesi_ai.jpg",
                 "allergens": "4",
                 "diet": {
                     "vegetarian": false,
@@ -573,7 +573,7 @@ const menuData = [
                 "nameES": "Tzatziki seco",
                 "nameAR": "تزاتزيكي جاف",
                 "price": "4,50 / 7,50",
-                "image": "assets/img/products/kuru_cacik_yeni.jpg",
+                "image": "assets/img/products/kuru_cacik_ai.jpg",
                 "diet": {
                     "vegetarian": true,
                     "glutenFree": false
@@ -711,7 +711,7 @@ const menuData = [
                 "nameES": "Hummus con pastrami",
                 "nameAR": "حمص بالبسطرمة",
                 "price": "9,50",
-                "image": "assets/ubereats_imgs/hummus_mit_speck.jpg",
+                "image": "assets/img/products/humus_mit_pastirma_ai.jpg",
                 "allergens": "7,11",
                 "diet": {
                     "vegetarian": false,
@@ -881,7 +881,7 @@ const menuData = [
                 "nameES": "Camarones jumbo a la parrilla (3 Piezas)",
                 "nameAR": "جمبري جامبو مشوي (3 قطع)",
                 "price": "21,50",
-                "image": "assets/lieferando_imgs/gro_garnelen_teller.jpg",
+                "image": "assets/img/products/jumbo_garnelen_ai.jpg",
                 "allergens": "2",
                 "diet": {
                     "vegetarian": false,
@@ -1156,7 +1156,7 @@ const menuData = [
                 "id": 109,
                 "nameTR": "Balık Köfte Menü",
                 "nameDE": "Fisch-Bouletten, Pommes oder Reis, Getränk",
-                "image": "assets/img/products/balik_kofte_pilav.jpg",
+                "image": "assets/img/products/balik_kofte_pilav_01.jpg",
                 "nameEN": "Fish Meatball Menu (w/ Fries/Rice & Drink)",
                 "nameRU": "Меню рыбных котлет (с фри/рисом и напитком)",
                 "nameES": "Menú de albóndigas de pescado (con patatas/arroz y bebida)",
