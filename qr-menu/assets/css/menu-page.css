@@ -849,9 +849,13 @@
     margin: 0;
     letter-spacing: 0.3px;
     display: inline-flex;
+    flex-wrap: wrap;
     align-items: baseline;
-    justify-content: center;
-    text-align: center;
+    /* justify-content: center + taşma = içerik iki yana birden taşar; uzun
+       başlıklarda sola taşan kısım soldaki 3px çizginin üstüne biniyor ve
+       ilk harf kesik görünüyordu */
+    justify-content: flex-start;
+    text-align: left;
     gap: 6px;
 }
 
@@ -1832,6 +1836,8 @@ body {
     font-family: var(--font-heading);
     font-size: 1.6rem;
     margin-bottom: 0;
+    min-width: 0;
+    overflow-wrap: break-word;
 }
 
 .story-modal-price {
@@ -1839,6 +1845,8 @@ body {
     font-weight: 600;
     font-size: 1.2rem;
     margin-bottom: 0;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .story-modal-desc-container {
@@ -2311,6 +2319,10 @@ body .menu-item-price {
 }
 body .menu-item-title-row h4 {
     min-width: 0; /* flex item'ın taşmadan doğru şekilde sarabilmesi için */
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    overflow-wrap: break-word;
 }
 body .menu-item-desc-inline {
     text-align: left !important;
