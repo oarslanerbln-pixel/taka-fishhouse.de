@@ -1423,7 +1423,7 @@ const menuData = [
                 "nameES": "Uludag Gazoz 0,25l",
                 "nameAR": "Uludag Gazoz 0,25l",
                 "price": "3,00",
-                "image": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f96f0713ecde1f8e087069e/a8e2e052-65b1-11ec-be25-feaf95301eef_uludaggazoz025.jpeg",
+                "image": "assets/img/products/uludag_gazoz.png",
                 "diet": {
                     "vegetarian": true,
                     "glutenFree": true
