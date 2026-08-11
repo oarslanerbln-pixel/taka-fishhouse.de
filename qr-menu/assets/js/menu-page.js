@@ -51,11 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
     (function syncStickyOffsets() {
         const header = document.getElementById('header');
         const search = document.querySelector('.search-container');
+        const catBar = document.querySelector('.menu-categories');
         if (!header) return;
         const apply = () => {
             const root = document.documentElement.style;
             root.setProperty('--header-h', header.getBoundingClientRect().height + 'px');
             if (search) root.setProperty('--search-h', search.getBoundingClientRect().height + 'px');
+            // Kategori sekmesi çubuğu da sticky ve header+arama'nın hemen
+            // altında duruyor — bir kategoriye tıklayınca sayfayı doğru
+            // noktaya kaydırabilmek (bkz. CATEGORY FILTER) için gerçek
+            // yüksekliğini de yazıyoruz.
+            if (catBar) root.setProperty('--cat-bar-h', catBar.getBoundingClientRect().height + 'px');
         };
         apply();
         window.addEventListener('resize', apply);
@@ -65,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const ro = new ResizeObserver(apply);
             ro.observe(header);
             if (search) ro.observe(search);
+            if (catBar) ro.observe(catBar);
         }
     })();
 
@@ -709,9 +716,20 @@ document.addEventListener('DOMContentLoaded', () => {
                      legSection.classList.remove('hidden');
                      legSection.style.display = 'block';
                      legSection.style.animation = 'none';
-                     legSection.offsetHeight; 
+                     legSection.offsetHeight;
                      legSection.style.animation = 'fadeIn 0.6s ease-out';
                  }
+            }
+
+            // Bir kategoride aşağıya kaydırılmışken başka bir sekmeye
+            // basılınca, o kategorinin ürünleri gizlenip sayfa kısalıyor —
+            // eski scroll konumu artık yeni (daha kısa) sayfanın dışında
+            // kalıyor ve tarayıcı bunu en alta (footer'a) kenetliyor. Yeni
+            // seçilen kategorinin ilk görünen bölümüne kaydırarak bunu
+            // önlüyoruz.
+            const firstVisible = Array.from(sections).find(s => !s.classList.contains('hidden'));
+            if (firstVisible) {
+                firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });

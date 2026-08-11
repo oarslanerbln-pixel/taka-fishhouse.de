@@ -1053,7 +1053,7 @@ const menuData = [
                 "nameES": "Wrap de salmón",
                 "nameAR": "راب سلمون",
                 "price": "10,00",
-                "image": "assets/lieferando_imgs/d_r_m_lachs.jpg",
+                "image": "assets/img/products/dorade_duerum.jpg",
                 "allergens": "1,4",
                 "diet": {
                     "vegetarian": false,

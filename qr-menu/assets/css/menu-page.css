@@ -583,6 +583,11 @@
 .menu-category-section {
     margin-bottom: 60px;
     animation: fadeIn 0.6s ease-out;
+    /* Kategori sekmesine tıklayınca JS bu section'a scrollIntoView ile
+       kaydırıyor; sticky header + arama kutusu + kategori çubuğu section'ın
+       üstünü kapatmasın diye gerçek yüksekliklerini (JS'te ölçülüyor) buraya
+       da uyguluyoruz. */
+    scroll-margin-top: calc(var(--header-h, 106px) + var(--search-h, 70px) + var(--cat-bar-h, 64px) + 12px);
 }
 
 .menu-item.has-image {
