@@ -709,9 +709,32 @@ document.addEventListener('DOMContentLoaded', () => {
                      legSection.classList.remove('hidden');
                      legSection.style.display = 'block';
                      legSection.style.animation = 'none';
-                     legSection.offsetHeight; 
+                     legSection.offsetHeight;
                      legSection.style.animation = 'fadeIn 0.6s ease-out';
                  }
+            }
+
+            // Kategori değişince sayfa aniden kısalabiliyor (yeni kategoride
+            // az ürün varsa) — tarayıcı eski scroll konumunu koruyamayıp
+            // sayfanın YENİ (kısa) en altına sabitliyordu, mobilde "kategori
+            // değişince ekran en alta atlıyor" hatası buradan geliyordu.
+            // Çözüm: her kategori değişiminde listeyi, sticky kategori
+            // çubuğu tam üstte sabitlenecek şekilde başa sarıyoruz.
+            const categoriesBar = document.querySelector('.menu-categories');
+            if (categoriesBar) {
+                const headerH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 0;
+                const searchH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--search-h')) || 0;
+                // .menu-categories position:sticky olduğu için normal
+                // getBoundingClientRect().top + scrollY hesabı, çubuk zaten
+                // "yapışmış" haldeyken scroll konumuna bağlı yanlış (kayan)
+                // bir değer veriyordu. Çubuğu bir anlığına position:static
+                // yapıp gerçek/doğal belge konumunu (scroll'dan bağımsız)
+                // ölçüp hemen geri alıyoruz.
+                categoriesBar.style.setProperty('position', 'static', 'important');
+                const naturalDocTop = categoriesBar.getBoundingClientRect().top + window.scrollY;
+                categoriesBar.style.removeProperty('position');
+                const targetY = naturalDocTop - headerH - searchH;
+                window.scrollTo({ top: Math.max(targetY, 0), behavior: 'smooth' });
             }
         });
     });
