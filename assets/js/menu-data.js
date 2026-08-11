@@ -1415,21 +1415,6 @@ const menuData = [
                 }
             },
             {
-                "id": 9584,
-                "nameTR": "Uludag Gazoz 0,25l",
-                "nameDE": "Uludag Gazoz 0,25l",
-                "nameEN": "Uludag Gazoz 0,25l",
-                "nameRU": "Uludag Gazoz 0,25l",
-                "nameES": "Uludag Gazoz 0,25l",
-                "nameAR": "Uludag Gazoz 0,25l",
-                "price": "3,00",
-                "image": "assets/img/products/uludag_gazoz.jpg",
-                "diet": {
-                    "vegetarian": true,
-                    "glutenFree": true
-                }
-            },
-            {
                 "id": 142,
                 "nameTR": "Çamlıca Gazoz (0,2l)",
                 "nameDE": "Çamlıca Gazoz 0,2l",
