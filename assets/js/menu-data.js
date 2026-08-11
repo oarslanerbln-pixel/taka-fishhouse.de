@@ -1533,7 +1533,7 @@ const menuData = [
                 "nameRU": "FuzeTea (разные вкусы) 0,4l",
                 "nameES": "FuzeTea (varios sabores) 0,4l",
                 "nameAR": "FuzeTea (نكهات متنوعة) 0,4l",
-                "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80",
+                "image": "assets/img/products/fuzetea.png",
                 "price": "2,90",
                 "allergens": "A,E,H",
                 "diet": {
