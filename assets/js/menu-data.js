@@ -1053,7 +1053,7 @@ const menuData = [
                 "nameES": "Wrap de salmón",
                 "nameAR": "راب سلمون",
                 "price": "10,00",
-                "image": "assets/img/products/lachs_dorade_durum.png",
+                "image": "assets/img/products/lachs_dorade_durum.jpg",
                 "allergens": "1,4",
                 "diet": {
                     "vegetarian": false,
@@ -1069,7 +1069,7 @@ const menuData = [
                 "nameES": "Wrap de dorada",
                 "nameAR": "راب دنيس",
                 "price": "10,00",
-                "image": "assets/img/products/lachs_dorade_durum.png",
+                "image": "assets/img/products/lachs_dorade_durum.jpg",
                 "allergens": "1,4",
                 "diet": {
                     "vegetarian": false,
@@ -1423,7 +1423,7 @@ const menuData = [
                 "nameES": "Uludag Gazoz 0,25l",
                 "nameAR": "Uludag Gazoz 0,25l",
                 "price": "3,00",
-                "image": "assets/img/products/uludag_gazoz.png",
+                "image": "assets/img/products/uludag_gazoz.jpg",
                 "diet": {
                     "vegetarian": true,
                     "glutenFree": true
@@ -1453,7 +1453,7 @@ const menuData = [
                 "nameRU": "Айран (0.25л)",
                 "nameES": "Ayran (0.25l)",
                 "nameAR": "عيران (0.25 لتر)",
-                "image": "assets/img/products/ayran_7gun.png",
+                "image": "assets/img/products/ayran_7gun.jpg",
                 "price": "2,90",
                 "allergens": "7,A,H,F",
                 "diet": {
@@ -1469,7 +1469,7 @@ const menuData = [
                 "nameRU": "Сок из репы (0.25л)",
                 "nameES": "Jugo de nabo (0.25l)",
                 "nameAR": "عصير شلغم (0.25 لتر)",
-                "image": "assets/img/products/salgam_v2.png",
+                "image": "assets/img/products/salgam_v2.jpg",
                 "price": "2,90",
                 "allergens": "B",
                 "diet": {
@@ -1501,7 +1501,7 @@ const menuData = [
                 "nameRU": "Fritz Cola Zero (0.2л)",
                 "nameES": "Fritz Cola Zero (0.2l)",
                 "nameAR": "فريتز كولا زيرو (0.2 لتر)",
-                "image": "assets/img/products/fritz_cola_zero.png",
+                "image": "assets/img/products/fritz_cola_zero.jpg",
                 "price": "2,90",
                 "allergens": "A,E,I,J",
                 "diet": {
@@ -1533,7 +1533,7 @@ const menuData = [
                 "nameRU": "FuzeTea (разные вкусы) 0,4l",
                 "nameES": "FuzeTea (varios sabores) 0,4l",
                 "nameAR": "FuzeTea (نكهات متنوعة) 0,4l",
-                "image": "assets/img/products/fuzetea.png",
+                "image": "assets/img/products/fuzetea.jpg",
                 "price": "2,90",
                 "allergens": "A,E,H",
                 "diet": {
@@ -1597,7 +1597,7 @@ const menuData = [
                 "nameRU": "Capri Sonne (0.2л)",
                 "nameES": "Capri Sonne (0.2l)",
                 "nameAR": "كابري سون (0.2 لتر)",
-                "image": "assets/img/products/capri_sonne.png",
+                "image": "assets/img/products/capri_sonne.jpg",
                 "price": "2,50",
                 "allergens": "E,H,C,F",
                 "diet": {
@@ -1641,7 +1641,7 @@ const menuData = [
                 "nameRU": "Турецкий чай (маленький)",
                 "nameES": "Té turco (pequeño)",
                 "nameAR": "شاي تركي (صغير)",
-                "image": "assets/img/products/kucuk_cay_v2.png",
+                "image": "assets/img/products/kucuk_cay_v2.jpg",
                 "price": "1,50",
                 "diet": {
                     "vegetarian": true,
@@ -1656,7 +1656,7 @@ const menuData = [
                 "nameRU": "Турецкий чай (большой)",
                 "nameES": "Té turco (grande)",
                 "nameAR": "شاي تركي (كبير)",
-                "image": "assets/img/products/buyuk_cay_v2.png",
+                "image": "assets/img/products/buyuk_cay_v2.jpg",
                 "price": "2,50",
                 "diet": {
                     "vegetarian": true,
@@ -1671,7 +1671,7 @@ const menuData = [
                 "nameRU": "Разные сорта чая",
                 "nameES": "Variedades de té",
                 "nameAR": "أنواع شاي متنوعة",
-                "image": "assets/img/products/cay_cesitleri.png",
+                "image": "assets/img/products/cay_cesitleri.jpg",
                 "price": "2,50",
                 "diet": {
                     "vegetarian": true,
@@ -1686,7 +1686,7 @@ const menuData = [
                 "nameRU": "Турецкий кофе",
                 "nameES": "Café turco",
                 "nameAR": "قهوة تركية",
-                "image": "assets/img/products/turk_kahvesi_v2.png",
+                "image": "assets/img/products/turk_kahvesi_v2.jpg",
                 "price": "3,00",
                 "diet": {
                     "vegetarian": true,
@@ -1717,7 +1717,7 @@ const menuData = [
                 "nameRU": "Кафе Крем",
                 "nameES": "Café Crema",
                 "nameAR": "كافيه كريم",
-                "image": "assets/img/products/kaffee_crema_v2.png",
+                "image": "assets/img/products/kaffee_crema_v2.jpg",
                 "price": "3,50",
                 "allergens": "I",
                 "diet": {
@@ -1733,7 +1733,7 @@ const menuData = [
                 "nameRU": "Капучино",
                 "nameES": "Capuchino",
                 "nameAR": "كابتشينو",
-                "image": "assets/img/products/cappuccino.png",
+                "image": "assets/img/products/cappuccino.jpg",
                 "price": "3,50",
                 "allergens": "7,I",
                 "diet": {
