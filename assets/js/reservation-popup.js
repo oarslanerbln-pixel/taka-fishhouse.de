@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
                 border: 1px solid rgba(212, 175, 55, 0.35);
-                border-radius: 14px;
+                border-radius: 4px;
                 padding: 18px 18px 18px 16px;
                 display: flex;
                 gap: 12px;
@@ -75,21 +75,25 @@ document.addEventListener('DOMContentLoaded', () => {
             .taka-res-popup-cta {
                 display: inline-block;
                 background: var(--accent-color, #D4AF37);
-                color: #1a1a1a;
-                font-weight: 600;
+                font-weight: 700;
                 font-size: 0.85rem;
                 padding: 8px 16px;
-                border-radius: 8px;
+                border-radius: 4px;
                 text-decoration: none;
                 transition: background 0.2s ease;
             }
             .taka-res-popup-cta:hover { background: var(--accent-hover, #C29B27); }
             .taka-res-popup-cta span {
-                animation: takaResCtaPulse 1.8s ease-in-out infinite;
+                background: linear-gradient(110deg, #fff 30%, #fff 42%, #fffbe6 48%, #ffe9a8 50%, #fffbe6 52%, #fff 58%, #fff 70%);
+                background-size: 250% auto;
+                background-position: 100% 0;
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                animation: takaResCtaShine 2.6s linear infinite;
             }
-            @keyframes takaResCtaPulse {
-                0%, 100% { color: #1a1a1a; }
-                50% { color: #5a2a1a; }
+            @keyframes takaResCtaShine {
+                to { background-position: -150% 0; }
             }
             .taka-res-popup-close {
                 position: absolute;

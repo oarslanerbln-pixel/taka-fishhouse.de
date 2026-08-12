@@ -90,6 +90,7 @@
      gösteriliyor (sessionStorage), böylece sayfalar arası gezinip anasayfaya
      geri dönünce tekrar tekrar oynamıyor. -->
 <div class="taka-intro" id="takaIntro" aria-hidden="true">
+    <div class="taka-intro-ring"></div>
     <img src="assets/taka_logo.png" alt="" class="taka-intro-logo">
 </div>
 <script>
@@ -102,15 +103,16 @@
     }
     sessionStorage.setItem('taka-intro-shown', '1');
     document.documentElement.style.overflow = 'hidden';
-    window.addEventListener('load', function () {
+    // window 'load' beklemiyoruz — hero videosu tamamen inene kadar
+    // beklediği için intro gereksiz uzun sürüyordu. Script buraya kadar
+    // parse edildiğinde zaten hemen başlıyor.
+    setTimeout(function () {
+        intro.classList.add('taka-intro-exit');
         setTimeout(function () {
-            intro.classList.add('taka-intro-exit');
-            setTimeout(function () {
-                intro.remove();
-                document.documentElement.style.overflow = '';
-            }, 700);
-        }, 1200);
-    });
+            intro.remove();
+            document.documentElement.style.overflow = '';
+        }, 400);
+    }, 750);
 })();
 </script>
 
