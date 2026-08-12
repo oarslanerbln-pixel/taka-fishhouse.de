@@ -92,6 +92,7 @@
 <div class="taka-intro" id="takaIntro" aria-hidden="true">
     <div class="taka-intro-ring"></div>
     <img src="assets/taka_logo.png" alt="" class="taka-intro-logo">
+    <span class="taka-intro-skip">Zum Überspringen tippen</span>
 </div>
 <script>
 (function () {
@@ -103,16 +104,25 @@
     }
     sessionStorage.setItem('taka-intro-shown', '1');
     document.documentElement.style.overflow = 'hidden';
-    // window 'load' beklemiyoruz — hero videosu tamamen inene kadar
-    // beklediği için intro gereksiz uzun sürüyordu. Script buraya kadar
-    // parse edildiğinde zaten hemen başlıyor.
-    setTimeout(function () {
+    var exited = false;
+    function exit() {
+        if (exited) return;
+        exited = true;
         intro.classList.add('taka-intro-exit');
         setTimeout(function () {
             intro.remove();
             document.documentElement.style.overflow = '';
         }, 400);
-    }, 750);
+    }
+    // window 'load' beklemiyoruz — hero videosu tamamen inene kadar
+    // beklediği için intro gereksiz uzun sürüyordu. Script buraya kadar
+    // parse edildiğinde zaten hemen başlıyor. Dokunarak/tıklayarak da
+    // atlanabiliyor.
+    var autoTimer = setTimeout(exit, 1800);
+    intro.addEventListener('click', function () {
+        clearTimeout(autoTimer);
+        exit();
+    });
 })();
 </script>
 

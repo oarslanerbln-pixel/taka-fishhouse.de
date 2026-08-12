@@ -8,6 +8,7 @@
     justify-content: center;
     background: radial-gradient(circle at center, #0f172a 0%, #05070d 100%);
     transition: opacity 0.4s ease, visibility 0.4s;
+    cursor: pointer;
 }
 .taka-intro-ring {
     position: absolute;
@@ -29,11 +30,33 @@
     opacity: 0;
     filter: blur(6px);
     transform: scale(0.4) rotate(-12deg);
-    animation: takaIntroLogoIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.08s;
+    animation:
+        takaIntroLogoIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.08s,
+        takaIntroLogoPulse 1.6s ease-in-out infinite 0.7s;
 }
 @keyframes takaIntroLogoIn {
     60% { opacity: 1; filter: blur(0); transform: scale(1.08) rotate(2deg); }
     100% { opacity: 1; filter: blur(0); transform: scale(1) rotate(0deg); }
+}
+@keyframes takaIntroLogoPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.035); }
+}
+.taka-intro-skip {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.45);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    animation: takaIntroSkipIn 0.5s ease forwards 0.9s;
+}
+@keyframes takaIntroSkipIn {
+    to { opacity: 1; }
 }
 .taka-intro.taka-intro-exit {
     opacity: 0;
