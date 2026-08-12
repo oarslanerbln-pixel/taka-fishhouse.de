@@ -1,0 +1,31 @@
+/* ----- INTRO ANIMATION (Homepage splash, once per session) ----- */
+.taka-intro {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #0f172a 0%, #05070d 100%);
+    transition: opacity 0.7s ease, visibility 0.7s;
+}
+.taka-intro-logo {
+    width: min(220px, 55vw);
+    height: auto;
+    opacity: 0;
+    transform: scale(0.7);
+    animation: takaIntroLogoIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.15s;
+}
+@keyframes takaIntroLogoIn {
+    to { opacity: 1; transform: scale(1); }
+}
+.taka-intro.taka-intro-exit {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.taka-intro.taka-intro-exit .taka-intro-logo {
+    animation: none;
+    opacity: 1;
+    transform: scale(1.03);
+}
