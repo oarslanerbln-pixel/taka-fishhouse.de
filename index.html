@@ -118,11 +118,20 @@
     // beklediği için intro gereksiz uzun sürüyordu. Script buraya kadar
     // parse edildiğinde zaten hemen başlıyor. Dokunarak/tıklayarak da
     // atlanabiliyor.
-    var autoTimer = setTimeout(exit, 1800);
-    intro.addEventListener('click', function () {
-        clearTimeout(autoTimer);
-        exit();
-    });
+    //
+    // Intro'nun hemen kapanması başlık fontunun (Oswald) henüz inmemiş
+    // olmasına rakip oluyordu — sayfa görününce yedek (sans-serif)
+    // yazıdan Oswald'a geçiş göz önünde oluyor, "yazı şekli değişiyor /
+    // ekranda kesme var" hissi buradan geliyordu. document.fonts.ready
+    // ile fontun da hazır olmasını bekliyoruz, ama en fazla 2.2s.
+    var minTime = new Promise(function (resolve) { setTimeout(resolve, 900); });
+    var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready.catch(function () {}) : Promise.resolve();
+    var maxTime = new Promise(function (resolve) { setTimeout(resolve, 2200); });
+    Promise.race([
+        Promise.all([minTime, fontsReady]),
+        maxTime
+    ]).then(exit);
+    intro.addEventListener('click', exit);
 })();
 </script>
 
