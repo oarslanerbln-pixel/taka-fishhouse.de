@@ -39,21 +39,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 bottom: 20px;
                 width: 320px;
                 max-width: calc(100vw - 24px);
-                background: rgba(15, 23, 42, 0.97);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                border: 1px solid rgba(212, 175, 55, 0.35);
+                background: linear-gradient(160deg, #000 0%, #0a0a0a 100%);
+                border: none;
                 border-radius: 4px;
                 padding: 18px 18px 18px 16px;
                 display: flex;
                 gap: 12px;
                 align-items: flex-start;
                 z-index: 9998;
-                box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+                box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
                 opacity: 0;
                 transform: translateY(24px);
                 animation: takaResPopupIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
                 font-family: 'Inter', sans-serif;
+            }
+            /* Kart kenarında dönen koyu lacivert "neon" çizgi — sabit bir
+               glow/halo yerine ince bir çerçeve şeklinde, sadece kenar
+               boyunca akıp geçiyor (conic-gradient + mask ile kart
+               içeriğinin üstüne taşmıyor, sadece kenar çizgisi görünüyor). */
+            .taka-res-popup::before {
+                content: '';
+                position: absolute;
+                inset: -1.5px;
+                border-radius: inherit;
+                padding: 1.5px;
+                background: conic-gradient(from 0deg,
+                    transparent 0%, transparent 55%,
+                    #0a1a4a 63%, #2952d6 72%, #6fa8ff 76%, #2952d6 80%, #0a1a4a 88%,
+                    transparent 100%);
+                -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+                -webkit-mask-composite: xor;
+                mask-composite: exclude;
+                animation: takaResBorderSpin 3.5s linear infinite;
+                pointer-events: none;
+            }
+            @keyframes takaResBorderSpin {
+                to { transform: rotate(360deg); }
             }
             @keyframes takaResPopupIn {
                 to { opacity: 1; transform: translateY(0); }
