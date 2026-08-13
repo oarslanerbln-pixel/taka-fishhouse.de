@@ -96,10 +96,25 @@
 </div>
 <script>
 (function () {
+    // main.js'teki hero giriş animasyonu (GSAP) sayfa yüklenir yüklenmez
+    // KENDİ sabit 0.3s gecikmesiyle bağımsız çalışıyordu. Intro perdesi
+    // ~2 saniye sürdüğü için GSAP'ın "rozet → başlık → alt başlık →
+    // butonlar" dizisi bazen perde açılmadan ÖNCE bitip perdenin
+    // ARKASINDA tamamlanıyor, bazen de perde erken açılıp GSAP henüz
+    // yarı yoldayken (başlık hâlâ opacity:0/kaymış halde) ortaya
+    // çıkıyordu — kullanıcının bildirdiği "çok hızlı, farklı şeyler
+    // oluyor" hissi tam olarak bu senkronsuzluktu. Artık main.js hero
+    // animasyonunu bu event'i (veya intro zaten atlanmışsa hazır
+    // bayrağı) bekleyip ONDAN SONRA başlatıyor.
+    function signalIntroDone() {
+        window.__takaIntroDone = true;
+        document.dispatchEvent(new CustomEvent('taka-intro-done'));
+    }
     var intro = document.getElementById('takaIntro');
-    if (!intro) return;
+    if (!intro) { signalIntroDone(); return; }
     if (sessionStorage.getItem('taka-intro-shown') || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         intro.remove();
+        signalIntroDone();
         return;
     }
     sessionStorage.setItem('taka-intro-shown', '1');
@@ -109,6 +124,7 @@
         if (exited) return;
         exited = true;
         intro.classList.add('taka-intro-exit');
+        signalIntroDone();
         setTimeout(function () {
             intro.remove();
             document.documentElement.style.overflow = '';
