@@ -905,21 +905,6 @@ const menuData = [
                 }
             },
             {
-                "id": 9992,
-                "nameTR": "Taka Deniz Mahsülleri Spesiyal",
-                "nameDE": "Taka Meeresfrüchte Spezial",
-                "nameEN": "Taka Seafood Special",
-                "nameRU": "Така Спешл Морепродукты",
-                "nameES": "Especial Mariscos Taka",
-                "nameAR": "طبق تاكا البحري الخاص",
-                "price": "35,00",
-                "image": "assets/img/products/taka_meeresfruechte_spezial.jpg",
-                "diet": {
-                    "vegetarian": false,
-                    "glutenFree": false
-                }
-            },
-            {
                 "id": 9991,
                 "nameTR": "Çıtır Karides",
                 "nameDE": "Crispy Garnellen",
@@ -1237,7 +1222,7 @@ const menuData = [
                 "nameES": "Halva horneada",
                 "nameAR": "حلاوة مخبوزة",
                 "price": "7,90",
-                "image": "assets/ubereats_imgs/gebackener_kneipen_halva.jpg",
+                "image": "assets/img/products/kneipen_halva.jpg",
                 "allergens": "7",
                 "diet": {
                     "vegetarian": true,
@@ -1585,22 +1570,6 @@ const menuData = [
                 "image": "assets/img/products/capri_sonne.jpg",
                 "price": "2,50",
                 "allergens": "E,H,C,F",
-                "diet": {
-                    "vegetarian": true,
-                    "glutenFree": true
-                }
-            },
-            {
-                "id": 145,
-                "nameTR": "Tymbark (0,25l)",
-                "nameDE": "Tymbark 0,25l",
-                "nameEN": "Tymbark (0.25l)",
-                "nameRU": "Tymbark (0.25л)",
-                "nameES": "Tymbark (0.25l)",
-                "nameAR": "تيمبارك (0.25 لتر)",
-                "image": "assets/drinks/tymbark-mix-die-beliebtesten-sorten-in-einem-set.png",
-                "price": "2,90",
-                "allergens": "A,E,F,H",
                 "diet": {
                     "vegetarian": true,
                     "glutenFree": true
