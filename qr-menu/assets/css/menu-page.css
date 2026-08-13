@@ -310,7 +310,7 @@
    videoyla iç içe geçip mobilde okunmuyordu. Sabit koyu bir zemin
    ekleyerek metni videodan bağımsız her zaman net okunur yapıyoruz. */
 .hero-text-block {
-    background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0.15) 100%);
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 65%, rgba(0,0,0,0.25) 100%);
     padding: 18px 18px 22px;
     border-radius: 4px;
     backdrop-filter: blur(2px);
@@ -2202,15 +2202,19 @@ body.dl-nav-sharp .cat-btn {
     font-size: 1.1rem !important;
     letter-spacing: 0.5px !important;
     padding-bottom: 5px !important;
+    transition: color 0.25s ease, border-color 0.25s ease !important;
 }
-body.dl-nav-sharp .cat-btn::before, 
+body.dl-nav-sharp .cat-btn::before,
 body.dl-nav-sharp .cat-btn::after {
     display: none !important; /* Kill the dark neon pills */
 }
+/* Seçili kategori sekmesi artık logodaki bordo tonuna (--accent-color'la
+   aynı: #8B1C24) bürünüyor, önceden düz siyahtı ve diğer sekmelerden
+   yeterince ayrışmıyordu. */
 body.dl-nav-sharp .cat-btn.active {
-    border-bottom: 1px solid #111 !important;
+    border-bottom: 2px solid #8B1C24 !important;
     background: transparent !important;
-    color: #111 !important;
+    color: #8B1C24 !important;
     font-weight: 700 !important;
     font-style: normal !important;
 }
