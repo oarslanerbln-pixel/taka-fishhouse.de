@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const popup = document.createElement('div');
         popup.className = 'taka-res-popup';
         popup.innerHTML = `
+            <svg class="taka-res-popup-border" aria-hidden="true">
+                <rect class="taka-res-border-track"></rect>
+                <rect class="taka-res-border-comet" pathLength="100"></rect>
+            </svg>
             <button class="taka-res-popup-close" aria-label="Close">&times;</button>
             <div class="taka-res-popup-icon">🍽️</div>
             <div class="taka-res-popup-body">
@@ -53,25 +57,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 animation: takaResPopupIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
                 font-family: 'Inter', sans-serif;
             }
-            /* Kart kenarında dönen koyu lacivert "neon" çizgi — sabit bir
-               glow/halo yerine ince bir çerçeve şeklinde, sadece kenar
-               boyunca akıp geçiyor (conic-gradient + mask ile kart
-               içeriğinin üstüne taşmıyor, sadece kenar çizgisi görünüyor). */
-            .taka-res-popup::before {
-                content: '';
+            /* Kart kenarında dönen koyu lacivert "neon" çizgi — bir önceki
+               conic-gradient denemesi kartın gerçek dikdörtgen kenarını
+               DEĞİL, merkezden açısal bir huzmeyi takip ediyordu; kart kare
+               olmadığı için köşelerde hız değişip "uymuyormuş" gibi
+               görünüyordu. Bunun yerine kartın gerçek dikdörtgen/köşe
+               yarıçapını birebir takip eden bir SVG <rect> çizgisi
+               kullanılıyor — pathLength sayesinde kartın en/boy oranından
+               bağımsız olarak çevresi boyunca SABİT hızda akıyor. */
+            .taka-res-popup-border {
                 position: absolute;
-                inset: -1.5px;
-                border-radius: inherit;
-                padding: 1.5px;
-                background: conic-gradient(from 0deg,
-                    transparent 0%, transparent 55%,
-                    #0a1a4a 63%, #2952d6 72%, #6fa8ff 76%, #2952d6 80%, #0a1a4a 88%,
-                    transparent 100%);
-                -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                animation: takaResBorderSpin 3.5s linear infinite;
+                inset: 0;
+                width: 100%;
+                height: 100%;
                 pointer-events: none;
+                overflow: visible;
+            }
+            .taka-res-border-track,
+            .taka-res-border-comet {
+                x: 1px;
+                y: 1px;
+                width: calc(100% - 2px);
+                height: calc(100% - 2px);
+                rx: 3px;
+                ry: 3px;
+                fill: none;
+            }
+            .taka-res-border-track {
+                stroke: rgba(41, 82, 214, 0.3);
+                stroke-width: 1.5px;
+            }
+            .taka-res-border-comet {
+                stroke: #6fa8ff;
+                stroke-width: 2px;
+                stroke-linecap: round;
+                stroke-dasharray: 16 84;
+                filter: drop-shadow(0 0 4px rgba(111, 168, 255, 0.85));
+                animation: takaResBorderTravel 3s linear infinite;
+            }
+            @keyframes takaResBorderTravel {
+                to { stroke-dashoffset: -100; }
             }
             @keyframes takaResBorderSpin {
                 to { transform: rotate(360deg); }
