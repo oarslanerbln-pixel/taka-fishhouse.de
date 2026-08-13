@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             observer.observe(document.body, { childList: true });
-        }, 6000);
+        }, 2000);
     }
 
     scheduleShow();

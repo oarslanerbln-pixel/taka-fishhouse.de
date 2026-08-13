@@ -127,7 +127,7 @@ const menuData = [
                 "nameES": "Trucha",
                 "nameAR": "تروتة",
                 "price": "23,00",
-                "image": "assets/img/products/forelle_ai.jpg",
+                "image": "assets/img/products/forelle.jpg",
                 "allergens": "4",
                 "diet": {
                     "vegetarian": false,

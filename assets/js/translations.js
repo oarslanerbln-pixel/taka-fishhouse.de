@@ -228,7 +228,7 @@ const translations = {
         "res-desc": "Sichere dir deinen Platz für das beste Fisch-Erlebnis in Kreuzberg. Um Wartezeiten zu vermeiden, empfehlen wir eine Reservierung.",
         "res-popup-title": "Reservieren Sie Ihren Tisch",
         "res-popup-text": "Sichern Sie sich Ihren Platz und vermeiden Sie Wartezeiten zu Stoßzeiten.",
-        "res-popup-cta": "Tisch reservieren",
+        "res-popup-cta": "HIER KLICKEN SOFORT RESERVIEREN!",
         "res-call": "Jetzt Anrufen",
         "res-soon": "Online-Reservierungssystem kommt bald!",
         "contact-badge": "Kontakt",
