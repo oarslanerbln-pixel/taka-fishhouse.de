@@ -1,72 +1,77 @@
-/* ----- INTRO ANIMATION (Homepage splash, once per session) ----- */
+/* ----- INTRO ANIMATION (Homepage splash, once per session) -----
+   Yumuşak/sade bir geçiş: logo hafifçe büyüyerek belirir, skip butonu
+   hemen altında (aynı grupta, dikey ortalanmış) duruyor. Toplam süre
+   index.html'deki JS ile ~2.5s (2s bekleme + 0.5s çıkış). Mobilde de
+   (padding + min() genişlik) ekrana tam oturacak şekilde. */
 .taka-intro {
     position: fixed;
     inset: 0;
     z-index: 100000;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 26px;
+    padding: 24px;
+    box-sizing: border-box;
     background: radial-gradient(circle at center, #0f172a 0%, #05070d 100%);
-    transition: opacity 0.4s ease, visibility 0.4s;
-    cursor: pointer;
-}
-.taka-intro-ring {
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 1px solid rgba(212, 175, 55, 0.45);
-    opacity: 0;
-    animation: takaIntroRing 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.05s;
-}
-@keyframes takaIntroRing {
-    0% { opacity: 0.8; transform: scale(0.3); }
-    100% { opacity: 0; transform: scale(2.6); }
+    transition: opacity 0.5s ease, visibility 0.5s;
 }
 .taka-intro-logo {
-    position: relative;
-    width: min(200px, 52vw);
+    width: min(190px, 50vw);
+    max-width: 100%;
     height: auto;
     opacity: 0;
-    filter: blur(6px);
-    transform: scale(0.4) rotate(-12deg);
-    animation:
-        takaIntroLogoIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.08s,
-        takaIntroLogoPulse 1.6s ease-in-out infinite 0.7s;
+    transform: scale(0.92);
+    animation: takaIntroLogoIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.1s;
 }
 @keyframes takaIntroLogoIn {
-    60% { opacity: 1; filter: blur(0); transform: scale(1.08) rotate(2deg); }
-    100% { opacity: 1; filter: blur(0); transform: scale(1) rotate(0deg); }
+    to { opacity: 1; transform: scale(1); }
 }
-@keyframes takaIntroLogoPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.035); }
-}
-.taka-intro-skip {
-    position: absolute;
-    bottom: 30px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.45);
+.taka-intro-skip-btn {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    max-width: calc(100vw - 48px);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.85);
     font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     letter-spacing: 0.5px;
+    padding: 9px 22px;
+    border-radius: 4px;
+    cursor: pointer;
     opacity: 0;
-    animation: takaIntroSkipIn 0.5s ease forwards 0.9s;
+    animation: takaIntroSkipIn 0.6s ease forwards 0.6s;
+    transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+.taka-intro-skip-btn:hover,
+.taka-intro-skip-btn:focus-visible {
+    border-color: rgba(212, 175, 55, 0.7);
+    color: #fff;
+    background: rgba(212, 175, 55, 0.08);
 }
 @keyframes takaIntroSkipIn {
     to { opacity: 1; }
 }
+
 .taka-intro.taka-intro-exit {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
-.taka-intro.taka-intro-exit .taka-intro-logo {
+.taka-intro.taka-intro-exit .taka-intro-logo,
+.taka-intro.taka-intro-exit .taka-intro-skip-btn {
     animation: none;
-    transition: transform 0.35s ease, opacity 0.35s ease, filter 0.35s ease;
+    transition: opacity 0.4s ease;
     opacity: 0;
-    filter: blur(2px);
-    transform: scale(1.25) rotate(3deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .taka-intro-logo,
+    .taka-intro-skip-btn {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }
