@@ -1217,6 +1217,15 @@ body {
     pointer-events: auto;
     transform: translateY(0);
 }
+/* Arapça (RTL) seçiliyken dil düğmesi ekranın SOL tarafına geçiyor, ama
+   açılır menü hâlâ sabit "right: 0" ile kendi tetikleyicisinin SOLUNA
+   doğru açılmaya çalışıyordu — bu da menünün büyük kısmının ekranın
+   dışına (viewport'un solundan) taşıp görünmez/tıklanamaz olmasına
+   sebep oluyordu. RTL'de sağ yerine sol kenara sabitliyoruz. */
+html[dir="rtl"] .lang-dropdown {
+    right: auto;
+    left: 0;
+}
 /* Sadece gerçek fare/hover desteği olan cihazlarda üstüne gelince açılsın —
    dokunmatik ekranlarda ":hover" takılı kalıp menüyü kapatılamaz halde
    bırakabiliyordu, orada JS'teki tıkla-aç/kapa devrede. */
@@ -1291,6 +1300,10 @@ body {
     }
     .lang-dropdown {
         right: -4px;
+    }
+    html[dir="rtl"] .lang-dropdown {
+        right: auto;
+        left: -4px;
     }
 
     /* 2. Sticky Category Nav — elegant italic serif
