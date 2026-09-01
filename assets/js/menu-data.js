@@ -1655,7 +1655,7 @@ const menuData = [
                 "nameRU": "Espresso",
                 "nameES": "Espresso",
                 "nameAR": "Espresso",
-                "image": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=400&q=80",
+                "image": "assets/img/products/espresso.jpg",
                 "price": "3,00",
                 "allergens": "I",
                 "diet": {

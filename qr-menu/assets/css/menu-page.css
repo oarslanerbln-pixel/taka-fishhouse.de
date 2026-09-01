@@ -547,6 +547,11 @@
 .menu-category-section {
     margin-bottom: 60px;
     animation: fadeIn 0.6s ease-out;
+    /* Kategori sekmesine tıklayınca JS bu section'a scrollIntoView ile
+       kaydırıyor; sticky header + arama kutusu + kategori çubuğu section'ın
+       üstünü kapatmasın diye gerçek yüksekliklerini (JS'te ölçülüyor) buraya
+       da uyguluyoruz. */
+    scroll-margin-top: calc(var(--header-h, 106px) + var(--search-h, 70px) + var(--cat-bar-h, 64px) + 12px);
 }
 
 .menu-item.has-image {
@@ -792,7 +797,13 @@
     width: 100%;
     justify-content: space-between;
     align-items: baseline;
-    gap: 15px;
+    /* Uzun başlıklarda (örn. "Fisch auf Auberginenpüreebett") başlık tek
+       satıra sığmıyor, kırılamayan uzun kelime fiyatın altına giriyordu.
+       flex-wrap ile fiyat, başlığa yer kalmadığında kendi satırına iner —
+       yazı ile fiyat asla üst üste binmez. */
+    flex-wrap: wrap;
+    column-gap: 15px;
+    row-gap: 4px;
 }
 
 .menu-item.has-image .menu-item-title-row {
@@ -821,6 +832,16 @@
     justify-content: flex-start;
     text-align: left;
     gap: 6px;
+    /* Başlık kalan alanı alsın ve daralabilsin; sığmayan tek kelime önce
+       tirelenir, o da yetmezse kırılır — taşıp fiyatın üstüne binmez. */
+    flex: 1 1 auto;
+    min-width: 0;
+    /* "anywhere" (break-word değil): kırılma noktaları min-content
+       hesabına da katıldığı için h4 içindeki metin kutusu gerçekten
+       daralabiliyor — break-word'de uzun kelime kutuyu taşırmaya devam
+       ediyordu. */
+    overflow-wrap: anywhere;
+    hyphens: auto;
 }
 
 .menu-item-title-row h4 span {
@@ -906,6 +927,18 @@
     text-align: center;
     margin-top: 4px;
     letter-spacing: 0.5px;
+}
+
+/* Fiyat hiç daralmaz, "15,50 €" iki satıra bölünmez ve kendi satırına
+   indiğinde de sağda kalır. */
+.menu-item-title-row .menu-item-price,
+.menu-item-title-row .menu-item-price-container {
+    flex: 0 0 auto;
+    margin-left: auto;
+}
+
+.menu-item-title-row .menu-item-price {
+    white-space: nowrap;
 }
 
 .price-multiple {
@@ -2481,8 +2514,15 @@ body .menu-item-title-row {
     flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
+    /* Başlığa yer kalmadığında fiyat kendi satırına insin; aksi halde
+       uzun başlık (ör. "Fisch auf Auberginenpüreebett") fiyatın altına
+       girip yazı ile fiyat üst üste biniyordu. */
+    flex-wrap: wrap !important;
+    column-gap: 15px;
+    row-gap: 2px;
 }
 body .menu-item-price {
+    margin-left: auto !important; /* kendi satırına indiğinde de sağda kalsın */
     font-family: 'Inter', sans-serif !important;
     font-size: 1.25rem !important;
     font-weight: 800 !important;
@@ -2503,10 +2543,12 @@ body .menu-item-title-row h4 {
        dahil olduğu için başlık gerektiğinde kelimenin içinden sarıp
        fiyatla çakışmadan daralabiliyor. */
     min-width: 0;
+    flex: 1 1 auto;
     flex-wrap: wrap !important;
     justify-content: flex-start !important;
     text-align: left !important;
     overflow-wrap: anywhere;
+    hyphens: auto;
 }
 body .menu-item-desc-inline {
     text-align: left !important;
