@@ -71,6 +71,10 @@ const i18n = {
                 btn.classList.remove('active');
             }
         });
+
+        // Trigger butonundaki kod (ör. "DE") her zaman aktif dili göstersin.
+        const triggerCode = switcher.querySelector('.lang-trigger-code');
+        if (triggerCode) triggerCode.textContent = this.currentLang.toUpperCase();
     }
 };
 
@@ -79,12 +83,39 @@ document.addEventListener('DOMContentLoaded', () => {
     i18n.init();
 
     // Setup event listeners for switcher buttons
+    // (closest() kullanılıyor çünkü buton artık kod+isim span'ları
+    // içeriyor — tıklama span'a denk gelirse e.target .lang-btn'in
+    // kendisi olmuyordu ve dil hiç değişmiyordu.)
     document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('lang-btn')) {
-            const lang = e.target.dataset.lang;
-            i18n.setLanguage(lang);
+        const langBtn = e.target.closest('.lang-btn');
+        if (langBtn) {
+            i18n.setLanguage(langBtn.dataset.lang);
+            closeLangDropdown();
         }
     });
+
+    // Dil seçici artık açılır bir menü: masaüstünde hover ile, dokunmatik
+    // ekranlarda (hover'ın çalışmadığı yerlerde) dokunarak açılıp kapanıyor.
+    const langSwitcher = document.getElementById('langSwitcher');
+    const langTrigger = document.getElementById('langTrigger');
+    function closeLangDropdown() {
+        if (!langSwitcher) return;
+        langSwitcher.classList.remove('open');
+        if (langTrigger) langTrigger.setAttribute('aria-expanded', 'false');
+    }
+    if (langSwitcher && langTrigger) {
+        langTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = langSwitcher.classList.toggle('open');
+            langTrigger.setAttribute('aria-expanded', String(isOpen));
+        });
+        document.addEventListener('click', (e) => {
+            if (!langSwitcher.contains(e.target)) closeLangDropdown();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLangDropdown();
+        });
+    }
 
     // Mobil dokunsal geri bildirim (haptic) — dil butonları, kategori
     // sekmeleri ve diğer basılabilir butonlarda hafif titreşim.

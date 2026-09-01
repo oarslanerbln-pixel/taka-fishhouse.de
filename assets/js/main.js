@@ -234,7 +234,16 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.registerPlugin(ScrollTrigger);
 
         // ----- HERO ENTRANCE -----
-        const heroTl = gsap.timeline({ delay: 0.3 });
+        // Önceden sabit delay:0.3 ile sayfa yüklenir yüklenmez KENDİ
+        // başına oynuyordu — açılış perdesinin (bkz. #takaIntro,
+        // index.html) süresi ~2s olduğu için bazen perde kapanmadan
+        // ÖNCE bitip arkada tamamlanıyor, bazen de perde açılırken
+        // GSAP henüz yarı yoldaydı (başlık hâlâ görünmez/kaymış) —
+        // "çok hızlı, farklı şeyler oluyor" hissi buradan geliyordu.
+        // Şimdi paused başlıyor, perde kapanma sinyalini (ya da perde
+        // hiç yoksa/atlanmışsa güvenlik ağı zaman aşımını) bekleyip
+        // ONDAN SONRA oynuyor.
+        const heroTl = gsap.timeline({ delay: 0.3, paused: true });
 
         try {
             heroTl
@@ -245,6 +254,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 .fromTo('.scroll-indicator', { opacity: 0 }, { opacity: 1, duration: 0.8, ease: 'power3.out' }, '-=0.3');
         } catch(e) {
             console.warn("GSAP Hero Anim Error:", e);
+        }
+
+        if (window.__takaIntroDone) {
+            heroTl.play();
+        } else {
+            let heroPlayed = false;
+            const playHeroOnce = () => { if (!heroPlayed) { heroPlayed = true; heroTl.play(); } };
+            document.addEventListener('taka-intro-done', playHeroOnce, { once: true });
+            // #takaIntro'nun bulunmadığı sayfalarda (ör. menu.html) veya
+            // sinyal beklenenden gelmezse başlık sonsuza dek boş kalmasın.
+            setTimeout(playHeroOnce, 2500);
         }
 
         // Hero Video Parallax & Entrance

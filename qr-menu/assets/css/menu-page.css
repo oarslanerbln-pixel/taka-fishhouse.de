@@ -60,82 +60,46 @@
     width: 100%;
 }
 
-/* Mask to hide text initially for a sleek reveal */
-.splash-mask {
-    overflow: hidden;
-    padding: 10px 20px;
-    margin: -10px -20px; /* Keep centering perfect */
-}
-
-.splash-text {
-    display: block;
-    text-align: center;
-    font-family: var(--font-heading), serif;
-    font-size: 3.5rem;
-    font-weight: 500;
-    line-height: 1.1;
-    color: transparent;
-    background: linear-gradient(110deg, #555 10%, #fff 40%, #00e6b8 50%, #fff 60%, #555 90%);
-    background-size: 300% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    letter-spacing: 4px;
-    padding-left: 4px; /* Fix symmetry for letter spacing */
-    
-    transform-origin: bottom center;
+/* Logo + çatal-bıçak animasyonu (eskiden "TAKA FISH HOUSE" yazısı vardı,
+   kullanıcı isteğiyle gerçek logo + restoran temalı bir çatal-bıçak
+   ikonuna çevrildi). */
+.splash-logo-img {
+    width: min(180px, 46vw);
+    height: auto;
     opacity: 0;
-    transform: translateY(100%) rotateX(80deg) scale(0.8);
-    animation: wow-text-reveal 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    filter: drop-shadow(0 10px 26px rgba(0, 0, 0, 0.55)) blur(6px);
+    transform: scale(0.4) rotate(-10deg);
+    animation: splash-logo-in 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.1s;
 }
-
-/* Glow behind the text */
-.splash-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 60px;
-    background: rgba(0, 230, 184, 0.4);
-    filter: blur(40px);
-    border-radius: 50%;
-    opacity: 0;
-    animation: wow-glow-pulse 1.8s ease-in-out forwards;
-    z-index: -1;
-}
-
-@keyframes wow-text-reveal {
-    0% {
-        opacity: 0;
-        transform: translateY(100%) rotateX(80deg) scale(0.8);
-        background-position: 150% center;
-        filter: blur(5px);
-    }
-    30% {
+@keyframes splash-logo-in {
+    60% {
         opacity: 1;
-        transform: translateY(0) rotateX(0deg) scale(1);
-        background-position: 50% center; /* Light sweep hits middle */
-        filter: blur(0px);
-    }
-    85% {
-        opacity: 1;
-        transform: translateY(0) rotateX(0deg) scale(1.03); /* very subtle float */
-        background-position: -50% center;
-        filter: blur(0px);
+        filter: drop-shadow(0 10px 26px rgba(0, 0, 0, 0.55)) blur(0);
+        transform: scale(1.06) rotate(2deg);
     }
     100% {
-        opacity: 0;
-        transform: translateY(-20px) rotateX(-20deg) scale(1.1); /* Blast forward and out */
-        background-position: -100% center;
-        filter: blur(10px);
+        opacity: 1;
+        filter: drop-shadow(0 10px 26px rgba(0, 0, 0, 0.55)) blur(0);
+        transform: scale(1) rotate(0deg);
     }
 }
 
-@keyframes wow-glow-pulse {
-    0% { opacity: 0; width: 0%; }
-    40% { opacity: 1; width: 120%; }
-    85% { opacity: 1; width: 130%; }
-    100% { opacity: 0; width: 150%; }
+.splash-utensil {
+    margin-top: 20px;
+    font-size: 1.7rem;
+    color: #D4AF37;
+    opacity: 0;
+    transform: scale(0.3) rotate(-45deg);
+    animation:
+        splash-utensil-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.55s,
+        splash-utensil-wiggle 1.1s ease-in-out infinite 1.05s;
+}
+@keyframes splash-utensil-in {
+    to { opacity: 0.9; transform: scale(1) rotate(0deg); }
+}
+@keyframes splash-utensil-wiggle {
+    0%, 100% { transform: rotate(-8deg); }
+    50% { transform: rotate(8deg); }
 }
 
 /* --- Menu Hero --- */
@@ -346,7 +310,7 @@
    videoyla iç içe geçip mobilde okunmuyordu. Sabit koyu bir zemin
    ekleyerek metni videodan bağımsız her zaman net okunur yapıyoruz. */
 .hero-text-block {
-    background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0.15) 100%);
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 65%, rgba(0,0,0,0.25) 100%);
     padding: 18px 18px 22px;
     border-radius: 4px;
     backdrop-filter: blur(2px);
@@ -1217,6 +1181,130 @@ body {
 }
 
 /* =========================================
+   LANGUAGE SWITCHER — hover-to-open dropdown (desktop),
+   tap-to-open dropdown (mobile/touch, no :hover available).
+   Öncesinde tek satıra sığdırılmış "DE | EN | TR | RU | ES | AR" butonları
+   vardı; 6 dille dar ekranlarda sıkışıp taşıyordu. Artık tek bir "DE ⌄"
+   tetikleyici buton var, üstüne gelince/tıklayınca şık bir açılır liste
+   çıkıyor. */
+.lang-switcher {
+    position: relative;
+}
+.lang-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #2a241c;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+.lang-trigger i {
+    font-size: 0.65rem;
+    opacity: 0.6;
+}
+.lang-trigger:hover,
+.lang-switcher.open .lang-trigger {
+    border-color: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.03);
+}
+.lang-trigger-caret {
+    transition: transform 0.25s ease;
+}
+.lang-switcher.open .lang-trigger-caret {
+    transform: rotate(180deg);
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 170px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.22s;
+    z-index: 300;
+}
+.lang-switcher.open .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+/* Arapça (RTL) seçiliyken dil düğmesi ekranın SOL tarafına geçiyor, ama
+   açılır menü hâlâ sabit "right: 0" ile kendi tetikleyicisinin SOLUNA
+   doğru açılmaya çalışıyordu — bu da menünün büyük kısmının ekranın
+   dışına (viewport'un solundan) taşıp görünmez/tıklanamaz olmasına
+   sebep oluyordu. RTL'de sağ yerine sol kenara sabitliyoruz. */
+html[dir="rtl"] .lang-dropdown {
+    right: auto;
+    left: 0;
+}
+/* Sadece gerçek fare/hover desteği olan cihazlarda üstüne gelince açılsın —
+   dokunmatik ekranlarda ":hover" takılı kalıp menüyü kapatılamaz halde
+   bırakabiliyordu, orada JS'teki tıkla-aç/kapa devrede. */
+@media (hover: hover) and (pointer: fine) {
+    .lang-switcher:hover .lang-dropdown {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+}
+
+.lang-dropdown .lang-btn {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 9px 12px;
+    border-radius: 9px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: #2a241c;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+.lang-dropdown .lang-btn:hover {
+    background: rgba(212, 175, 55, 0.14);
+}
+.lang-dropdown .lang-btn.active {
+    background: #2a241c;
+    color: #fff;
+}
+.lang-dropdown .lang-btn .lang-code {
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    opacity: 0.6;
+    min-width: 20px;
+}
+.lang-dropdown .lang-btn.active .lang-code {
+    opacity: 1;
+}
+
+/* =========================================
    MOBILE-FIRST OVERRIDES (Max Width 900px)
    (Protects the Desktop Grid Layout)
    ========================================= */
@@ -1237,49 +1325,18 @@ body {
         display: none !important;
     }
 
-    /* === LANGUAGE SWITCHER: DE | EN | TR style === */
-    .lang-switcher {
-        display: flex;
-        align-items: center;
-        gap: 0;
-        background: transparent !important;
-        box-shadow: none !important;
-        border: none !important;
-        padding: 0 !important;
+    /* === LANGUAGE SWITCHER: compact trigger on narrow screens === */
+    .lang-trigger {
+        padding: 5px 9px;
+        font-size: 0.7rem;
+        gap: 4px;
     }
-    .lang-btn {
-        font-family: 'Inter', sans-serif !important;
-        font-size: 0.75rem !important;
-        font-style: normal !important;
-        font-weight: 500 !important;
-        color: #aaa !important;
-        background: transparent !important;
-        border: none !important;
-        padding: 2px 6px !important;
-        letter-spacing: 1px !important;
-        text-transform: uppercase !important;
-        cursor: pointer !important;
-        position: relative;
-        transition: color 0.2s ease !important;
-        line-height: 1;
+    .lang-dropdown {
+        right: -4px;
     }
-    .lang-btn:hover {
-        color: #555 !important;
-    }
-    .lang-btn.active {
-        color: #1a1a1a !important;
-        font-weight: 700 !important;
-    }
-    /* Pipe separator between language buttons */
-    .lang-btn:not(:last-child)::after {
-        content: '|';
-        color: #ccc;
-        position: absolute;
-        right: -1px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-weight: 300;
-        font-size: 0.75rem;
+    html[dir="rtl"] .lang-dropdown {
+        right: auto;
+        left: -4px;
     }
 
     /* 2. Sticky Category Nav — elegant italic serif
@@ -1454,19 +1511,16 @@ body {
 }
 
 /* 5. Large Modal for Story/Allergens (Global) */
-.story-modal-content {
-    background-color: #f4f2ee !important;
-    width: 95% !important;
-    max-width: 500px !important;
-    border-radius: 12px !important;
-    padding: 0;
-    overflow: hidden;
-    max-height: 90vh !important;
-    max-height: 90dvh !important;
-}
-.story-modal-image-wrapper {
-    height: 40vh !important;
-}
+/* .story-modal-content / .story-modal-image-wrapper geometry USED TO be
+   redefined here with !important, even though the comment above made it
+   look like part of the @media(max-width:900px) block above (it isn't —
+   this sits after that block's closing brace, so it silently applied at
+   EVERY width). That duplicate — plus its `height: 40vh !important` on
+   the image — fought the real definitions in the "STORYTELLING MODAL"
+   section below and forced a flat, cropped photo. Removed; the
+   STORYTELLING MODAL section is now the single source of truth for both
+   rules (its .story-modal-content values were updated to match what was
+   actually rendering: 95%/500px/12px). */
 .modal-allergens {
     display: flex;
     flex-wrap: wrap;
@@ -1779,13 +1833,20 @@ body {
 }
 
 .story-modal-content {
-    background: #111;
+    /* Tek kaynak: kabuk geometrisi (width/max-width/border-radius/overflow)
+       sadece burada tanımlansın — başka bir yerde ikinci bir
+       .story-modal-content kuralı EKLEMEYİN (bkz. yukarıdaki "5. Large
+       Modal" notu — aynı hata tekrar sürünerek geri gelmesin). Değerler,
+       body.dl-bg-white teması aktifken gerçekte neyin göründüğüyle
+       eşleşecek şekilde ayarlandı (95%/500px/12px). */
+    background: #111; /* body.dl-bg-white .story-modal-content bunu ezip beyaz yapıyor, kasıtlı */
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    width: 100%;
-    max-width: 420px;
+    border-radius: 12px;
+    width: 95%;
+    max-width: 500px;
     max-height: 90vh;
     max-height: 90dvh;
+    overflow-x: hidden;
     overflow-y: auto;
     position: relative;
     transform: translateY(30px) scale(0.95);
@@ -1836,19 +1897,128 @@ body {
     color: #000;
 }
 
+/* ================================================================
+   STORY MODAL — HAVADA SÜZÜLEN ÜRÜN FOTOĞRAFI
+   Bu kutu modeli için de tek kaynak burasıdır. height/aspect-ratio/
+   transform kurallarını başka bir yerde .story-modal-image-* için
+   TEKRAR TANIMLAMAYIN.
+   ================================================================ */
 .story-modal-image-wrapper {
+    position: relative;
     width: 100%;
     aspect-ratio: 5 / 4;
     height: auto;
     overflow: hidden;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Bol boşluk: fotoğraf döndükçe/süzüldükçe ve gölgesi kenara
+       taşmadan rahatça hareket edebilsin. */
+    padding: 9% 12% 14%;
+    background: radial-gradient(120% 100% at 50% 10%, #f8f5ef 0%, #ece5d7 60%, #ddd3bf 100%);
 }
 
-.story-modal-image-wrapper img {
+/* Dikey süzülme (bob) + giriş animasyonu burada; dönme (tilt) ayrı bir
+   iç katmanda (.story-modal-image-tilt) — aksi halde sonsuz döngü
+   animasyonu ile :hover transition'ı aynı transform özelliği için
+   birbirini geçersiz kılardı. */
+.story-modal-image-float {
+    width: 100%;
+    height: 100%;
+    perspective: 1200px;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(26px) scale(0.82);
+}
+
+.story-modal-image-tilt {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    transform: rotateX(4deg) rotateY(-3deg);
+    box-shadow:
+        0 18px 36px rgba(20, 15, 5, 0.28),
+        0 4px 10px rgba(20, 15, 5, 0.12);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+}
+.story-modal-image-tilt img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
+}
+
+.story-modal-image-shadow {
+    position: absolute;
+    left: 50%;
+    bottom: 8%;
+    width: 56%;
+    height: 20px;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse at center, rgba(20,15,5,0.4) 0%, rgba(20,15,5,0) 72%);
+    filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Sadece .active durumundayken animasyon çalışsın — modal kapalıyken
+   (opacity:0/pointer-events:none olsa da DOM'da kalıyor) gereksiz yere
+   sürekli animasyon çalışmasın. */
+.story-modal-overlay.active .story-modal-image-float {
+    animation:
+        storyImgEnter 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.15s,
+        storyImgBob 4.5s ease-in-out infinite 0.8s;
+}
+.story-modal-overlay.active .story-modal-image-shadow {
+    animation:
+        storyImgShadowIn 0.5s ease forwards 0.35s,
+        storyImgShadowBreathe 4.5s ease-in-out infinite 0.85s;
+}
+
+@keyframes storyImgEnter {
+    0%   { opacity: 0; filter: blur(10px); transform: translateY(26px) scale(0.82); }
+    60%  { opacity: 1; filter: blur(0);    transform: translateY(-6px) scale(1.03); }
+    100% { opacity: 1; filter: blur(0);    transform: translateY(0)    scale(1); }
+}
+@keyframes storyImgBob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+}
+@keyframes storyImgShadowIn { to { opacity: 0.8; } }
+@keyframes storyImgShadowBreathe {
+    0%, 100% { transform: translateX(-50%) scale(1);    opacity: 0.8; }
+    50%      { transform: translateX(-50%) scale(0.82); opacity: 0.5; }
+}
+
+/* Masaüstü (fare) için ekstra tilt — sadece hover destekleyen/pointer'ı
+   hassas cihazlarda. Dokunmatik ekranlarda devre dışı, oradaki kullanıcı
+   zaten dinlenme pozisyonundaki tilt + bob + gölgeyle tam bir sunum
+   görüyor. */
+@media (hover: hover) and (pointer: fine) {
+    .story-modal-image-wrapper:hover .story-modal-image-tilt {
+        transform: rotateX(7deg) rotateY(-9deg) scale(1.02);
+        box-shadow:
+            0 26px 50px rgba(20,15,5,0.32),
+            0 6px 14px rgba(20,15,5,0.14);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .story-modal-overlay.active .story-modal-image-float,
+    .story-modal-overlay.active .story-modal-image-shadow {
+        animation: none !important;
+    }
+    .story-modal-image-float {
+        transition: opacity 0.3s ease, filter 0.3s ease;
+        opacity: 1;
+        filter: none;
+        transform: none;
+    }
+    .story-modal-image-shadow { opacity: 0.6; }
+    .story-modal-image-tilt { transition: none; }
 }
 
 .story-modal-body {
@@ -2191,15 +2361,19 @@ body.dl-nav-sharp .cat-btn {
     font-size: 1.1rem !important;
     letter-spacing: 0.5px !important;
     padding-bottom: 5px !important;
+    transition: color 0.25s ease, border-color 0.25s ease !important;
 }
-body.dl-nav-sharp .cat-btn::before, 
+body.dl-nav-sharp .cat-btn::before,
 body.dl-nav-sharp .cat-btn::after {
     display: none !important; /* Kill the dark neon pills */
 }
+/* Seçili kategori sekmesi artık logodaki bordo tonuna (--accent-color'la
+   aynı: #8B1C24) bürünüyor, önceden düz siyahtı ve diğer sekmelerden
+   yeterince ayrışmıyordu. */
 body.dl-nav-sharp .cat-btn.active {
-    border-bottom: 1px solid #111 !important;
+    border-bottom: 2px solid #8B1C24 !important;
     background: transparent !important;
-    color: #111 !important;
+    color: #8B1C24 !important;
     font-weight: 700 !important;
     font-style: normal !important;
 }
@@ -2358,13 +2532,21 @@ body .menu-item-price {
     flex-shrink: 0 !important;
 }
 body .menu-item-title-row h4 {
-    min-width: 0; /* flex item'ın taşmadan doğru şekilde sarabilmesi için */
+    /* min-width: 0 gerekli: flex item'ın varsayılan min-width'i (auto) en
+       uzun kelimenin genişliğine eşit oluyor, bu da başlığın fiyatın
+       alanına girmesine ve üst üste binmesine sebep oluyordu.
+       overflow-wrap:break-word İŞE YARAMIYOR: spec'e göre bu değer satır
+       sarma aşamasında kullanılır ama flex/grid item'ın "otomatik minimum
+       boyut" hesabını etkilemez — o yüzden min-width:0 olsa bile uzun tek
+       kelime (ör. "Augerberginenpüreebett") kutunun dışına taşıp fiyatın
+       üstüne biniyordu. overflow-wrap:anywhere ise minimum boyut hesabına
+       dahil olduğu için başlık gerektiğinde kelimenin içinden sarıp
+       fiyatla çakışmadan daralabiliyor. */
+    min-width: 0;
     flex: 1 1 auto;
     flex-wrap: wrap !important;
     justify-content: flex-start !important;
     text-align: left !important;
-    /* break-word yerine anywhere: kırılma noktaları min-content hesabına da
-       katılır, böylece h4 içindeki metin kutusu gerçekten daralır. */
     overflow-wrap: anywhere;
     hyphens: auto;
 }

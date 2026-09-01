@@ -3,6 +3,7 @@
 @import "core/_typography.css";
 @import "core/_layout.css";
 
+@import "components/_intro.css";
 @import "components/_header.css";
 @import "components/_hero.css";
 @import "components/_story.css";

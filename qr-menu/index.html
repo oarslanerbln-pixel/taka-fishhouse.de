@@ -38,7 +38,7 @@
       "name": "TAKA Fish House",
       "image": "https://taka-fishhouse.de/assets/img/products/hamsi_web.jpg",
       "url": "https://taka-fishhouse.de/",
-      "telephone": "+493026349486",
+      "telephone": "+493024644214",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Kottbusser Damm 35",
@@ -87,10 +87,8 @@
     <div class="premium-splash" id="premium-splash" aria-hidden="true">
         <div class="splash-ripple"></div>
         <div class="splash-content">
-            <div class="splash-mask">
-                <span class="splash-text">TAKA FISH HOUSE</span>
-            </div>
-            <div class="splash-glow"></div>
+            <img src="../assets/taka_logo.png" alt="" class="splash-logo-img">
+            <i class="fa-solid fa-utensils splash-utensil" aria-hidden="true"></i>
         </div>
     </div>
 
@@ -106,12 +104,19 @@
             
             <div class="header-right">
                 <div class="lang-switcher" id="langSwitcher">
-                    <button class="lang-btn active" data-lang="de">DE</button>
-                    <button class="lang-btn" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="tr">TR</button>
-                    <button class="lang-btn" data-lang="ru">RU</button>
-                    <button class="lang-btn" data-lang="es">ES</button>
-                    <button class="lang-btn" data-lang="ar">AR</button>
+                    <button type="button" class="lang-trigger" id="langTrigger" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                        <span class="lang-trigger-code">DE</span>
+                        <i class="fa-solid fa-chevron-down lang-trigger-caret" aria-hidden="true"></i>
+                    </button>
+                    <div class="lang-dropdown" id="langDropdown" role="menu">
+                        <button class="lang-btn active" data-lang="de" role="menuitem"><span class="lang-code">DE</span><span class="lang-name">Deutsch</span></button>
+                        <button class="lang-btn" data-lang="en" role="menuitem"><span class="lang-code">EN</span><span class="lang-name">English</span></button>
+                        <button class="lang-btn" data-lang="tr" role="menuitem"><span class="lang-code">TR</span><span class="lang-name">Türkçe</span></button>
+                        <button class="lang-btn" data-lang="ru" role="menuitem"><span class="lang-code">RU</span><span class="lang-name">Русский</span></button>
+                        <button class="lang-btn" data-lang="es" role="menuitem"><span class="lang-code">ES</span><span class="lang-name">Español</span></button>
+                        <button class="lang-btn" data-lang="ar" role="menuitem"><span class="lang-code">AR</span><span class="lang-name">العربية</span></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -233,7 +238,7 @@
             <div class="footer-info">
                 <h4 data-i18n="footer-contact-title">İletişim</h4>
                 <p>📍 Kottbusser Damm 35, 10967 Berlin</p>
-                <p>📞 <a href="tel:+493026349486" class="footer-phone">+49 30 26349486</a></p>
+                <p>📞 <a href="tel:+493024644214" class="footer-phone">+49 30 24644214</a></p>
                 <p>🕒 <span data-i18n="footer-hours">Her Gün: 11:00 - 22:00</span></p>
             </div>
         </div>
@@ -263,7 +268,12 @@
             <div class="modal-drag-handle"></div>
             <button class="story-modal-close" id="storyModalClose">&times;</button>
             <div class="story-modal-image-wrapper">
-                <img src="" alt="" id="storyModalImg">
+                <div class="story-modal-image-float">
+                    <div class="story-modal-image-tilt">
+                        <img src="" alt="" id="storyModalImg">
+                    </div>
+                </div>
+                <div class="story-modal-image-shadow" aria-hidden="true"></div>
             </div>
             <div class="story-modal-body">
                 <div class="story-modal-title-row">
