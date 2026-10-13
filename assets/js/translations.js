@@ -169,6 +169,8 @@ const translations = {
         "res-guests-large": "7 ve üzeri",
         "res-submit": "Rezervasyon Gönder",
         "res-fineprint": "7 kişiden büyük gruplar ve aynı gün rezervasyonlar için lütfen bizi arayın:",
+        "res-sending": "Gönderiliyor…",
+        "res-error": "Rezervasyonunuz gönderilemedi. Lütfen bizi telefonla arayın: +49 30 24644214",
 
         // Teşekkür sayfası
         "thanks-title": "Rezervasyonunuz bize ulaştı",
@@ -341,6 +343,8 @@ const translations = {
         "res-guests-large": "7 und mehr",
         "res-submit": "Reservierung senden",
         "res-fineprint": "Für Gruppen ab 7 Personen und Reservierungen für denselben Tag rufen Sie uns bitte an:",
+        "res-sending": "Wird gesendet…",
+        "res-error": "Ihre Reservierung konnte nicht gesendet werden. Bitte rufen Sie uns an: +49 30 24644214",
 
         "thanks-title": "Ihre Reservierungsanfrage ist eingegangen",
         "thanks-desc": "Wir haben Ihre Anfrage erhalten. Unser Team bestätigt sie in Kürze telefonisch. Ohne diesen Bestätigungsanruf ist die Reservierung noch nicht verbindlich.",
@@ -512,6 +516,8 @@ const translations = {
         "res-guests-large": "7 or more",
         "res-submit": "Send Reservation",
         "res-fineprint": "For groups larger than 7 and same-day reservations, please call us:",
+        "res-sending": "Sending…",
+        "res-error": "Your reservation could not be sent. Please call us: +49 30 24644214",
 
         "thanks-title": "We've received your reservation",
         "thanks-desc": "Your request has reached us. Our team will confirm it by phone shortly. Until you receive that call, the reservation is not yet final.",
@@ -569,6 +575,8 @@ const translations = {
         "res-optional": "(необязательно)",
         "res-note-placeholder": "День рождения, аллергия, детский стульчик…",
         "res-fineprint": "Для групп более 7 человек и бронирований день в день, пожалуйста, позвоните нам:",
+        "res-sending": "Отправка…",
+        "res-error": "Не удалось отправить бронирование. Пожалуйста, позвоните нам: +49 30 24644214",
         "res-call": "Позвонить",
         "res-soon": "Система онлайн бронирования скоро появится!",
         "contact-badge": "Контакты",
@@ -697,6 +705,8 @@ const translations = {
         "res-optional": "(opcional)",
         "res-note-placeholder": "Cumpleaños, alergia, trona…",
         "res-fineprint": "Para grupos de más de 7 personas y reservas el mismo día, llámenos por favor:",
+        "res-sending": "Enviando…",
+        "res-error": "No se pudo enviar su reserva. Por favor, llámenos: +49 30 24644214",
         "res-call": "Llamar Ahora",
         "res-soon": "¡El sistema de reservas en línea llegará pronto!",
         "contact-badge": "Contacto",
@@ -825,6 +835,8 @@ const translations = {
         "res-optional": "(اختياري)",
         "res-note-placeholder": "عيد ميلاد، حساسية، كرسي أطفال…",
         "res-fineprint": "للمجموعات الأكبر من 7 أشخاص وحجوزات نفس اليوم، يرجى الاتصال بنا:",
+        "res-sending": "جارٍ الإرسال…",
+        "res-error": "تعذّر إرسال حجزك. يرجى الاتصال بنا: +49 30 24644214",
         "res-call": "اتصل الآن",
         "res-soon": "نظام الحجز عبر الإنترنت قريباً!",
         "contact-badge": "اتصل بنا",
