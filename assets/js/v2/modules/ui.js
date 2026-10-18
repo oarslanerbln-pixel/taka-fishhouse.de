@@ -86,13 +86,14 @@ export function initUI() {
         resForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            const name = resForm.querySelector('input[name="İsim"]').value.trim();
-            const email = resForm.querySelector('input[name="Email"]').value.trim();
-            const phone = resForm.querySelector('input[name="Telefon"]').value.trim();
-            const date = resForm.querySelector('input[name="Tarih"]').value.trim();
+            const name = resForm.querySelector('input[name="İsim"]')?.value.trim() || '';
+            const emailInput = resForm.querySelector('input[name="Email"]');
+            const email = emailInput ? emailInput.value.trim() : '';
+            const phone = resForm.querySelector('input[name="Telefon"]')?.value.trim() || '';
+            const date = resForm.querySelector('input[name="Tarih"]')?.value.trim() || '';
 
             if (!name) return window.showToast("Lütfen İsim Soyisim alanını doldurun.");
-            if (!email || !/^\S+@\S+\.\S+$/.test(email)) return window.showToast("Geçerli bir E-posta adresi girin.");
+            if (email && !/^\S+@\S+\.\S+$/.test(email)) return window.showToast("Geçerli bir E-posta adresi girin.");
             if (!phone) return window.showToast("Lütfen Telefon Numarası girin.");
             if (!date) return window.showToast("Lütfen Rezervasyon Tarihi seçin.");
 
@@ -102,20 +103,22 @@ export function initUI() {
             submitBtn.disabled = true;
 
             try {
+                const payload = {
+                    İsim: name,
+                    Telefon: phone,
+                    Tarih: date,
+                    _subject: "Yeni Masa Rezervasyonu - Taka Fish House",
+                    _template: "table"
+                };
+                if (email) payload.Email = email;
+
                 await fetch("https://formsubmit.co/ajax/handeaydemr@gmail.com", {
                     method: "POST",
                     headers: { 
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     },
-                    body: JSON.stringify({
-                        İsim: name,
-                        Email: email,
-                        Telefon: phone,
-                        Tarih: date,
-                        _subject: "Yeni Masa Rezervasyonu - Taka Fish House",
-                        _template: "table"
-                    })
+                    body: JSON.stringify(payload)
                 });
 
                 window.showToast("Rezervasyon talebiniz başarıyla alındı. Teşekkür ederiz!", "success");

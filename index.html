@@ -540,8 +540,8 @@
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_next" value="https://taka-fishhouse.de/danke.html">
-                <!-- Spam tuzağı: gerçek kullanıcı bunu görmez ve doldurmaz -->
-                <input type="text" name="_honey" class="res-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+                <!-- Spam tuzağı: Safari/Chrome autofill doldurmasın diye display:none olmalı -->
+                <input type="text" name="_honey" style="display:none !important;" tabindex="-1" autocomplete="new-password" aria-hidden="true">
 
                 <div class="res-field">
                     <label for="resName" data-i18n="res-label-name">İsim Soyisim</label>
