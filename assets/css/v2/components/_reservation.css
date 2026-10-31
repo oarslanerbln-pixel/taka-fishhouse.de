@@ -56,14 +56,9 @@
     text-align: left;
 }
 
-/* Spam tuzağı — görünmez ama display:none değil (botlar onu atlar). */
+/* Spam tuzağı — Safari ve Chrome autofill yakalamasın diye kesinlikle display:none olmalı */
 .res-honey {
-    position: absolute;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
+    display: none !important;
 }
 
 .res-field {
