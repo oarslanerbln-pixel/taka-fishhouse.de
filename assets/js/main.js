@@ -4,15 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ziyaretçinin kendi tarayıcı saati DEĞİL, Berlin yerel saati kullanılır —
     // aksi halde yurt dışından (farklı saat diliminden) bakan biri yanlış
     // açık/kapalı durumu görür. Saatler sayfada her yerde görünen "Her Gün:
-    // 11:00-22:00" ile birebir aynı (qr-menu/index.html'deki eski JSON-LD'de
-    // Cuma-Pazar 23:00'e kadar yazıyordu — bu sayfadaki metinle çelişiyordu,
-    // burada gerçek/görünen saat esas alındı).
+    // 11:00-23:00" (footer-hours çevirileri + JSON-LD) ile birebir aynı olmalı;
+    // saat değişirse üçü birlikte güncellenmeli.
     (function updateOpenStatus() {
         const el = document.getElementById('openStatus');
         if (!el) return;
 
         const OPEN_MIN = 11 * 60;
-        const CLOSE_MIN = 22 * 60;
+        const CLOSE_MIN = 23 * 60;
 
         function berlinMinutesNow() {
             const parts = new Intl.DateTimeFormat('en-GB', {
@@ -28,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const t = (typeof translations !== 'undefined' && translations[lang]) || {};
             const now = berlinMinutesNow();
             const isOpen = now >= OPEN_MIN && now < CLOSE_MIN;
-            const timeStr = isOpen ? '22:00' : '11:00';
+            const timeStr = isOpen ? '23:00' : '11:00';
             const template = isOpen
                 ? (t['status-open'] || 'Şu an açık · {time}\'e kadar')
                 : (t['status-closed'] || 'Şu an kapalı · {time}\'de açılıyor');
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         render();
-        setInterval(render, 60000); // dakika sınırını geçince (11:00/22:00) durum otomatik güncellensin
+        setInterval(render, 60000); // dakika sınırını geçince (11:00/23:00) durum otomatik güncellensin
         document.addEventListener('languageChanged', render);
     })();
 

@@ -61,6 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
             color: var(--primary);
             text-decoration: underline;
         }
+        /* v2/main.css'teki global ".btn { background: transparent; color: var(--text-light) }"
+           kuralı .btn-primary'yi eziyordu: buton koyu zeminde koyu yazıyla
+           görünmez oluyordu. Banner'a özel, daha spesifik kural. */
+        .taka-cookie-banner #acceptCookies {
+            background: #8b1538;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .taka-cookie-banner #acceptCookies:hover {
+            background: #a31c44;
+        }
         .taka-cookie-banner .cookie-buttons {
             flex-shrink: 0;
         }

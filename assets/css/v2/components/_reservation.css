@@ -175,3 +175,20 @@
         margin-top: 36px;
     }
 }
+
+/* Gönderim hatası — FormSubmit maili kabul etmezse telefon yönlendirmesi. */
+.res-status {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 14px 18px;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.res-status[hidden] {
+    display: none;
+}
