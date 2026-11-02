@@ -1,0 +1,54 @@
+# Netlify yapılandırması — vercel.json'daki başlık ve yönlendirmelerin karşılığı.
+# HTML/JS/CSS için ayrı no-cache kuralı gerekmiyor: Netlify varsayılan olarak
+# "max-age=0, must-revalidate" gönderiyor, yeni yayın anında görünüyor.
+
+[build]
+  command = "node scripts/build-netlify.js"
+  publish = "dist"
+
+[[redirects]]
+  from = "/menu"
+  to = "/qr-menu/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/menu.html"
+  to = "/qr-menu/"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/assets/wolt_imgs/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/assets/lieferando_imgs/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/assets/ubereats_imgs/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/assets/drinks/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: blob: https:; font-src 'self' data: https:; connect-src 'self' https:; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
