@@ -1,21 +1,15 @@
-// Rezervasyon formu — FormSubmit'e AJAX ile gönderim.
-// Eskiden form düz HTML POST ile formsubmit.co'ya gidiyordu: FormSubmit
-// tarafında bir sorun olduğunda (form aktive edilmemiş, alıcı adresi
-// doğrulanmamış, kota/spam engeli) misafir ya FormSubmit'in kendi
-// sayfasında kalıyor ya da hiçbir hata görmüyordu; mail hiç gelmese bile
-// "gönderildi" sanılıyordu. Artık FormSubmit'in gerçek JSON yanıtı
-// kontrol ediliyor — sadece success:"true" ise danke.html'e geçiliyor,
-// aksi halde formun altında telefonla arama yönlendirmesi gösteriliyor.
-// JS çalışmazsa form eskisi gibi normal POST ile gönderilmeye devam eder.
+// Rezervasyon formu — Netlify Forms'a AJAX ile gönderim.
+// Başvurular Netlify panelinde (Forms) saklanır, bildirim maili oradan gider;
+// mail gelmese bile başvuru kaybolmaz. Cevap 2xx değilse misafire telefon
+// numarasıyla birlikte görünür bir hata gösterilir. JS çalışmazsa form normal
+// POST ile Netlify'a gider ve danke.html açılır.
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('resForm');
     if (!form) return;
 
     const submitBtn = form.querySelector('.res-submit');
     const status = form.querySelector('.res-status');
-    // Alıcı adresi tek yerde (form action) tutuluyor; AJAX ucu oradan türetiliyor.
-    const ajaxUrl = form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
-    const thanksUrl = form.querySelector('input[name="_next"]')?.value || 'danke.html';
+    const thanksUrl = form.getAttribute('action') || '/danke.html';
 
     function t(key, fallback) {
         const lang = (typeof i18n !== 'undefined' && i18n.currentLang) || 'de';
@@ -41,25 +35,17 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.disabled = true;
         submitBtn.textContent = t('res-sending', 'Wird gesendet…');
 
-        const payload = {};
-        new FormData(form).forEach((value, key) => {
-            if (key !== '_next') payload[key] = value;
-        });
-
         try {
-            const res = await fetch(ajaxUrl, {
+            const res = await fetch('/', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify(payload)
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(new FormData(form)).toString()
             });
-            const data = await res.json().catch(() => ({}));
-
-            // FormSubmit başarıyı string olarak döndürüyor ("true"/"false").
-            if (res.ok && String(data.success) === 'true') {
+            if (res.ok) {
                 window.location.href = thanksUrl;
                 return;
             }
-            console.error('Reservierung: FormSubmit hat abgelehnt', res.status, data.message || data);
+            console.error('Reservierung: Netlify Forms hat abgelehnt', res.status);
             showError();
         } catch (err) {
             console.error('Reservierung: Netzwerkfehler', err);
