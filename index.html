@@ -534,9 +534,8 @@
             <h2 data-i18n="res-title">Masanız Hazır</h2>
             <p data-i18n="res-desc">Kreuzberg'in en özel balık deneyimi için yerinizi ayırtın. Yoğun saatlerde beklememek için rezervasyon yapmanızı öneririz.</p>
 
-            <form class="res-form" id="resForm" name="rezervasyon" method="POST" action="/danke.html" data-netlify="true" netlify-honeypot="_honey">
-                <!-- Netlify Forms: başvurular Netlify panelinde saklanır ve bildirim maili oradan gider -->
-                <input type="hidden" name="form-name" value="rezervasyon">
+            <form class="res-form" id="resForm" method="POST" action="/api/reservation">
+                <!-- Gönderim: assets/js/reservation-form.js → /api/reservation (Vercel) → Resend ile mail -->
                 <!-- Spam tuzağı: Safari/Chrome autofill doldurmasın diye display:none olmalı -->
                 <input type="text" name="_honey" style="display:none !important;" tabindex="-1" autocomplete="new-password" aria-hidden="true">
 

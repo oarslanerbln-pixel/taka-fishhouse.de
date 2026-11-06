@@ -1,15 +1,14 @@
-// Rezervasyon formu — Netlify Forms'a AJAX ile gönderim.
-// Başvurular Netlify panelinde (Forms) saklanır, bildirim maili oradan gider;
-// mail gelmese bile başvuru kaybolmaz. Cevap 2xx değilse misafire telefon
-// numarasıyla birlikte görünür bir hata gösterilir. JS çalışmazsa form normal
-// POST ile Netlify'a gider ve danke.html açılır.
+// Rezervasyon formu — kendi Vercel fonksiyonumuza (/api/reservation) JSON
+// olarak gönderilir; fonksiyon maili Resend ile atar. Sadece 2xx cevapta
+// danke.html açılır, aksi halde misafire telefon numarasıyla görünür bir
+// hata gösterilir — başvuru hiçbir zaman sessizce kaybolmaz.
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('resForm');
     if (!form) return;
 
     const submitBtn = form.querySelector('.res-submit');
     const status = form.querySelector('.res-status');
-    const thanksUrl = form.getAttribute('action') || '/danke.html';
+    const thanksUrl = '/danke.html';
 
     function t(key, fallback) {
         const lang = (typeof i18n !== 'undefined' && i18n.currentLang) || 'de';
@@ -36,16 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.textContent = t('res-sending', 'Wird gesendet…');
 
         try {
-            const res = await fetch('/', {
+            const res = await fetch(form.getAttribute('action') || '/api/reservation', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(new FormData(form)).toString()
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(Object.fromEntries(new FormData(form)))
             });
             if (res.ok) {
                 window.location.href = thanksUrl;
                 return;
             }
-            console.error('Reservierung: Netlify Forms hat abgelehnt', res.status);
+            console.error('Reservierung: Server hat abgelehnt', res.status);
             showError();
         } catch (err) {
             console.error('Reservierung: Netzwerkfehler', err);
