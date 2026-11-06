@@ -1,0 +1,17 @@
+# Tek seferlik teşhis: canlı sitenin kullandığı FormSubmit adresine bir TEST
+# rezervasyonu gönderir ve FormSubmit'in cevabını loglar. Sadece bu dalda çalışır.
+name: FormSubmit test
+on:
+  push:
+    branches: [ccr-26808156-tq3ww5]
+    paths: [.github/workflows/formsubmit-test.yml]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send test reservation
+        run: |
+          curl -sS -i -X POST "https://formsubmit.co/ajax/handeaydemr@gmail.com" \
+            -H "Content-Type: application/json" -H "Accept: application/json" \
+            -H "Origin: https://taka-fishhouse.de" -H "Referer: https://taka-fishhouse.de/" \
+            -d '{"_subject":"TEST – Rezervasyon sistemi kontrolü (dikkate almayın)","_template":"table","_captcha":"false","İsim":"TEST – lütfen dikkate almayın","Telefon":"-","Tarih":"2026-11-06","Saat":"-","Kisi_Sayisi":"-","Not":"Otomatik sistem testi"}'
