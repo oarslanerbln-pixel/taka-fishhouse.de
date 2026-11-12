@@ -35,7 +35,8 @@ module.exports = async (req, res) => {
         return res.status(400).json({ ok: false, error: 'missing_fields' });
     }
 
-    const apiKey = process.env.RESEND_API_KEY;
+    // Vercel'de değişken adı "Resend_Api_key" olarak da girilmiş olabilir.
+    const apiKey = process.env.RESEND_API_KEY || process.env.Resend_Api_key;
     if (!apiKey) {
         console.error('Reservation: RESEND_API_KEY is not set');
         return res.status(500).json({ ok: false, error: 'not_configured' });
