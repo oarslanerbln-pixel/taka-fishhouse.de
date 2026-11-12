@@ -534,18 +534,14 @@
             <h2 data-i18n="res-title">Masanız Hazır</h2>
             <p data-i18n="res-desc">Kreuzberg'in en özel balık deneyimi için yerinizi ayırtın. Yoğun saatlerde beklememek için rezervasyon yapmanızı öneririz.</p>
 
-            <form class="res-form" id="resForm" action="https://formsubmit.co/handeaydemr@gmail.com" method="POST">
-                <!-- FormSubmit yapılandırması -->
-                <input type="hidden" name="_subject" value="Yeni Masa Rezervasyonu - Taka Fish House">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" value="https://taka-fishhouse.de/danke.html">
+            <form class="res-form" id="resForm" method="POST" action="/api/reservation">
+                <!-- Gönderim: assets/js/reservation-form.js → /api/reservation (Vercel) → Resend ile mail -->
                 <!-- Spam tuzağı: Safari/Chrome autofill doldurmasın diye display:none olmalı -->
                 <input type="text" name="_honey" style="display:none !important;" tabindex="-1" autocomplete="new-password" aria-hidden="true">
 
                 <div class="res-field">
                     <label for="resName" data-i18n="res-label-name">İsim Soyisim</label>
-                    <input type="text" id="resName" name="İsim" autocomplete="name" data-i18n-placeholder="res-name-placeholder" placeholder="Örn. Ayşe Yılmaz" required>
+                    <input type="text" id="resName" name="Isim" autocomplete="name" data-i18n-placeholder="res-name-placeholder" placeholder="Örn. Ayşe Yılmaz" required>
                 </div>
 
                 <div class="res-field">
